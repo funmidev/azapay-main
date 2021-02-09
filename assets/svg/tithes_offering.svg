@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87" height="79" viewBox="0 0 87 79">
+  <defs>
+    <filter id="Rectangle_709" x="0" y="0" width="87" height="79" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1005" data-name="Group 1005" transform="translate(-238.5 -306.5)">
+    <g transform="matrix(1, 0, 0, 1, 238.5, 306.5)" filter="url(#Rectangle_709)">
+      <rect id="Rectangle_709-2" data-name="Rectangle 709" width="72" height="64" rx="12" transform="translate(7.5 6.5)" fill="#a3cd13"/>
+    </g>
+    <path id="Icon_map-church" data-name="Icon map-church" d="M31.327,14.363,16.661,7.426V4.546h1.913V3.271H16.661V.72H15.386V3.271H13.473V4.546h1.913v2.88L5.147,12.275.72,14.363v1.023H5.184V31.327h7.652V21.763h6.377v9.565h7.652V15.386h4.464Z" transform="translate(266.012 328.976)" fill="none" stroke="#fff" stroke-width="1"/>
+  </g>
+</svg>

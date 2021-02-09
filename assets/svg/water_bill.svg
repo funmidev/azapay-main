@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87" height="79" viewBox="0 0 87 79">
+  <defs>
+    <filter id="Rectangle_699" x="0" y="0" width="87" height="79" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1003" data-name="Group 1003" transform="translate(-238.5 -125.5)">
+    <g transform="matrix(1, 0, 0, 1, 238.5, 125.5)" filter="url(#Rectangle_699)">
+      <rect id="Rectangle_699-2" data-name="Rectangle 699" width="72" height="64" rx="12" transform="translate(7.5 6.5)" fill="#77dbff"/>
+    </g>
+    <g id="Icons_Navigation_Add" data-name="Icons/ Navigation /Add" transform="translate(254.065 140.34)">
+      <path id="Path" d="M12.728,31.819A12.724,12.724,0,0,0,25.455,19.091q0-7.026-12.728-19.091Q0,12.066,0,19.091A12.724,12.724,0,0,0,12.728,31.819Z" transform="translate(6 3.75)" fill="none" stroke="#fff" stroke-width="1.2"/>
+      <path id="Path_Copy" data-name="Path Copy" d="M7.071,17.677a7.069,7.069,0,0,0,7.071-7.071Q14.142,6.7,7.071,0,0,6.7,0,10.606A7.069,7.069,0,0,0,7.071,17.677Z" transform="translate(33.728 14.75)" fill="#77dbff" stroke="#fff" stroke-miterlimit="10" stroke-width="1.2"/>
+      <path id="Path_Copy-2" data-name="Path Copy" d="M4.816,12.039A4.814,4.814,0,0,0,9.632,7.224Q9.632,4.565,4.816,0,0,4.565,0,7.224A4.814,4.814,0,0,0,4.816,12.039Z" transform="translate(26.983 32.569)" fill="#77dbff" stroke="#fff" stroke-miterlimit="10" stroke-width="1.2"/>
+      <path id="Path_1189" data-name="Path 1189" d="M10.242,20.376c-2.784,9.5,4.217,11.791,4.217,11.791" transform="translate(-0.418 -1.012)" fill="none" stroke="#fff" stroke-width="1"/>
+      <path id="Path_1191" data-name="Path 1191" d="M9.774,20.376c-.789,2.693,1.2,3.343,1.2,3.343" transform="translate(19.582 18.212)" fill="none" stroke="#fff" stroke-width="0.6"/>
+      <path id="Path_1190" data-name="Path 1190" d="M11.8,20.376c1.461,4.984-2.213,6.187-2.213,6.187" transform="translate(33.026 2.79)" fill="none" stroke="#fff" stroke-width="0.81"/>
+    </g>
+  </g>
+</svg>

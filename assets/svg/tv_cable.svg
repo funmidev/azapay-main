@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87" height="79" viewBox="0 0 87 79">
+  <defs>
+    <filter id="Rectangle_711" x="0" y="0" width="87" height="79" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1006" data-name="Group 1006" transform="translate(-51.5 -487.5)">
+    <g transform="matrix(1, 0, 0, 1, 51.5, 487.5)" filter="url(#Rectangle_711)">
+      <rect id="Rectangle_711-2" data-name="Rectangle 711" width="72" height="64" rx="12" transform="translate(7.5 6.5)" fill="#6c63ff"/>
+    </g>
+    <path id="Icon_awesome-satellite-dish" data-name="Icon awesome-satellite-dish" d="M12.094,22.158,13.85,20.4a1.874,1.874,0,0,0,.5.1,2.05,2.05,0,1,0-2.05-2.05,1.874,1.874,0,0,0,.1.5L10.647,20.71,3.165,13.228a1.016,1.016,0,0,0-1.6.192A13.151,13.151,0,0,0,19.372,31.229a1.009,1.009,0,0,0,.192-1.6ZM13.388,0A1.031,1.031,0,0,0,12.3,1.025V3.049a1.015,1.015,0,0,0,.961,1.019,16.453,16.453,0,0,1,15.432,15.47,1.023,1.023,0,0,0,1.019.961h2.056a1.031,1.031,0,0,0,1.025-1.089A20.548,20.548,0,0,0,13.388,0Zm.019,6.15A1.034,1.034,0,0,0,12.3,7.181V9.237a1.021,1.021,0,0,0,.948,1.019,10.232,10.232,0,0,1,9.282,9.3,1.029,1.029,0,0,0,1.019.942h2.063a1.037,1.037,0,0,0,1.031-1.108A14.413,14.413,0,0,0,13.408,6.15Z" transform="translate(78.5 510.604)" fill="none" stroke="#fff" stroke-width="1"/>
+  </g>
+</svg>

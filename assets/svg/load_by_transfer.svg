@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46">
+  <g id="Group_981" data-name="Group 981" transform="translate(-35 -134)">
+    <rect id="Rectangle_678" data-name="Rectangle 678" width="46" height="46" rx="10" transform="translate(35 134)" fill="#119a4c"/>
+    <g id="Icon_feather-send" data-name="Icon feather-send" transform="translate(50.825 145.311)">
+      <path id="Path_1175" data-name="Path 1175" d="M27.425,3,16.5,13.925" transform="translate(-7.561 -3)" fill="none" stroke="#17c261" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <path id="Path_1176" data-name="Path 1176" d="M22.863,3,15.911,22.863l-3.973-8.939L3,9.952Z" transform="translate(-3 -3)" fill="none" stroke="#17c261" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+    </g>
+    <g id="Icon_feather-send-2" data-name="Icon feather-send" transform="translate(46.311 149.826)">
+      <path id="Path_1175-2" data-name="Path 1175" d="M27.425,3,16.5,13.925" transform="translate(-7.561 -3)" fill="none" stroke="#ffeeb7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <path id="Path_1176-2" data-name="Path 1176" d="M22.863,3,15.911,22.863l-3.973-8.939L3,9.952Z" transform="translate(-3 -3)" fill="none" stroke="#ffeeb7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+    </g>
+  </g>
+</svg>

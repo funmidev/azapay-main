@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>274366960854-592huo2hrnq4977390qiu83srbqo3h90.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.274366960854-592huo2hrnq4977390qiu83srbqo3h90</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>274366960854-o9hnu2fcdrevuoq8mp4t5e76639fbcnd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAM7ZFDae-2FWw34U4UIvbs0UD9ydEvWIQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>274366960854</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.azapay</string>
+	<key>PROJECT_ID</key>
+	<string>azapay-70ebc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>azapay-70ebc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:274366960854:ios:cac8367602d18592dba577</string>
+	<key>DATABASE_URL</key>
+	<string>https://azapay-70ebc.firebaseio.com</string>
+</dict>
+</plist>

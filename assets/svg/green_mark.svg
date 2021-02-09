@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="194" height="194" viewBox="0 0 194 194">
+  <g id="Group_999" data-name="Group 999" transform="translate(-91 -256)">
+    <g id="Group_896" data-name="Group 896" transform="translate(0 169)">
+      <rect id="Rectangle_614" data-name="Rectangle 614" width="73" height="12" rx="6" transform="translate(227.545 161.699) rotate(128)" fill="#fff"/>
+      <path id="Path_1162" data-name="Path 1162" d="M6,0H44a6,6,0,0,1,6,6c0,.679,1.172,2.011.854,2.916C50.157,10.981,46.634,12,44,12H6A6,6,0,0,1,6,0Z" transform="translate(152.565 174.08) rotate(45)" fill="#fff"/>
+    </g>
+    <g id="Group_927" data-name="Group 927">
+      <circle id="Ellipse_253" data-name="Ellipse 253" cx="73" cy="73" r="73" transform="translate(115 280)" fill="#5ac98a"/>
+      <g id="Group_883" data-name="Group 883" transform="translate(0 169)">
+        <rect id="Rectangle_614-2" data-name="Rectangle 614" width="47" height="12" rx="6" transform="translate(211.538 182.188) rotate(128)" fill="#fff"/>
+        <path id="Path_1162-2" data-name="Path 1162" d="M6,0H44a6,6,0,0,1,6,6c0,.679,1.172,2.011.854,2.916C50.157,10.981,46.634,12,44,12H6A6,6,0,0,1,6,0Z" transform="translate(152.565 174.08) rotate(45)" fill="#fff"/>
+      </g>
+    </g>
+    <circle id="Ellipse_295" data-name="Ellipse 295" cx="97" cy="97" r="97" transform="translate(91 256)" fill="rgba(23,194,97,0.18)"/>
+    <circle id="Ellipse_294" data-name="Ellipse 294" cx="87" cy="87" r="87" transform="translate(101 266)" fill="rgba(23,194,97,0.18)"/>
+    <g id="Group_928" data-name="Group 928">
+      <circle id="Ellipse_253-2" data-name="Ellipse 253" cx="73" cy="73" r="73" transform="translate(115 280)" fill="#17c261"/>
+      <g id="Group_896-2" data-name="Group 896" transform="translate(0 169)">
+        <rect id="Rectangle_614-3" data-name="Rectangle 614" width="73" height="12" rx="6" transform="translate(227.545 161.699) rotate(128)" fill="#fff"/>
+        <path id="Path_1162-3" data-name="Path 1162" d="M6,0H44a6,6,0,0,1,6,6c0,.679,1.172,2.011.854,2.916C50.157,10.981,46.634,12,44,12H6A6,6,0,0,1,6,0Z" transform="translate(152.565 174.08) rotate(45)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
