@@ -4,15 +4,16 @@ import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 
 class ForgotVerificationCodeWebUI extends StatefulWidget {
   @override
-  _ForgotVerificationCodeWebUIState createState() => _ForgotVerificationCodeWebUIState();
+  _ForgotVerificationCodeWebUIState createState() =>
+      _ForgotVerificationCodeWebUIState();
 }
 
-class _ForgotVerificationCodeWebUIState extends State<ForgotVerificationCodeWebUI> {
+class _ForgotVerificationCodeWebUIState
+    extends State<ForgotVerificationCodeWebUI> {
   TextEditingController _tokenController;
   ModifypasswordBloc _bloc;
   @override
@@ -32,12 +33,14 @@ class _ForgotVerificationCodeWebUIState extends State<ForgotVerificationCodeWebU
       builder: (context, state) {
         return AuthBackgroundUI(
           child: Padding(
-            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 6),
+            padding:
+                EdgeInsets.only(left: MediaQuery.of(context).size.width / 6),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.1),
                   child: Image.asset(
                     AppImages.azaPayLogo,
                     scale: 18,
@@ -54,7 +57,8 @@ class _ForgotVerificationCodeWebUIState extends State<ForgotVerificationCodeWebU
                   padding: const EdgeInsets.only(top: 15.0),
                   child: Text(
                     AppStrings.verifyUserone,
-                    style: AppTextStyles.h2style.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: AppTextStyles.h2style
+                        .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(
@@ -70,13 +74,18 @@ class _ForgotVerificationCodeWebUIState extends State<ForgotVerificationCodeWebU
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 2, top: 10),
+                          padding: EdgeInsets.only(
+                              right: MediaQuery.of(context).size.width / 2,
+                              top: 10),
                           child: PinInputTextField(
                             pinLength: 6,
                             decoration: BoxLooseDecoration(
-                              strokeColorBuilder:
-                                  PinListenColorBuilder(ColorSets.colorPrimaryLightYellow, ColorSets.colorPin),
-                              bgColorBuilder: PinListenColorBuilder(ColorSets.colorPin, ColorSets.colorPrimaryWhite),
+                              strokeColorBuilder: PinListenColorBuilder(
+                                  ColorSets.colorPrimaryLightYellow,
+                                  ColorSets.colorPin),
+                              bgColorBuilder: PinListenColorBuilder(
+                                  ColorSets.colorPin,
+                                  ColorSets.colorPrimaryWhite),
                               obscureStyle: ObscureStyle(
                                 isTextObscure: true,
                                 obscureText: '*',
@@ -86,13 +95,16 @@ class _ForgotVerificationCodeWebUIState extends State<ForgotVerificationCodeWebU
                             controller: _tokenController,
                             textInputAction: TextInputAction.go,
                             enabled: true,
-                            inputFormatter: [LengthLimitingTextInputFormatter(6)],
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(6)
+                            ],
                             keyboardType: TextInputType.number,
                             textCapitalization: TextCapitalization.characters,
                             // onSubmit: (pin) {
                             //   debugPrint('submit pin:$pin');
                             // },
-                            onChanged: (pin) => _bloc.add(ModifyPasswordToken(verificationToken: pin)),
+                            onChanged: (pin) => _bloc.add(
+                                ModifyPasswordToken(verificationToken: pin)),
                             enableInteractiveSelection: false,
                           ),
                           // PinCodeTextField(
@@ -126,10 +138,12 @@ class _ForgotVerificationCodeWebUIState extends State<ForgotVerificationCodeWebU
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width / 3, top: MediaQuery.of(context).size.width / 12),
+                      left: MediaQuery.of(context).size.width / 3,
+                      top: MediaQuery.of(context).size.width / 12),
                   child: BorderButtonUI(
                     onPressed: () async {
-                      await _bloc.add(ModifyPasswordToken(verificationToken: _tokenController.text));
+                      await _bloc.add(ModifyPasswordToken(
+                          verificationToken: _tokenController.text));
                       await Navigator.pushNamed(
                         context,
                         AppRouteName.reset_password,

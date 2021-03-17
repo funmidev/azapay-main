@@ -1,5 +1,10 @@
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/models/models.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/cardless/aza_agent_pin_ui.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/cardless/aza_agent_transaction_review.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/cardless/cardless_withdrawal.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/cardless/input_cardless_amount_ui.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/cardless/pay_to_aza_agent_ui.dart';
 import 'package:azapay/src/ui/dashboard/wallet/load_by_transfer_ui.dart';
 import 'package:azapay/src/ui/dashboard/wallet/load_by_ussd_ui.dart';
 import 'package:azapay/src/ui/ui.dart';
@@ -8,6 +13,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:universal_platform/universal_platform.dart';
+
+import 'src/ui/dashboard/hub/merchant_cash_till.dart';
+import 'src/ui/dashboard/hub/merchant_cashier.dart';
 
 class RouteGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -239,6 +247,53 @@ class RouteGenerator {
       case AppRouteName.merchant:
         return _pageRoute(settings: settings, widget: MerchantHubUI());
         break;
+      case AppRouteName.merchantTill:
+        return _pageRoute(
+            settings: settings, widget: MerchantCashTillTagging());
+        break;
+      case AppRouteName.merchantCashier:
+        return _pageRoute(
+            settings: settings,
+            widget: MerchantCashier(
+              merchantData: args,
+            ));
+        break;
+
+      ///
+      ///
+      ///
+      ///---------adding the cashless-withdrawal to the route----------
+      case AppRouteName.cardlessWithdrawal:
+        return _pageRoute(settings: settings, widget: CardlessWithdrawal());
+        break;
+
+      ///
+      ///  InputMerchantAmountUI
+      /// -------- adding pay-to-AzaAgent to the route-------------
+      case AppRouteName.paytoAzaAgent:
+        return _pageRoute(settings: settings, widget: PayToAzaAgent());
+        break;
+
+      /// -------- adding inputAmount to the route-------------
+      case AppRouteName.inputmyAmount:
+        return _pageRoute(settings: settings, widget: InputCardlessAmountUi());
+        break;
+
+      ///
+      ///
+      ///
+      case AppRouteName.azaAgentTransacReview:
+        return _pageRoute(
+            settings: settings, widget: AzaAgentTransactionReview());
+        break;
+
+      ///
+      ///
+      ///
+      case AppRouteName.azaAgentPin:
+        return _pageRoute(settings: settings, widget: AzaAgentPinUi());
+        break;
+
       default:
         return _errorRoute(
           settings: settings,

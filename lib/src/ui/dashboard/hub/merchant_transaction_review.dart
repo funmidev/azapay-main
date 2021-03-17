@@ -1,17 +1,21 @@
+import 'package:azapay/src/models/pay_merchant.dart';
+import 'package:azapay/src/models/review_payment.dart';
 import 'package:flutter/material.dart';
 
 import 'merchant_cash_till.dart';
 import 'merchant_pin_ui.dart';
 import 'transaction_info_item.dart';
 
-class Body extends StatefulWidget {
-  Body({Key key}) : super(key: key);
+class ReviewPaymentUI extends StatefulWidget {
+  ReviewPaymentUI({Key key, this.reviewPayment}) : super(key: key);
 
   @override
-  _BodyState createState() => _BodyState();
+  _ReviewPaymentUIState createState() => _ReviewPaymentUIState();
+
+  final ReviewPayment reviewPayment;
 }
 
-class _BodyState extends State<Body> {
+class _ReviewPaymentUIState extends State<ReviewPaymentUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +31,7 @@ class _BodyState extends State<Body> {
                     flex: 5,
                     child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    MerchantCashTillTagging()),
-                          );
+                          Navigator.of(context).pop();
                         },
                         child: Icon(
                           Icons.arrow_back_ios,
@@ -68,7 +67,7 @@ class _BodyState extends State<Body> {
                         margin: EdgeInsets.fromLTRB(10, 25, 10, 30),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey.shade400),
+                            color: Colors.grey.shade200),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -83,32 +82,32 @@ class _BodyState extends State<Body> {
                             ),
                             Divider(
                               thickness: .5,
-                              color: Colors.grey,
+                              color: Colors.grey.shade400,
                             ),
                             TransactionInfoItem(
-                              rightDetail: '#DaveCha',
+                              rightDetail: widget.reviewPayment.merchantTag,
                               rightTitle: 'AzaTag',
                               leftTitle: 'Transaction Type',
                               leftDetail: 'AzaPag Transfer',
                               showRightItem: true,
                             ),
                             TransactionInfoItem(
-                              rightDetail: 'Deep Luca',
+                              rightDetail: widget.reviewPayment.merchantName,
                               rightTitle: 'Recipient Name',
                               leftTitle: 'Recipient',
                               leftDetail: 'Sub-agent',
                               showRightItem: true,
                             ),
                             TransactionInfoItem(
-                              rightDetail: '#AyoMan',
+                              rightDetail: widget.reviewPayment.senderTag,
                               rightTitle: 'AzaTag',
                               leftTitle: 'Sender',
-                              leftDetail: 'Kamilu Ayo',
+                              leftDetail: widget.reviewPayment.senderName,
                               showRightItem: true,
                             ),
                             TransactionInfoItem(
                               leftTitle: 'Amount',
-                              leftDetail: '#5000',
+                              leftDetail: '#' + widget.reviewPayment.amount,
                               showRightItem: false,
                             ),
                           ],
@@ -124,7 +123,16 @@ class _BodyState extends State<Body> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MerchantPinUi()),
+                                    builder: (context) => MerchantPinUi(
+                                          payMerchantParams: PayMerchantParams(
+                                              merchantKey: widget
+                                                  .reviewPayment.merchantTag,
+                                              amount:
+                                                  widget.reviewPayment.amount,
+                                              cashTillPosition: widget
+                                                  .reviewPayment
+                                                  .merchantCashTill),
+                                        )),
                               );
                             },
                             padding: EdgeInsets.symmetric(

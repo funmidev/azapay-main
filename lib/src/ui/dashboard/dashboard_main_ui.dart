@@ -358,7 +358,14 @@ List<Widget> _dashboardui() {
     BankUI(),
     WalletUI(),
     NairaBoardUI(),
-    BuyAndPayUI(),
+
+    ///
+    /// -------the AzaAgent------
+    AzaAgentUI(),
+
+    ///
+    /// ---------the buying and pay bill-----
+    //BuyAndPayUI(),
     MerchantHubUI(),
   ];
 }

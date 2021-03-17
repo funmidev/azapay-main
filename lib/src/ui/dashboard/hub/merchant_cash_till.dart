@@ -1,21 +1,36 @@
+import 'package:azapay/src/models/merchant_data.dart';
+import 'package:azapay/src/models/review_payment.dart';
+import 'package:azapay/utils/rounded_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'merchant_still.dart';
 import 'merchant_transaction_review.dart';
 
 class MerchantCashTillTagging extends StatefulWidget {
-  MerchantCashTillTagging({Key key}) : super(key: key);
+  MerchantCashTillTagging(
+      {Key key,
+      this.cashierData,
+      this.merchantName,
+      this.merchantEmail,
+      this.merchantPhone,
+      this.merchantTag})
+      : super(key: key);
+  final Cashier cashierData;
+  final String merchantName, merchantTag, merchantEmail, merchantPhone;
 
   @override
   _MerchantCashTillState createState() => _MerchantCashTillState();
 }
 
+final _formKey = GlobalKey<FormState>();
+String enterAmount;
+
 class _MerchantCashTillState extends State<MerchantCashTillTagging> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    print('CashTill' + widget.cashierData.toString());
 
     return Scaffold(
       appBar: PreferredSize(
@@ -35,16 +50,11 @@ class _MerchantCashTillState extends State<MerchantCashTillTagging> {
                     icon: Icon(Icons.navigate_before),
                     color: Colors.black,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return MerchantStill();
-                        }),
-                      );
+                      Navigator.of(context).pop;
                     },
                   ),
                   Text(
-                    "Dre's Shop",
+                    widget.merchantName + '\'s Shop',
                     style: TextStyle(
                         fontFamily: 'Lato-Black',
                         fontSize: 16,
@@ -74,140 +84,171 @@ class _MerchantCashTillState extends State<MerchantCashTillTagging> {
             height: size.height,
             color: Colors.white.withOpacity(0.9),
           ),
-          Expanded(
-            flex: 5,
-            child: Column(
-              children: [
-                ListView(
-                  padding: EdgeInsets.only(top: 20),
-                  shrinkWrap: true,
-                  children: [
-                    Center(
-                      child: Image.asset(
-                        'assets/images/onboard-three.png',
-                        width: size.width * .5,
-                        height: size.height * .30,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          padding:
-                              const EdgeInsets.only(left: 60.0, right: 20.0),
-                          alignment: Alignment.centerLeft,
-                          child: Icon(
-                            FontAwesomeIcons.headset,
-                            size: 20.0,
-                            color: Color(0xffFFB300),
-                          ),
-                        ),
-                        Text('Anthony Lucas',
-                            style: GoogleFonts.lato(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          padding:
-                              const EdgeInsets.only(left: 60.0, right: 20.0),
-                          alignment: Alignment.centerLeft,
-                          child: Icon(
-                            FontAwesomeIcons.male,
-                            size: 20.0,
-                            color: Color(0xff0059CF),
-                          ),
-                        ),
-                        Text('Male',
-                            style: GoogleFonts.lato(
-                                fontSize: 14, color: Colors.black)),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          padding:
-                              const EdgeInsets.only(left: 60.0, right: 20.0),
-                          alignment: Alignment.centerLeft,
-                          child: Icon(
-                            FontAwesomeIcons.dumpster,
-                            size: 20.0,
-                            color: Color(0xff2D9DAE),
-                          ),
-                        ),
-                        Text('Cash Till 1',
-                            style: GoogleFonts.lato(
-                                fontSize: 14, color: Colors.black)),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.symmetric(horizontal: 30.0),
-                      child: Text(
-                        'Amount',
-                        style: TextStyle(
-                          fontSize: 14,
+          SingleChildScrollView(
+            child: Expanded(
+              flex: 5,
+              child: Column(
+                children: [
+                  ListView(
+                    padding: EdgeInsets.only(top: 20),
+                    shrinkWrap: true,
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          'assets/images/onboard-three.png',
+                          width: size.width * .5,
+                          height: size.height * .30,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            // width: 0.0 produces a thin "hairline" border
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide.none,
-                            //borderSide: const BorderSide(),
+                      Row(
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.only(left: 60.0, right: 20.0),
+                            alignment: Alignment.centerLeft,
+                            child: Icon(
+                              FontAwesomeIcons.headset,
+                              size: 20.0,
+                              color: Color(0xffFFB300),
+                            ),
                           ),
-                          hintStyle: TextStyle(
-                              color: Colors.white, fontFamily: "Lato-Black"),
-                          filled: true,
-                          fillColor: Color(0xffF5F6F8),
+                          Text(
+                              widget.cashierData.firstName +
+                                  " " +
+                                  widget.cashierData.lastName,
+                              style: GoogleFonts.lato(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.only(left: 60.0, right: 20.0),
+                            alignment: Alignment.centerLeft,
+                            child: Icon(
+                              FontAwesomeIcons.male,
+                              size: 20.0,
+                              color: Color(0xff0059CF),
+                            ),
+                          ),
+                          Text(widget.cashierData.gender,
+                              style: GoogleFonts.lato(
+                                  fontSize: 14, color: Colors.black)),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.only(left: 60.0, right: 20.0),
+                            alignment: Alignment.centerLeft,
+                            child: Icon(
+                              FontAwesomeIcons.dumpster,
+                              size: 20.0,
+                              color: Color(0xff2D9DAE),
+                            ),
+                          ),
+                          Text('Cash Till ' + widget.cashierData.cashTill,
+                              style: GoogleFonts.lato(
+                                  fontSize: 14, color: Colors.black)),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Text(
+                                'Amount',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: size.height * 0.04,
+                              ),
+                              RoundedInputField(
+                                inputType: TextInputType.number,
+                                validateForm: (val) => (val.isEmpty)
+                                    ? 'Enter a valid amount'
+                                    : null,
+                                // (value) {
+                                //   value ? "Enter a valid email address" : null;
+                                // },
+                                icon: Icons.monetization_on_outlined,
+                                hintText: "00.00",
+                                onChanged: (value) {
+                                  setState(() {
+                                    enterAmount = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: size.height * .07,
+                              ),
+                              FlatButton(
+                                  textColor: Colors.white,
+                                  disabledColor: Colors.grey,
+                                  disabledTextColor: Colors.black,
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 50),
+                                  splashColor: Colors.deepOrange,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side:
+                                          BorderSide(color: Color(0xffFFB300))),
+                                  onPressed: () {
+                                    if (_formKey.currentState.validate()) {
+                                      setState(() {
+                                        // _showloader = true;
+                                      });
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ReviewPaymentUI(
+                                                  reviewPayment: ReviewPayment(
+                                                      merchantTag:
+                                                          widget.merchantTag,
+                                                      merchantCashTill: widget
+                                                          .cashierData.cashTill,
+                                                      merchantName:
+                                                          widget.merchantName,
+                                                      amount: enterAmount,
+                                                      merchantPhone:
+                                                          widget.merchantPhone,
+                                                      senderName: "Dale",
+                                                      senderTag: '#dale'),
+                                                )),
+                                      );
+                                    }
+                                  },
+                                  color: Color(0xffFFB300),
+                                  child: Text('Continue',
+                                      style: GoogleFonts.lato(fontSize: 16))),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: FlatButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Body()),
-                            );
-                          },
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 60, vertical: 12),
-                          color: Color(0xffFFC300),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16)),
-                          child: Text(
-                            'Continue',
-                            style: TextStyle(color: Colors.white, fontSize: 14),
-                          )),
-                    )
-                  ],
-                ),
+                    ],
+                  ),
 
-                // AmountField(),
-              ],
+                  // AmountField(),
+                ],
+              ),
             ),
           )
         ],

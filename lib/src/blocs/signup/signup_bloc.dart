@@ -9,11 +9,12 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_platform/universal_platform.dart';
 
+part 'signup_bloc.freezed.dart';
 part 'signup_event.dart';
 part 'signup_state.dart';
-part 'signup_bloc.freezed.dart';
 
 class SignupBloc extends Bloc<SignupEvent, SignupState> {
   final Repository repository;
@@ -104,7 +105,8 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
               }
             } catch (e) {
               yield signup.copyWith(
-                basicResponse: BasicResponse(message: AppDioErrorHandling().handleError(e), status: 400),
+                basicResponse: BasicResponse(
+                    message: AppDioErrorHandling().handleError(e), status: 400),
               );
             }
 
@@ -112,17 +114,20 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
           case 1:
             try {
-              final response =
-                  await repository.verifyOtp(otpVerify: OtpVerify(token: signup.otpcode, phone: signup.phoneno));
+              final response = await repository.verifyOtp(
+                  otpVerify:
+                      OtpVerify(token: signup.otpcode, phone: signup.phoneno));
 
               if (response.status == 200) {
                 yield signup.copyWith(basicResponse: response);
               } else {
-                yield signup.copyWith(basicResponse: BasicResponse(status: 400));
+                yield signup.copyWith(
+                    basicResponse: BasicResponse(status: 400));
               }
             } catch (e) {
               yield signup.copyWith(
-                basicResponse: BasicResponse(message: AppDioErrorHandling().handleError(e), status: 400),
+                basicResponse: BasicResponse(
+                    message: AppDioErrorHandling().handleError(e), status: 400),
               );
             }
             break;
@@ -131,16 +136,20 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
             try {
               final response = await repository.createFullName(
                   createAccountFullName: CreateAccountFullName(
-                      firstName: signup.firstname, lastName: signup.lastname, phone: signup.phoneno));
+                      firstName: signup.firstname,
+                      lastName: signup.lastname,
+                      phone: signup.phoneno));
 
               if (response.status == 200) {
                 yield signup.copyWith(basicResponse: response);
               } else {
-                yield signup.copyWith(basicResponse: BasicResponse(status: 400));
+                yield signup.copyWith(
+                    basicResponse: BasicResponse(status: 400));
               }
             } catch (e) {
               yield signup.copyWith(
-                basicResponse: BasicResponse(message: AppDioErrorHandling().handleError(e), status: 400),
+                basicResponse: BasicResponse(
+                    message: AppDioErrorHandling().handleError(e), status: 400),
               );
             }
             break;
@@ -155,36 +164,51 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
               if (response.status == 200) {
                 yield signup.copyWith(basicResponse: response);
               } else {
-                yield signup.copyWith(basicResponse: BasicResponse(status: 400));
+                yield signup.copyWith(
+                    basicResponse: BasicResponse(status: 400));
               }
             } catch (e) {
               yield signup.copyWith(
-                basicResponse: BasicResponse(message: AppDioErrorHandling().handleError(e), status: 400),
+                basicResponse: BasicResponse(
+                    message: AppDioErrorHandling().handleError(e), status: 400),
               );
             }
             break;
 
           case 4:
             try {
-              final response =
-                  await repository.createTag(createTag: CreateTag(tag: '${signup.azatag}', phone: signup.phoneno));
+              final response = await repository.createTag(
+                  createTag: CreateTag(
+                      tag: '${signup.azatag}', phone: signup.phoneno));
               final deviceid = await repository.getDeviceId();
 
               // todo: store azatag , password, deviceid in hivedb sign in --- Done
               // _logger.i(response);
               if (response.status == 200) {
                 await repository.addAzapayUser(
-                    signIn: SignIn(tag: '${signup.azatag}', password: signup.password, device: deviceid));
+                    signIn: SignIn(
+                        tag: '${signup.azatag}',
+                        password: signup.password,
+                        // device: deviceid
+                        device: "190-system-08085303817"));
+
+                print('MerchantToken13 ' + response.token);
+                // await _dbprovider.addToken(basicResponse: response);
+                var prefs = await SharedPreferences.getInstance();
+                await prefs.setString('userToken', response.token);
                 yield signup.copyWith(basicResponse: response);
                 // _logger.e(response.message);
               } else {
                 // _logger.e(response.message);
-                yield signup.copyWith(basicResponse: BasicResponse(status: 400, message: response.message));
+                yield signup.copyWith(
+                    basicResponse:
+                        BasicResponse(status: 400, message: response.message));
               }
             } catch (e) {
               _logger.e(e);
               yield signup.copyWith(
-                basicResponse: BasicResponse(message: AppDioErrorHandling().handleError(e), status: 400),
+                basicResponse: BasicResponse(
+                    message: AppDioErrorHandling().handleError(e), status: 400),
               );
             }
             break;

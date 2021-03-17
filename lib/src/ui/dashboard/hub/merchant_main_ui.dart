@@ -1,7 +1,13 @@
 import 'package:azapay/app/app.dart';
+import 'package:azapay/src/models/merchant_data.dart';
+import 'package:azapay/src/rest/ApiManager.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../Constants.dart';
+import 'merchant_cashier.dart';
 import 'merchant_item.dart';
 
 class MerchantHubUI extends StatefulWidget {
@@ -10,6 +16,33 @@ class MerchantHubUI extends StatefulWidget {
 }
 
 class _MerchantHubUIState extends State<MerchantHubUI> {
+  Future<String> getAuthToken() async {
+    var prefs;
+    try {
+      prefs = await SharedPreferences.getInstance();
+    } catch (e) {} finally {
+      return prefs.getString(Constants.authToken);
+    }
+  }
+
+  @override
+  void initState() {
+    merchantList = getMerchantList();
+    super.initState();
+  }
+
+  Future<MerchantResponse> getMerchantList() async {
+    var token = await getAuthToken();
+    var merchantData = await ApiManager.getAllMerchant('000', token);
+    if (merchantData != null) {
+      print('MerchantList' + merchantData.data.toString());
+      return merchantData;
+    }
+    return null;
+  }
+
+  Future<MerchantResponse> merchantList;
+
   final GlobalKey<FormState> _formkey = GlobalKey();
   bool hi = false;
   @override
@@ -54,57 +87,84 @@ class _MerchantHubUIState extends State<MerchantHubUI> {
                 ),
               ),
             ),
-            MerchantItem(
-              merchantCashTag: '#Andre',
-              merchantImgUrl: 'data',
-              merchantName: "Dare's Shop",
-            )
-
-            // Center(
-            //   child: Container(
-            //     height: MediaQuery.of(context).size.width / 2,
-            //     child: Center(
-            //       child: Padding(
-            //         padding: const EdgeInsets.all(30.0),
-            //         child: Column(
-            //           mainAxisSize: MainAxisSize.min,
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: [
-            //             Expanded(
-            //                 child: SvgPicture.asset(
-            //               AppVectors.onBoardTwo,
-            //             )),
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Text(
-            //                 AppStrings.merchantComingSoonTitle,
-            //                 style: AppTextStyles.h3style.copyWith(
-            //                   fontSize: 18,
-            //                   color: Color(0XFF818181),
-            //                   fontWeight: FontWeight.w500,
-            //                 ),
-            //               ),
-            //             ),
-            //             // Text(
-            //             //   AppStrings.notificationEmptySubTitle,
-            //             //   style: AppTextStyles.h3style,
-            //             // ),
-            //           ],
-            //         ),
-            //       ),
-            //     ),
-            //     decoration:
-            //         BoxDecoration(borderRadius: BorderRadius.circular(30)),
-            //   ),
-            // ),
             // Expanded(child: MerchantHubItem())
-            // ListView.builder(
-            //   itemCount: null,
-            //   itemBuilder: (context,index){
-            //     if (index is null){
-            //       return Center(child: SvgPicture.asset(AppVectors.notfound));
-            //     }
-            //   })
+            Expanded(
+              child: FutureBuilder<MerchantResponse>(
+                future: merchantList,
+                builder: (context, snapshot) {
+                  return snapshot.connectionState != ConnectionState.done
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : snapshot.hasData
+                          ? ListView.builder(
+                              itemCount: snapshot.data.data.length,
+                              itemBuilder: (context, index) {
+                                var merchantData = snapshot.data.data[index];
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: MerchantItem(
+                                    onSelected: () {
+                                      print(
+                                          'CashTell ' + merchantData.firstName);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MerchantCashier(
+                                                    merchantData:
+                                                        merchantData)),
+                                      );
+                                      // Navigator.of(context).pushReplacementNamed(AppRouteName.merchantCashier,arguments: merchantData);
+                                    },
+                                    merchantCashTag: '#' + merchantData.tag,
+                                    merchantImgUrl: 'data',
+                                    merchantName: merchantData.businessName,
+                                  ),
+                                );
+                              })
+                          : Center(
+                              child: Container(
+                                height: MediaQuery.of(context).size.width / 2,
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(30.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                            child: SvgPicture.asset(
+                                          AppVectors.onBoardTwo,
+                                        )),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            AppStrings.merchantComingSoonTitle,
+                                            style:
+                                                AppTextStyles.h3style.copyWith(
+                                              fontSize: 18,
+                                              color: Color(0XFF818181),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   AppStrings.notificationEmptySubTitle,
+                                        //   style: AppTextStyles.h3style,
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30)),
+                              ),
+                            );
+                },
+              ),
+            )
           ],
         ),
       ),
@@ -189,23 +249,6 @@ class _MerchantHubItemState extends State<MerchantHubItem> {
                         buttontitleColor: ColorSets.colorPrimaryBlack),
                   ),
                 ),
-                // ButtonArrow(
-                //     navigatorfunc: () {},
-                //     buttontitle: AppStrings.qrCodefour,
-                //     arrow: false,
-                //     buttontitleColor: ColorSets.colorPrimaryBlack)
-                // FlatButton(
-                //   color: ColorSets.colorPrimaryLightYellow,
-                //   onPressed: () {},
-                //   child: Text(''),
-                //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                // ),
-                // FlatButton(
-                //   color: ColorSets.colorPrimaryLightYellow,
-                //   onPressed: () {},
-                //   child: Text(''),
-                //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                // )
               ],
             ),
           )

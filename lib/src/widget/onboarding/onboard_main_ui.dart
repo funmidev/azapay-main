@@ -73,11 +73,11 @@ class OnBoardMainUI extends StatelessWidget {
                       SizedBox(height: 2),
                       GestureDetector(
                         onTap: () async {
-                          // await Navigator.pushNamed(
-                          //     context, AppRouteName.signin);
-
                           await Navigator.pushNamed(
-                              context, AppRouteName.merchant);
+                              context, AppRouteName.signin);
+
+                          // await Navigator.pushNamed(
+                          //     context, AppRouteName.merchant);
                         },
                         child: Text(
                           AppStrings.onBoardingfive,

@@ -51,10 +51,10 @@ class _InputMerchantAmountUIState extends State<InputMerchantAmountUI> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            //
-            //
-            //
-            //---------i add this to this --------------
+//
+//
+//
+//---------i add this to this --------------
             Center(
               child: Image.asset(
                 'assets/images/onboard-three.png',
@@ -135,9 +135,9 @@ class _InputMerchantAmountUIState extends State<InputMerchantAmountUI> {
 
             Padding(
               padding: const EdgeInsets.only(left: 14.0, right: 14),
-              // padding: EdgeInsets.symmetric(
-              //     horizontal:
-              //         MediaQuery.of(context).size.height > 568 ? 60 : 40),
+// padding: EdgeInsets.symmetric(
+//     horizontal:
+//         MediaQuery.of(context).size.height > 568 ? 60 : 40),
               child: FormFieldUI(
                   currentnode: null,
                   fieldController: _amountController,
@@ -198,7 +198,7 @@ class _InputMerchantAmountUIState extends State<InputMerchantAmountUI> {
             ///
             ///
             ///
-            //-----------customizing Button to continue-------------
+//-----------customizing Button to continue-------------
 
             Center(
               child: FlatButton(
@@ -213,7 +213,8 @@ class _InputMerchantAmountUIState extends State<InputMerchantAmountUI> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Body()),
+                      MaterialPageRoute(
+                          builder: (context) => ReviewPaymentUI()),
                     );
                   },
                   color: Color(0xffFFB300),

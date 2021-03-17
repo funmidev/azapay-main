@@ -1,13 +1,21 @@
 import 'dart:core';
 
+import 'package:azapay/src/models/merchant_data.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'merchant_cash_till.dart';
 //import 'input_amount_ui.dart';
 
 class CustomCashTill extends StatelessWidget {
-  String _selectCashTill = null;
   String cashTill = "Cash till";
+
+  CustomCashTill({Key key, this.cashierList, this.onChanged, this.itemSelected})
+      : super(key: key);
+
+  final List<Cashier> cashierList;
+  final String itemSelected;
+  final ValueChanged<Cashier> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +33,16 @@ class CustomCashTill extends StatelessWidget {
             padding: const EdgeInsets.only(left: 14.0, right: 14),
             child: DropdownButton(
               isExpanded: true,
-              value: _selectCashTill,
-              items: _dropDownItem(),
+              value: itemSelected,
+              items: _dropDownItem(cashierList),
               onChanged: (value) {
-                _selectCashTill = value;
-                switch (value) {
-                  case "cash Till":
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MerchantCashTillTagging()),
-                    );
-                    break;
-                  default:
-                    break;
-                }
+                var selectedCashtillValue = value as Cashier;
+                onChanged(selectedCashtillValue);
               },
               hint: Text(
                 'Select Position',
-                style: TextStyle(
-                  fontSize: 12.0,
+                style: GoogleFonts.lato(
+                  fontSize: 16.0,
                 ),
               ),
             ),
@@ -54,44 +52,16 @@ class CustomCashTill extends StatelessWidget {
     );
   }
 
-  List<DropdownMenuItem<String>> _dropDownItem() {
-    List<String> ddl = ['cash Till'];
-    return ddl
+  List<DropdownMenuItem<Cashier>> _dropDownItem(List<Cashier> cashierList) {
+    return cashierList
         .map((value) => DropdownMenuItem(
               value: value,
               child: Text(
-                value,
-                style: TextStyle(
-                  fontSize: 12.0,
-                ),
+                'Cash Till ' + value.cashTill,
+                style: GoogleFonts.lato(
+                    fontSize: 16.0, fontWeight: FontWeight.w600),
               ),
             ))
         .toList();
   }
 }
-//
-// class AmountField extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     Size size = MediaQuery.of(context).size;
-//     return Container(
-//       width: size.width,
-//       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-//       decoration: BoxDecoration(
-//         border: Border.all(
-//           width: 0.4,
-//           color: Colors.orange,
-//         ),
-//         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//       ),
-//       child: TextField(
-//           style: TextStyle(color: Colors.black, fontSize: 12.0),
-//           cursorColor: Theme.of(context).primaryColor,
-//           decoration: InputDecoration(
-//               contentPadding:
-//                   EdgeInsets.symmetric(horizontal: 32.0, vertical: 14.0),
-//               border: InputBorder.none,
-//               hintText: "Enter Amount")),
-//     );
-//   }
-// }

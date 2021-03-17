@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'merchant_main_ui.dart';
+import '../../ui.dart';
 
 class SuccessPayment extends StatefulWidget {
-  SuccessPayment({Key key}) : super(key: key);
+  SuccessPayment({Key key, this.succesInfo}) : super(key: key);
 
   @override
   _SuccessPaymentState createState() => _SuccessPaymentState();
+  final String succesInfo;
 }
 
 class _SuccessPaymentState extends State<SuccessPayment> {
@@ -58,10 +60,9 @@ class _SuccessPaymentState extends State<SuccessPayment> {
                     child: Text(
                       "to Dre's Shop with Azatag #Andre via Sub-Agent Antony Lucas.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         fontSize: 12.0,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'Lato-Black',
                       ),
                     ),
                   ),
@@ -73,7 +74,7 @@ class _SuccessPaymentState extends State<SuccessPayment> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MerchantHubUI()),
+                              builder: (context) => DashBoardUI()),
                         );
                       },
                       padding:
@@ -82,7 +83,7 @@ class _SuccessPaymentState extends State<SuccessPayment> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18)),
                       child: Text(
-                        'Send',
+                        'Home',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ))
                 ],

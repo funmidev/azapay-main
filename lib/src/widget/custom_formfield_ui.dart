@@ -1,6 +1,6 @@
 import 'package:azapay/app/app.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FormFieldUI extends StatelessWidget {
@@ -27,7 +27,8 @@ class FormFieldUI extends StatelessWidget {
       double borderradius = 30,
       TextAlign textAlign = TextAlign.start,
       @required String errorText,
-      @required Function(String) onchanged})
+      @required Function(String) onchanged,
+      FocusNode focusNode})
       : _currentnode = currentnode,
         _fieldController = fieldController,
         _nextnode = nextnode,
@@ -91,11 +92,16 @@ class FormFieldUI extends StatelessWidget {
             : (value) {
                 //  / onfieldsubmit
 
-                _focusChange(context: context, currentfocusNode: _currentnode, nextfocusNode: _nextnode);
+                _focusChange(
+                    context: context,
+                    currentfocusNode: _currentnode,
+                    nextfocusNode: _nextnode);
               },
         obscureText: _passwordvisible,
         decoration: InputDecoration(
-            fillColor: _fillit ? ColorSets.colorPrimaryWhite : ColorSets.colorGeryField,
+            fillColor: _fillit
+                ? ColorSets.colorPrimaryWhite
+                : ColorSets.colorGeryField,
             filled: true,
             prefixIcon: _prefixicon,
             prefixIconConstraints: BoxConstraints(
@@ -105,14 +111,17 @@ class FormFieldUI extends StatelessWidget {
             errorText: _errorText,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(_borderradius),
-              borderSide: _errorColor ? BorderSide(color: Colors.green) : BorderSide(color: Colors.red),
+              borderSide: _errorColor
+                  ? BorderSide(color: Colors.green)
+                  : BorderSide(color: Colors.red),
             ),
             suffixIcon: _suffixicon,
             suffixIconConstraints: BoxConstraints(
               minHeight: 10,
               minWidth: 50,
             ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: _contentpad),
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 20, vertical: _contentpad),
             hintText: _hint,
             helperText: '',
             isDense: true,
@@ -120,17 +129,23 @@ class FormFieldUI extends StatelessWidget {
               fontSize: 12,
             ),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[500]), borderRadius: BorderRadius.circular(_borderradius)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorSets.colorPrimaryLightYellowDashBoard),
+                borderSide: BorderSide(color: Colors.grey[500]),
                 borderRadius: BorderRadius.circular(_borderradius)),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(_borderradius))),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: ColorSets.colorPrimaryLightYellowDashBoard),
+                borderRadius: BorderRadius.circular(_borderradius)),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(_borderradius))),
       ),
     );
   }
 }
 
-void _focusChange({BuildContext context, FocusNode currentfocusNode, FocusNode nextfocusNode}) {
+void _focusChange(
+    {BuildContext context,
+    FocusNode currentfocusNode,
+    FocusNode nextfocusNode}) {
   currentfocusNode.unfocus();
   FocusScope.of(context).requestFocus(nextfocusNode);
 }

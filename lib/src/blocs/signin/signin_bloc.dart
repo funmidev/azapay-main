@@ -5,16 +5,17 @@ import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/resources/resources.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 // import 'package:flutter_freshchat/flutter_freshchat.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_platform/universal_platform.dart';
 
+part 'signin_bloc.freezed.dart';
 part 'signin_event.dart';
 part 'signin_state.dart';
-part 'signin_bloc.freezed.dart';
 
 class SigninBloc extends Bloc<SigninEvent, SigninState> {
   final Repository repository;
@@ -46,14 +47,26 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
           deviceid = await repository.getDeviceId();
         }
         final response = await repository.signIn(
-            signIn: SignIn(tag: '${signin.azatag}', password: signin.password, device: deviceid));
+            signIn: SignIn(
+                tag: '${signin.azatag}',
+                password: signin.password,
+                // device: deviceid
+                device: "190-system-08085303817"));
         //_logger.e(response.message);
         //todo: store inside hivedb user
         if (response.status == 200) {
           // _logger.e(response.token);
           await repository.addAzapayUser(
-              signIn: SignIn(tag: '${signin.azatag}', password: signin.password, device: deviceid));
+              signIn: SignIn(
+                  tag: '${signin.azatag}',
+                  password: signin.password,
+                  device: deviceid));
           await InMemoryTokenHiveStorage().write(response.token);
+
+          print('MerchantToken12 ' + response.token);
+          // await _dbprovider.addToken(basicResponse: response);
+          var prefs = await SharedPreferences.getInstance();
+          await prefs.setString('userToken', response.token);
           // final user = await FreshchatUser.initial();
           // user.id = signin.azatag;
           // user.email = '${signin.azatag}@azapay.com.ng';
@@ -79,7 +92,8 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
       }
     } else if (event is ClearSigninForm) {
       if (state is InputDataSigninState) {
-        yield (state as InputDataSigninState).copyWith(basicResponse: BasicResponse<String>(status: 100, message: ''));
+        yield (state as InputDataSigninState).copyWith(
+            basicResponse: BasicResponse<String>(status: 100, message: ''));
       } else {
         yield InputDataSigninState();
       }

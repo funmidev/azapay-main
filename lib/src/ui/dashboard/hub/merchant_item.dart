@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'merchant_still.dart';
-
 class MerchantItem extends StatelessWidget {
   final String merchantImgUrl;
   final String merchantName;
   final String merchantCashTag;
+  final Function onSelected;
 
   const MerchantItem(
-      {Key key, this.merchantImgUrl, this.merchantName, this.merchantCashTag})
+      {Key key,
+      this.merchantImgUrl,
+      this.merchantName,
+      this.merchantCashTag,
+      this.onSelected})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -51,14 +54,7 @@ class MerchantItem extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                         side: BorderSide(color: Color(0xffFFB300))),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return MerchantStill();
-                        }),
-                      );
-                    },
+                    onPressed: onSelected,
                     color: Color(0xffFFB300),
                     child: Text(buttonPayName,
                         style: GoogleFonts.lato(

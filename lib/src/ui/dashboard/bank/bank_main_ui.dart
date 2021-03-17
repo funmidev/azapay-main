@@ -19,7 +19,8 @@ class BankUI extends StatelessWidget {
                 Navigator.pushNamed(context, AppRouteName.linkbank);
               },
               assetName: AppVectors.linkbank,
-              textStyle: AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
+              textStyle:
+                  AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
               title: AppStrings.bankThreeI,
             ),
             BankItem(
@@ -27,15 +28,17 @@ class BankUI extends StatelessWidget {
                   Navigator.pushNamed(context, AppRouteName.bankmaketransfer);
                 },
                 assetName: AppVectors.maketransfer,
-                textStyle: AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
+                textStyle:
+                    AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
                 title: AppStrings.bankThreeII),
             BankItem(
-              onTapped: () {},
+              onTapped: () {
+                Navigator.pushNamed(context, AppRouteName.cardlessWithdrawal);
+              },
               assetName: AppVectors.completewithdrawal,
               title: AppStrings.bankThreeIII,
-              subtitle: AppStrings.bankThreeIIIi,
-              textStyle: AppTextStyles.h3style.copyWith(color: Color(0XFF818181), fontWeight: FontWeight.bold),
-              visiblesubtitle: true,
+              textStyle:
+                  AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -85,7 +88,9 @@ class BankItem extends StatelessWidget {
                       ? Text(
                           subtitle,
                           textAlign: TextAlign.left,
-                          style: AppTextStyles.h3style.copyWith(color: ColorSets.colorPrimaryLightYellow, fontSize: 10),
+                          style: AppTextStyles.h3style.copyWith(
+                              color: ColorSets.colorPrimaryLightYellow,
+                              fontSize: 10),
                         )
                       : EmptyWidgetUI()
                 ],

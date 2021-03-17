@@ -11,10 +11,12 @@ Grow...''';
   static const String onBoardingPageonesubtitle = 'Move money in the moment';
 
   static const String onBoardingPagetwotitle = 'Anywhere';
-  static const String onBoardingPagetwosubtitle = 'Skip the trip to the ATM, pay vendors directly with Azapay.';
+  static const String onBoardingPagetwosubtitle =
+      'Skip the trip to the ATM, pay vendors directly with Azapay.';
 
   static const String onBoardingPagethreetitle = 'Effortless';
-  static const String onBoardingPagethreesubtitle = 'No need for account numbers all you need is your Azapay Tag.';
+  static const String onBoardingPagethreesubtitle =
+      'No need for account numbers all you need is your Azapay Tag.';
 
   static const String onBoardingPagefourtitle = 'Safe Zone From Fraud';
   static const String onBoardingPagefoursubtitle =
@@ -54,7 +56,8 @@ Grow...''';
   static const String createPinthree = 'Reconfirm password';
   static const String createPinfour = 'Done';
 
-  static const String signUpsuccessone = 'Welcome! to the world of Easy Payments.';
+  static const String signUpsuccessone =
+      'Welcome! to the world of Easy Payments.';
 
   static const String signUpsuccesstwo = 'Proceed';
 
@@ -75,28 +78,34 @@ Grow...''';
   static const String switchaccountbaseTwo = 'Switch account';
 
   static const String forgotPasswordone = 'Forgot Password';
-  static const String forgotPasswordtwo = 'A verification code would be sent to your phone number';
+  static const String forgotPasswordtwo =
+      'A verification code would be sent to your phone number';
   static const String forgotPasswordthree = 'Azapay Tag';
   static const String forgotPasswordfour = 'Send';
 
   static const String checkEmailone = 'Check Your Phone Message';
-  static const String checkEmailtwo = 'A verification code has been sent to your phone number';
+  static const String checkEmailtwo =
+      'A verification code has been sent to your phone number';
 
   static const String verifyUserone = 'Verification';
-  static const String verifyUsertwo = 'Kindly enter the code sent to your email';
+  static const String verifyUsertwo =
+      'Kindly enter the code sent to your email';
   static const String verifyUserthree = 'Confirm';
 
   static const String verifiedUserone = 'Profile Verified';
-  static const String verifiedUsertwo = 'You can now successfully reset your password';
+  static const String verifiedUsertwo =
+      'You can now successfully reset your password';
 
   static const String resetPasswordone = 'Reset Password';
   static const String resetPasswordtwo = 'New Password';
   static const String resetPasswordthree = 'Confirm Password';
-  static const String resetPasswordfive = 'Create a new personal password you can remember';
+  static const String resetPasswordfive =
+      'Create a new personal password you can remember';
   static const String resetPasswordfour = 'Reset';
 
   static const String resetPasswordSuccessone = 'Password reset Successful';
-  static const String resetPasswordSuccesstwo = 'You have successfully created a new password';
+  static const String resetPasswordSuccesstwo =
+      'You have successfully created a new password';
   static const String resetPasswordSuccessthree = 'Sign In Now';
 
   static const String userHomeone = 'AzaPay';
@@ -147,14 +156,17 @@ Terms and License Agreement''';
   static const String accountinfoState = 'State';
   static const String accountinfoTitleBVN = 'BVN';
 
-  static const String accountinfoBVNerrorText = 'BVN should be greater than or equal to 11';
-  static const String accountinfoTitleBVNtitle = 'Enter Bank Verification Number';
+  static const String accountinfoBVNerrorText =
+      'BVN should be greater than or equal to 11';
+  static const String accountinfoTitleBVNtitle =
+      'Enter Bank Verification Number';
   static const String accountinfoTitleBVNdetails =
       'Your Bank Verification Number (BVN) is needed to uniquely verify your identity .';
   static const String accountinfoBVNEntry = 'Enter Details';
   static const String accountinfoTitleAddress = 'Address';
   static const String accountinfoImageUploadTitle = 'Click Here';
-  static const String accountinfoImageUploadSubTitle = 'Input a Valid ID (pdf, jpg, png)';
+  static const String accountinfoImageUploadSubTitle =
+      'Input a Valid ID (pdf, jpg, png)';
 
   static const String donebtn = 'Done';
 
@@ -195,7 +207,8 @@ Terms and License Agreement''';
 
   static const String privacyOne = 'Privacy & Security';
   static const String privacyTwoI = 'Security Lock';
-  static const String privacyTwoII = 'Require transaction PIN to transfer funds';
+  static const String privacyTwoII =
+      'Require transaction PIN to transfer funds';
   static const String privacyThreeI = 'Tag Visibility';
   static const String privacyThreeII = 'Allow others to find me on AzaPay';
   static const String privacyFourI = 'Password Settings';
@@ -224,10 +237,12 @@ Terms and License Agreement''';
   static const String ticketSubHeaderII = 'TOTAL';
 
   static const String setTransactionPin = 'Set Transaction Pin';
-  static const String setTransactionPinSub = 'Create a secure pin for your AZA transaction';
+  static const String setTransactionPinSub =
+      'Create a secure pin for your AZA transaction';
 
   static const String setTransactionPinToken = 'Transaction Pin OTP';
-  static const String setTransactionPinTokenSub = 'Enter your Transaction Pin OTP';
+  static const String setTransactionPinTokenSub =
+      'Enter your Transaction Pin OTP';
   static const String transactionpinOtp = 'OTP';
 
   static const String transactionPinOne = 'Complete Transaction';
@@ -328,13 +343,35 @@ Terms and License Agreement''';
   static const String walletFour = 'Recent Transaction';
   static const String walletFive = 'Saved Recipients';
 
+  ///
+  ///
+  ///
+  ///
+  /// --------azaAgent----------
+  static const String azaAgentOne = 'AzaAgent';
+  static const String azaAgentTwo =
+      'Locate and perform cardless transactions with an AzaAgent on AzaPay';
+  static const String azaAgentI = 'Cardless Withdrawal';
+  static const String azaAgentII = 'Locate an AzaAgent';
+  static const String azaAgentIII = 'Save Beneficiaries';
+  static const String azaAgentIIIi = 'Coming Soon';
+
+  ///
+  ///
+  ///
+  /// ----------Banking-----------
   static const String bankOne = 'Banking';
-  static const String bankTwo = 'With your account, experience the best of AzaPay';
+  static const String bankTwo =
+      'With your account, experience the best of AzaPay';
   static const String bankThreeI = 'Link Bank';
   static const String bankThreeII = 'Make Transfer';
   static const String bankThreeIII = 'Cashless Withdrawal';
   static const String bankThreeIIIi = 'Coming Soon';
 
+  ///
+  ///
+  ///
+  /// --------Linking of Bank-------------
   static const String linkbankOne = 'Add Account';
   static const String linkbankAccountNumber = 'Account Number';
   static const String linkbankAccountNumberHint = '**** **** **** ****';
@@ -361,7 +398,8 @@ Terms and License Agreement''';
   static const String hubThree = 'Search by AzaTag or name';
   static const String hubFour = 'Recommended Merchants';
 
-  static const String pleaseWait = 'Please wait while we fetch the account name';
+  static const String pleaseWait =
+      'Please wait while we fetch the account name';
   static const String bankCodeRequired = 'Please select a bank';
 
   static const String paybillsRequired = 'Please enter your smartcard number';
@@ -383,7 +421,8 @@ Donations''';
       'Send money to your Aza account from your bank via mobile app or internet banking.';
 
   static const String loadAcctUSSD = 'Fund By USSD';
-  static const String loadAcctUSSDSubTitle = "Send money to your Aza account via bank's USSD.";
+  static const String loadAcctUSSDSubTitle =
+      "Send money to your Aza account via bank's USSD.";
 
   static const String loadbyTransferTitle = 'Fund by Transfer';
   static const String loadbyTransferShare = 'Copy';
@@ -406,12 +445,16 @@ Donations''';
   static const String activityTitle = 'Activity';
   static const String activitySearchHint = 'Search';
   static const String activityDocNotifyEmptyTitle = 'Nothing Here Yet!';
-  static const String activityEmptySubTitle = 'Your future activity would be organized here';
-  static const String docEmptySubTitle = 'Your future document would be organized here';
-  static const String notificationEmptySubTitle = 'Your future notification would be organized here';
+  static const String activityEmptySubTitle =
+      'Your future activity would be organized here';
+  static const String docEmptySubTitle =
+      'Your future document would be organized here';
+  static const String notificationEmptySubTitle =
+      'Your future notification would be organized here';
 
   static const String linkbankEmptyTitle = 'No Bank Linked Yet!';
-  static const String linkbankEmptySubTitle = 'Your future link bank would be organized here';
+  static const String linkbankEmptySubTitle =
+      'Your future link bank would be organized here';
 
   static const String reloadText = 'Resending otp verification code...';
 
@@ -419,14 +462,17 @@ Donations''';
   static const String emptyInput = 'No Amount Entered';
   static const String errorTitle = 'Error';
   static const String extractdeviceinfoContent = '⚡No Internet Connection';
-  static const String extractdeviceinfoRestoredContent = '⚡Internet Connection Restored';
+  static const String extractdeviceinfoRestoredContent =
+      '⚡Internet Connection Restored';
   static const String extractdeviceinfoRetry = 'Retry';
 
-  static const String errorAmountInput = 'Amount has to be greater than ${nairaUnicode}100';
+  static const String errorAmountInput =
+      'Amount has to be greater than ${nairaUnicode}100';
   // static const String errorAmountInputMwechant = 'Amount has to be greater than 100 naira';
 
   static const String azatagerrorText = 'AzaTag should be greater than 4';
-  static const String passworderrorText = 'Password should be include 6 characters';
+  static const String passworderrorText =
+      'Password should be include 6 characters';
   static const String simpleerrorText = 'Invalid';
   static const String emailerrorText = 'Invalid email';
   static const String phonenumbererrorText = 'Invalid phone number';
@@ -459,12 +505,14 @@ Donations''';
 
   static const String merchantAmountTitle = 'Merchant Amount';
   static const String signoutTitle = 'Sign Out';
-  static const String signoutSubTitle = 'Are you sure? \n You would have to login next time';
+  static const String signoutSubTitle =
+      'Are you sure? \n You would have to login next time';
   static const String signoutYesbtn = 'Yes';
   static const String signoutNobtn = 'No';
 
   static const String successTransactPinTitle = 'Sucessful';
-  static const String successTransactPinSubTitle = 'You have successfully created your transaction pin';
+  static const String successTransactPinSubTitle =
+      'You have successfully created your transaction pin';
   static const String failedTransactPinTitle = 'Failed';
   static const String failedTransactPinSubTile = 'Incorrect Transaction Pin';
 
@@ -492,7 +540,8 @@ Donations''';
   static const String empty = '';
 
   static const String qrscanplatformerrorTitle = 'Platform error';
-  static const String qrscanplatformerrorSubTitle = 'Falied to get plaform version';
+  static const String qrscanplatformerrorSubTitle =
+      'Falied to get plaform version';
   static const String qrscanerrorTitle = 'Error!';
   static const String qrscanerrorSubTitle = 'Unable to get the the user Azatag';
 
@@ -501,7 +550,8 @@ Donations''';
   static const String paybillsElectricityMeterNo = 'Meter No.';
   static const String paybillsCableSmartCard = 'SmartCard No.';
 
-  static const String paybillsFeatureComingSoon = 'Not available yet. Coming soon';
+  static const String paybillsFeatureComingSoon =
+      'Not available yet. Coming soon';
   static const String azapayurl = 'https://azapay.com.ng';
 
   static const String completeprofile = 'Complete';
@@ -509,7 +559,8 @@ Donations''';
   static const String doneBtn = 'Done';
 
   static const String uploadclickHere = 'Click Here';
-  static const String uploadItem = 'Upload your Valid ID(drivers license,national ID or international passports)';
+  static const String uploadItem =
+      'Upload your Valid ID(drivers license,national ID or international passports)';
   static const String uploadCACItem = 'Upload CAC doc (jpg format allowed)';
 
   static const String activityTitleforTransaction = 'Transaction Summary';
@@ -596,7 +647,8 @@ Donations''';
   static const String dashboardwebLastWeek = 'Last Week';
   static const String dashboardwebLastMonth = 'Last Month';
   static const String dashboardwebRecentTransaction = 'Recent Transaction';
-  static const String dashboardwebCreateTransactionPin = 'Create\nTransaction Pin';
+  static const String dashboardwebCreateTransactionPin =
+      'Create\nTransaction Pin';
 
   static const String from = 'From';
   static const String fromType = 'From';
@@ -610,7 +662,8 @@ Donations''';
   // static const String walletwebOne = 'Aza Account';
 
   static const String transactionWebAllTransactions = 'All Transactions';
-  static const String transactionWebChangeTransactionPin = 'Change\nTransaction Pin';
+  static const String transactionWebChangeTransactionPin =
+      'Change\nTransaction Pin';
   static const String transactionWebCompleted = 'Completed';
   static const String transactionWebPending = 'Pending';
   static const String transactionWebCancelled = 'Cancelled';
@@ -619,7 +672,8 @@ Donations''';
 
   static const String settingsWebAccountDetails = 'Account Details';
   static const String settingsWebPassword = 'Password';
-  static const String settingsWebchangeTransactionPin = 'Change transaction pin';
+  static const String settingsWebchangeTransactionPin =
+      'Change transaction pin';
   static const String settingsWebchangePassword = 'Change Password';
   static const String settingsWebchangeUpload = 'Upload';
   static const String settingsWebchangePhoto = 'Change Photo ';
@@ -644,7 +698,8 @@ Donations''';
 
   static const String forgotpasswordTitle = 'Forgot Password';
   static const String forgotpasswordHint = 'Enter Aza Tag';
-  static const String forgotpasswordDetails = 'A verification code would be sent to your email address';
+  static const String forgotpasswordDetails =
+      'A verification code would be sent to your email address';
 
   //static const String transactionPinHint = 'Enter Pin';
   // static const String transactionPindetails = 'Enter Transaction Pin';

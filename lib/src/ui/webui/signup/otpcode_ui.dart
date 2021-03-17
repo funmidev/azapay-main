@@ -1,12 +1,10 @@
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
-import 'package:azapay/src/ui/ui.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
@@ -64,7 +62,8 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                         acceptedtitleColor: ColorSets.colorPrimaryBlack,
                         acceptedColor: ColorSets.colorPrimaryWhite,
                         centerbutton: () async {
-                          await Navigator.of(context, rootNavigator: true).pop();
+                          await Navigator.of(context, rootNavigator: true)
+                              .pop();
                         },
                         centertitle: AppStrings.cancel,
                         centerColor: ColorSets.colorPrimaryRed,
@@ -77,7 +76,8 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                   transitionDuration: Duration(milliseconds: 300),
                   transitionBuilder: (context, animation, __, child) {
                     return SlideTransition(
-                      position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation),
+                      position: Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                          .animate(animation),
                       child: child,
                     );
                   });
@@ -111,7 +111,8 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                 transitionDuration: Duration(milliseconds: 300),
                 transitionBuilder: (context, animation, __, child) {
                   return SlideTransition(
-                    position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation),
+                    position: Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                        .animate(animation),
                     child: child,
                   );
                 });
@@ -147,12 +148,14 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                   child: Text(
                     AppStrings.otpCodeone,
                     textAlign: TextAlign.left,
-                    style: AppTextStyles.h3style.copyWith(fontWeight: FontWeight.w600),
+                    style: AppTextStyles.h3style
+                        .copyWith(fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 2, top: 10),
+                padding: EdgeInsets.only(
+                    right: MediaQuery.of(context).size.width / 2, top: 10),
                 child: SizedBox(
                   height: 50,
                   child: Row(
@@ -162,9 +165,11 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                           child: PinInputTextField(
                         pinLength: 6,
                         decoration: BoxLooseDecoration(
-                          strokeColorBuilder:
-                              PinListenColorBuilder(ColorSets.colorPrimaryLightYellow, ColorSets.colorPin),
-                          bgColorBuilder: PinListenColorBuilder(ColorSets.colorPin, ColorSets.colorPrimaryWhite),
+                          strokeColorBuilder: PinListenColorBuilder(
+                              ColorSets.colorPrimaryLightYellow,
+                              ColorSets.colorPin),
+                          bgColorBuilder: PinListenColorBuilder(
+                              ColorSets.colorPin, ColorSets.colorPrimaryWhite),
                           obscureStyle: ObscureStyle(
                             isTextObscure: true,
                             obscureText: '*',
@@ -174,7 +179,7 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                         controller: _pincontroller,
                         textInputAction: TextInputAction.go,
                         enabled: true,
-                        inputFormatter: [LengthLimitingTextInputFormatter(6)],
+                        inputFormatters: [LengthLimitingTextInputFormatter(6)],
                         keyboardType: TextInputType.number,
                         textCapitalization: TextCapitalization.characters,
                         // onSubmit: (pin) {
@@ -290,8 +295,10 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                           // retry by add a event to bloc to send a new otp code again
                         },
                         build: (context, remaining) {
-                          return Text('${remaining.toInt()} secs ${AppStrings.otpCodefour}',
-                              style: TextStyle(color: ColorSets.colorPrimaryRed));
+                          return Text(
+                              '${remaining.toInt()} secs ${AppStrings.otpCodefour}',
+                              style:
+                                  TextStyle(color: ColorSets.colorPrimaryRed));
                         },
                       ),
                     ],
@@ -302,7 +309,8 @@ class _OtpCodeUIWebState extends State<OtpCodeUIWeb> {
                 height: 50,
               ),
               Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3.5, top: 20),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width / 3.5, top: 20),
                 child: BorderButtonUI(
                   onPressed: (state is SignupLoaded)
                       ? state.isOtpcodeValid

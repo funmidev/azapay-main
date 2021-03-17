@@ -71,8 +71,8 @@ class TransactionInfoItem extends StatelessWidget {
           ),
         ),
         Divider(
-          thickness: .5,
-          color: Colors.grey,
+          thickness: .4,
+          color: Colors.grey.shade400,
         ),
       ],
     );

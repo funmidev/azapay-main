@@ -1,28 +1,29 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:azapay/Constants.dart';
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
 import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/resources/resources.dart';
 import 'package:bloc/bloc.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_freshchat/flutter_freshchat.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:logger/logger.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:meta/meta.dart';
-import 'dart:convert';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_platform/universal_platform.dart';
 
+part 'profile_bloc.freezed.dart';
 part 'profile_event.dart';
 part 'profile_state.dart';
-part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final Repository repository;
@@ -31,7 +32,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final NotificationBloc notificationBloc;
   final GlobalKey<NavigatorState> navigatorState;
 
-  ProfileBloc({this.repository, this.walletBloc, this.navigatorState, this.notificationBloc}) : super(ProfileInitial());
+  ProfileBloc(
+      {this.repository,
+      this.walletBloc,
+      this.navigatorState,
+      this.notificationBloc})
+      : super(ProfileInitial());
   final _previousState = <ProfileState>[];
 
   @override
@@ -55,30 +61,53 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             ),
             profilepic: repository.getcacheFilename(index: 0),
             helpandsupportRestoreId: AppStrings.empty,
-            stateList: (jsonResponse['states'] as List)?.map((e) => e as String)?.toList());
+            stateList: (jsonResponse['states'] as List)
+                ?.map((e) => e as String)
+                ?.toList());
       }
     } else if (event is UpdateProfile) {
       try {
-        final response =
-            UniversalPlatform.isWeb ? await repository.retrieveMerchantProfile() : await repository.retrieveProfile();
+        final response = UniversalPlatform.isWeb
+            ? await repository.retrieveMerchantProfile()
+            : await repository.retrieveProfile();
         final profilepicsresponse = await repository.getprofilepic();
         final jsonState = await rootBundle.loadString(AppDoc.nigeriaState);
         final jsonResponse = json.decode(jsonState);
         _logger.i(response.status, response.message);
         // if (response.status == 200 || profilepicsresponse?.data?.isNotEmpty) {
+        //New Inject
+        if (response.status == 200) {
+          print('UserInfo ' + response.data.toString());
+          var prefs = await SharedPreferences.getInstance();
+          await prefs.setString(Constants.userInfo, response.data.toString());
+        }
+        //End
         await repository.addPersonalData(personalData: response.data);
         // if (repository.getcacheFilename(index: 0) == null) {
-        await repository.storecacheFilename(index: 0, picturebyte: base64Decode(profilepicsresponse.data));
+        await repository.storecacheFilename(
+            index: 0, picturebyte: base64Decode(profilepicsresponse.data));
+
+        //New Inject
+        if (response.status == 200) {
+          var prefs = await SharedPreferences.getInstance();
+          await prefs.setString(Constants.userInfo, response.data.toString());
+        }
+        //End
+
         yield response.status == 200
             ? ProfileLoaded().copyWith(
                 signUp: response,
-                stateList: (jsonResponse['states'] as List)?.map((e) => e as String)?.toList(),
+                stateList: (jsonResponse['states'] as List)
+                    ?.map((e) => e as String)
+                    ?.toList(),
                 profilepic: profilepicsresponse?.data?.isNotEmpty
                     ? base64Decode(profilepicsresponse.data)
                     : repository.getcacheFilename(index: 0),
                 helpandsupportRestoreId: AppStrings.empty)
             : ProfileLoaded().copyWith(
-                stateList: (jsonResponse['states'] as List)?.map((e) => e as String)?.toList(),
+                stateList: (jsonResponse['states'] as List)
+                    ?.map((e) => e as String)
+                    ?.toList(),
                 profilepic: profilepicsresponse?.data?.isNotEmpty
                     ? base64Decode(profilepicsresponse.data)
                     : repository.getcacheFilename(index: 0),
@@ -103,11 +132,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               ),
               profilepic: repository.getcacheFilename(index: 0),
               helpandsupportRestoreId: AppStrings.empty,
-              stateList: (jsonResponse['states'] as List)?.map((e) => e as String)?.toList());
+              stateList: (jsonResponse['states'] as List)
+                  ?.map((e) => e as String)
+                  ?.toList());
         }
       }
     } else if (event is ProfileImage) {
-      final file = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['jpg']);
+      final file = await FilePicker.platform
+          .pickFiles(type: FileType.custom, allowedExtensions: ['jpg']);
       File croppedFile;
       if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
         croppedFile = await ImageCropper.cropImage(
@@ -149,13 +181,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           final response = await repository.modifyProfilePic(file: croppedFile);
           //_logger.i(response.message);
           if (response.status == 200) {
-            await repository.storecacheFilename(index: 0, picturebyte: croppedFile.readAsBytesSync());
-            yield (state as ProfileLoaded).copyWith(profilepic: repository.getcacheFilename(index: 0), success: 200);
+            await repository.storecacheFilename(
+                index: 0, picturebyte: croppedFile.readAsBytesSync());
+            yield (state as ProfileLoaded).copyWith(
+                profilepic: repository.getcacheFilename(index: 0),
+                success: 200);
           }
         } catch (e) {}
       }
     } else if (event is ValidIdProfile) {
-      final file = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['jpg']);
+      final file = await FilePicker.platform
+          .pickFiles(type: FileType.custom, allowedExtensions: ['jpg']);
       File croppedFile;
       if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
         croppedFile = await ImageCropper.cropImage(
@@ -191,7 +227,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       }
       //_logger.i(file.toString());
       if (file != null) {
-        yield (state as ProfileLoaded).copyWith(validid: croppedFile ?? File(file.files.single.path));
+        yield (state as ProfileLoaded)
+            .copyWith(validid: croppedFile ?? File(file.files.single.path));
       }
     } else if (event is AzaTagProfile) {
       yield (state as ProfileLoaded).copyWith(tag: event.tag);
@@ -207,7 +244,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     } else if (event is AddressProfile) {
       yield (state as ProfileLoaded).copyWith(address: event.address);
     } else if (event is BusinessAddressProfile) {
-      yield (state as ProfileLoaded).copyWith(businessaddress: event.businessaddress);
+      yield (state as ProfileLoaded)
+          .copyWith(businessaddress: event.businessaddress);
     } else if (event is BusinessNameProfile) {
       yield (state as ProfileLoaded).copyWith(businessname: event.businessname);
     } else if (event is RCProfile) {
@@ -227,10 +265,18 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         final profileresponse = UniversalPlatform.isWeb
             ? await repository.modifyMerchantProfile(
                 data: Data(
-                  tag: profile.tag.isEmpty ? profile.signUp.data.tag : profile.tag,
-                  email: profile.email.isEmpty ? profile.signUp.data.email : profile.email,
-                  address: profile.address.isEmpty ? profile.signUp.data.state ?? AppStrings.empty : profile.address,
-                  rc: profile.rc.isEmpty ? profile.signUp.data.rc ?? AppStrings.empty : profile.rc,
+                  tag: profile.tag.isEmpty
+                      ? profile.signUp.data.tag
+                      : profile.tag,
+                  email: profile.email.isEmpty
+                      ? profile.signUp.data.email
+                      : profile.email,
+                  address: profile.address.isEmpty
+                      ? profile.signUp.data.state ?? AppStrings.empty
+                      : profile.address,
+                  rc: profile.rc.isEmpty
+                      ? profile.signUp.data.rc ?? AppStrings.empty
+                      : profile.rc,
                   businessAddress: profile.businessaddress.isEmpty
                       ? profile.signUp.data.businessAddress ?? AppStrings.empty
                       : profile.businessaddress,
@@ -242,18 +288,28 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               )
             : await repository.modifyProfile(
                 data: Data(
-                  tag: profile.tag.isEmpty ? profile.signUp.data.tag : profile.tag,
-                  email: profile.email.isEmpty ? profile.signUp.data.email : profile.email,
-                  address: profile.address.isEmpty ? profile.signUp.data.state ?? AppStrings.empty : profile.address,
+                  tag: profile.tag.isEmpty
+                      ? profile.signUp.data.tag
+                      : profile.tag,
+                  email: profile.email.isEmpty
+                      ? profile.signUp.data.email
+                      : profile.email,
+                  address: profile.address.isEmpty
+                      ? profile.signUp.data.state ?? AppStrings.empty
+                      : profile.address,
                   state: profile.state,
                 ),
               );
         if (profileresponse.status == 200) {
           final response = await repository.retrieveProfile();
           await repository.addPersonalData(personalData: response.data);
-          yield profile.copyWith(success: profileresponse.status, responsemessage: profileresponse.message);
+          yield profile.copyWith(
+              success: profileresponse.status,
+              responsemessage: profileresponse.message);
         } else {
-          yield profile.copyWith(error: profileresponse.status, responsemessage: profileresponse.message);
+          yield profile.copyWith(
+              error: profileresponse.status,
+              responsemessage: profileresponse.message);
         }
       } catch (e) {
         yield profile.copyWith(
@@ -269,9 +325,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       try {
         final response = await repository.validateBVN(bvn: profile.bvn);
         if (response.status == 200) {
-          yield profile.copyWith(success: response.status, responsemessage: response.message);
+          yield profile.copyWith(
+              success: response.status, responsemessage: response.message);
         } else {
-          yield profile.copyWith(error: response.status, responsemessage: response.message);
+          yield profile.copyWith(
+              error: response.status, responsemessage: response.message);
         }
       } catch (e) {
         yield profile.copyWith(
@@ -288,9 +346,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         final response = await repository.modifyDocs(file: profile.validid);
         // //_logger.i(response.data + response.message + '${response.status}');
         if (response.status == 200) {
-          yield profile.copyWith(success: 200, responsemessage: response.message);
+          yield profile.copyWith(
+              success: 200, responsemessage: response.message);
         } else {
-          yield profile.copyWith(error: response.status, responsemessage: response.message);
+          yield profile.copyWith(
+              error: response.status, responsemessage: response.message);
         }
       } catch (e) {
         yield profile.copyWith(
@@ -317,8 +377,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         yield ProfileInitial();
       }
       UniversalPlatform.isWeb
-          ? await navigatorState.currentState.pushNamedAndRemoveUntil(AppRouteName.signinWeb, (routes) => false)
-          : await navigatorState.currentState.pushNamedAndRemoveUntil(AppRouteName.signin, (routes) => false);
+          ? await navigatorState.currentState.pushNamedAndRemoveUntil(
+              AppRouteName.signinWeb, (routes) => false)
+          : await navigatorState.currentState
+              .pushNamedAndRemoveUntil(AppRouteName.signin, (routes) => false);
     } else if (event is ClearProfileResponse) {
       if (state is ProfileLoaded) {
         yield (state as ProfileLoaded).copyWith(success: 100, error: 100);
@@ -349,11 +411,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         //     .copyWith(helpandsupportRestoreId: repository.retrieveFreshchatRestoreId().restoreId);
       }
     } else if (event is ValidCACIdMerchantProfile) {
-      final file = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['jpg']);
+      final file = await FilePicker.platform
+          .pickFiles(type: FileType.custom, allowedExtensions: ['jpg']);
 
       //_logger.i(file.toString());
       if (file != null) {
-        yield (state as ProfileLoaded).copyWith(cac: File(file.files.single.path));
+        yield (state as ProfileLoaded)
+            .copyWith(cac: File(file.files.single.path));
       }
     }
   }

@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
-import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +99,9 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                       transitionDuration: Duration(milliseconds: 300),
                       transitionBuilder: (context, animation, __, child) {
                         return SlideTransition(
-                          position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation),
+                          position:
+                              Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                                  .animate(animation),
                           child: child,
                         );
                       });
@@ -116,7 +115,8 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 35.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 35.0),
                                   child: Align(
                                     alignment: Alignment.topCenter,
                                     child: SvgPicture.asset(
@@ -137,11 +137,13 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 25.0, top: 25, left: 30.0),
+                                  padding: const EdgeInsets.only(
+                                      bottom: 25.0, top: 25, left: 30.0),
                                   child: Text(
                                     AppStrings.otpCodeone,
                                     textAlign: TextAlign.left,
-                                    style: AppTextStyles.h3style.copyWith(fontWeight: FontWeight.normal),
+                                    style: AppTextStyles.h3style.copyWith(
+                                        fontWeight: FontWeight.normal),
                                   ),
                                 ),
                                 Padding(
@@ -151,31 +153,45 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                     child: SizedBox(
                                       height: 50,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Expanded(
                                             child: PinCodeTextField(
                                               controller: _pincontroller,
-                                              textStyle: TextStyle(fontWeight: FontWeight.normal),
+                                              textStyle: TextStyle(
+                                                  fontWeight:
+                                                      FontWeight.normal),
                                               obsecureText: true,
-                                              textInputType: TextInputType.number,
-                                              textInputAction: TextInputAction.done,
+                                              textInputType:
+                                                  TextInputType.number,
+                                              textInputAction:
+                                                  TextInputAction.done,
                                               enableActiveFill: true,
                                               pinTheme: PinTheme(
                                                   shape: PinCodeFieldShape.box,
-                                                  borderRadius: BorderRadius.circular(5),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
                                                   fieldHeight: 50,
-                                                  selectedFillColor: ColorSets.colorPrimaryWhite,
-                                                  disabledColor: ColorSets.colorPrimaryWhite,
-                                                  selectedColor: ColorSets.colorPrimaryLightYellow,
+                                                  selectedFillColor: ColorSets
+                                                      .colorPrimaryWhite,
+                                                  disabledColor: ColorSets
+                                                      .colorPrimaryWhite,
+                                                  selectedColor: ColorSets
+                                                      .colorPrimaryLightYellow,
                                                   fieldWidth: 40,
-                                                  activeColor: ColorSets.colorPrimaryLightYellow,
-                                                  inactiveColor: ColorSets.colorPin,
-                                                  inactiveFillColor: ColorSets.colorPin,
-                                                  activeFillColor: ColorSets.colorPrimaryWhite),
+                                                  activeColor: ColorSets
+                                                      .colorPrimaryLightYellow,
+                                                  inactiveColor:
+                                                      ColorSets.colorPin,
+                                                  inactiveFillColor:
+                                                      ColorSets.colorPin,
+                                                  activeFillColor: ColorSets
+                                                      .colorPrimaryWhite),
                                               // backgroundColor: ColorSets.colorPrimaryBlack.withOpacity(0.7),
                                               length: 6,
-                                              onChanged: (otpcodepin) => _bloc.add(
+                                              onChanged: (otpcodepin) =>
+                                                  _bloc.add(
                                                 OtpCodeSignUp(
                                                   otpcode: otpcodepin,
                                                 ),
@@ -202,10 +218,13 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                     _bloc.add(ResendOtpSignUp());
                                     _countdownController.restart();
                                     showToast(AppStrings.reloadText,
-                                        backgroundColor: ColorSets.colorPrimaryLightYellow,
+                                        backgroundColor:
+                                            ColorSets.colorPrimaryLightYellow,
                                         context: context,
-                                        animation: StyledToastAnimation.slideFromTop,
-                                        reverseAnimation: StyledToastAnimation.slideToTop,
+                                        animation:
+                                            StyledToastAnimation.slideFromTop,
+                                        reverseAnimation:
+                                            StyledToastAnimation.slideToTop,
                                         position: StyledToastPosition.top,
                                         startOffset: Offset(0.0, -3.0),
                                         reverseEndOffset: Offset(0.0, -3.0),
@@ -230,12 +249,14 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                     // );
                                   },
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top: 8.0, left: 20.0),
+                                    padding: const EdgeInsets.only(
+                                        top: 8.0, left: 20.0),
                                     child: Row(
                                       children: [
                                         CircleAvatar(
                                           radius: 10,
-                                          backgroundColor: ColorSets.colorPrimaryRed,
+                                          backgroundColor:
+                                              ColorSets.colorPrimaryRed,
                                           child: Icon(
                                             Icons.refresh,
                                             size: 10,
@@ -259,8 +280,11 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                             // retry by add a event to bloc to send a new otp code again
                                           },
                                           build: (context, remaining) {
-                                            return Text('${remaining.toInt()} secs ${AppStrings.otpCodefour}',
-                                                style: TextStyle(color: ColorSets.colorPrimaryRed));
+                                            return Text(
+                                                '${remaining.toInt()} secs ${AppStrings.otpCodefour}',
+                                                style: TextStyle(
+                                                    color: ColorSets
+                                                        .colorPrimaryRed));
                                           },
                                         ),
                                       ],
@@ -272,14 +296,18 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                 ),
                                 Center(
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 60, vertical: 10),
                                     child: ButtonArrow(
-                                      buttontitleColor: ColorSets.colorPrimaryWhite,
+                                      buttontitleColor:
+                                          ColorSets.colorPrimaryWhite,
                                       arrow: true,
                                       navigatorfunc: (state is SignupLoaded)
                                           ? state.isOtpcodeValid
                                               ? () async {
-                                                  await _bloc.add(SubmitSignUpForm(screen: 1));
+                                                  await _bloc.add(
+                                                      SubmitSignUpForm(
+                                                          screen: 1));
                                                 }
                                               : null
                                           : null,

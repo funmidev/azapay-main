@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:azapay/app/app.dart';
-import 'package:azapay/src/blocs/blocs.dart';
 import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/resources/resources.dart';
 import 'package:bloc/bloc.dart';
@@ -16,12 +15,16 @@ import 'package:meta/meta.dart';
 part 'homeauthnavigation_event.dart';
 part 'homeauthnavigation_state.dart';
 
-class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, HomeauthnavigationState> {
+class HomeauthnavigationBloc
+    extends Bloc<HomeauthnavigationEvent, HomeauthnavigationState> {
   final Repository repository;
   final GlobalKey<NavigatorState> navigatorState;
   final _logger = Logger();
-  HomeauthnavigationBloc({this.repository, this.navigatorState}) : super(HomeauthnavigationInitial()) {
-    Connectivity().onConnectivityChanged.listen((ConnectivityResult result) async {
+  HomeauthnavigationBloc({this.repository, this.navigatorState})
+      : super(HomeauthnavigationInitial()) {
+    Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) async {
       // Got a new connectivity status!
       switch (result) {
         case ConnectivityResult.mobile:
@@ -33,7 +36,8 @@ class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, Homeauthnavig
                 animation: StyledToastAnimation.slideFromRightFade,
                 reverseAnimation: StyledToastAnimation.slideToRightFade,
                 toastHorizontalMargin: 0.0,
-                position: StyledToastPosition(align: Alignment.topRight, offset: 20.0),
+                position: StyledToastPosition(
+                    align: Alignment.topRight, offset: 20.0),
                 startOffset: Offset(1.0, 0.0),
                 reverseEndOffset: Offset(1.0, 0.0),
                 animDuration: Duration(seconds: 1),
@@ -49,7 +53,8 @@ class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, Homeauthnavig
                 animation: StyledToastAnimation.slideFromRightFade,
                 reverseAnimation: StyledToastAnimation.slideToRightFade,
                 toastHorizontalMargin: 0.0,
-                position: StyledToastPosition(align: Alignment.topRight, offset: 20.0),
+                position: StyledToastPosition(
+                    align: Alignment.topRight, offset: 20.0),
                 startOffset: Offset(1.0, 0.0),
                 reverseEndOffset: Offset(1.0, 0.0),
                 animDuration: Duration(seconds: 1),
@@ -69,7 +74,8 @@ class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, Homeauthnavig
                 animation: StyledToastAnimation.slideFromRightFade,
                 reverseAnimation: StyledToastAnimation.slideToRightFade,
                 toastHorizontalMargin: 0.0,
-                position: StyledToastPosition(align: Alignment.topRight, offset: 20.0),
+                position: StyledToastPosition(
+                    align: Alignment.topRight, offset: 20.0),
                 startOffset: Offset(1.0, 0.0),
                 reverseEndOffset: Offset(1.0, 0.0),
                 animDuration: Duration(seconds: 1),
@@ -85,7 +91,8 @@ class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, Homeauthnavig
                 animation: StyledToastAnimation.slideFromRightFade,
                 reverseAnimation: StyledToastAnimation.slideToRightFade,
                 toastHorizontalMargin: 0.0,
-                position: StyledToastPosition(align: Alignment.topRight, offset: 20.0),
+                position: StyledToastPosition(
+                    align: Alignment.topRight, offset: 20.0),
                 startOffset: Offset(1.0, 0.0),
                 reverseEndOffset: Offset(1.0, 0.0),
                 animDuration: Duration(seconds: 1),
@@ -104,7 +111,8 @@ class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, Homeauthnavig
               animation: StyledToastAnimation.slideFromRightFade,
               reverseAnimation: StyledToastAnimation.slideToRightFade,
               toastHorizontalMargin: 0.0,
-              position: StyledToastPosition(align: Alignment.topRight, offset: 20.0),
+              position:
+                  StyledToastPosition(align: Alignment.topRight, offset: 20.0),
               startOffset: Offset(1.0, 0.0),
               reverseEndOffset: Offset(1.0, 0.0),
               animDuration: Duration(seconds: 1),
@@ -126,17 +134,22 @@ class HomeauthnavigationBloc extends Bloc<HomeauthnavigationEvent, Homeauthnavig
         // _logger.i(repository.getnavigation());
         if (repository.getnavigation()) {
           // yield HomeauthnavigationHome();
-          final _signinorsignupaccountData = await repository.retrieveAzapayUser();
-          final _switchaccountData = await repository.retrieveSwitchAzapayUser();
+          final _signinorsignupaccountData =
+              await repository.retrieveAzapayUser();
+          final _switchaccountData =
+              await repository.retrieveSwitchAzapayUser();
 
           if (_switchaccountData?.data != null) {
-            yield HomeauthnavigationSwitchAccount(basicResponse: _switchaccountData);
+            yield HomeauthnavigationSwitchAccount(
+                basicResponse: _switchaccountData);
           } else {
             yield HomeauthnavigationSwitchAccount(
-                basicResponse: BasicResponse<String>(data: _signinorsignupaccountData.tag));
+                basicResponse: BasicResponse<String>(
+                    data: _signinorsignupaccountData.tag));
           }
         } else {
-          final deviceid = await repository.getDeviceId();
+          final deviceid = "190-system-09039300506";
+          // final deviceid = await repository.getDeviceId();
           final response = await repository.extractDeviceInfo(device: deviceid);
           // _logger.i(response.status);
           if (response.status == 409) {

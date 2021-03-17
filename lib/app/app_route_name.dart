@@ -52,6 +52,19 @@ class AppRouteName {
   static const String ticket = '/ticket';
 
   static const String merchant = '/merchant-mobile';
+  static const String merchantTill = '/merchant-mobile-till';
+  static const String merchantCashier = '/merchant-mobile-cashier';
+
+  static const String cardlessWithdrawal = '/cardless-withdraw';
+  static const String paytoAzaAgent = '/pay-to-aza-agent';
+  static const String inputmyAmount = '/input-amount';
+  static const String azaAgentTransacReview = '/aza-agent-transact-review';
+  static const String azaAgentPin = '/aza-agent-pin';
+
+  //-----------Locate an AzaAgent---------------
+  static const String locateAzaAgent = '/locate-aza-agent';
+  //-------------save beneficiary-----------------
+  static const String saveBeneficiary = '/save-beneficiary';
 
   //-----------Web Route------------------//
 

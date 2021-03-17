@@ -1,6 +1,5 @@
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
-import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +30,15 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
   void initState() {
     _bloc = context.bloc<SignupBloc>();
     super.initState();
+  }
+
+  ///--------- adding focusNode------
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    _firstnamenode.dispose();
+    _lastnamenode.dispose();
+    super.dispose();
   }
 
   @override
@@ -100,7 +108,8 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
                     transitionDuration: Duration(milliseconds: 300),
                     transitionBuilder: (context, animation, __, child) {
                       return SlideTransition(
-                        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation),
+                        position: Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                            .animate(animation),
                         child: child,
                       );
                     });
@@ -139,7 +148,8 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
                               AppStrings.signUpseven,
-                              style: AppTextStyles.h3style.copyWith(fontWeight: FontWeight.normal),
+                              style: AppTextStyles.h3style
+                                  .copyWith(fontWeight: FontWeight.normal),
                             ),
                           ),
                         ),
@@ -149,6 +159,7 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FormFieldUI(
+
                                   currentnode: _firstnamenode,
                                   fieldController: _firstnameController,
                                   nextnode: _lastnamenode,
@@ -158,7 +169,9 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
                                   maxLength: 100,
                                   errorText: (state is SignupLoaded)
                                       ? state.firstname.isNotEmpty
-                                          ? state.isFirstnameValid ? null : AppStrings.simpleerrorText
+                                          ? state.isFirstnameValid
+                                              ? null
+                                              : AppStrings.simpleerrorText
                                           : null
                                       : null,
                                   onchanged: (firstname) => _bloc.add(
@@ -177,7 +190,9 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
                                 maxLength: 100,
                                 errorText: (state is SignupLoaded)
                                     ? state.lastname.isNotEmpty
-                                        ? state.isLastnameValid ? null : AppStrings.simpleerrorText
+                                        ? state.isLastnameValid
+                                            ? null
+                                            : AppStrings.simpleerrorText
                                         : null
                                     : null,
                                 onchanged: (lastname) => _bloc.add(
@@ -193,14 +208,17 @@ class _CreateFullNameUIState extends State<CreateFullNameUI> {
                           height: 50,
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 80, vertical: 10),
                           child: ButtonArrow(
                             buttontitleColor: ColorSets.colorPrimaryWhite,
                             arrow: true,
                             navigatorfunc: (state is SignupLoaded)
-                                ? state.isFirstnameValid && state.isLastnameValid
+                                ? state.isFirstnameValid &&
+                                        state.isLastnameValid
                                     ? () async {
-                                        await _bloc.add(SubmitSignUpForm(screen: 2));
+                                        await _bloc
+                                            .add(SubmitSignUpForm(screen: 2));
                                       }
                                     : null
                                 : null,

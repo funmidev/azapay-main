@@ -1,6 +1,5 @@
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
-import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +28,15 @@ class _CreatePasswordUIState extends State<CreatePasswordUI> {
     super.initState();
     _bloc = context.bloc<SignupBloc>();
     _passwordvisible = false;
+  }
+
+  ///-------- my own editing of the focusNode-----
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    _passwordnode.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -98,7 +106,8 @@ class _CreatePasswordUIState extends State<CreatePasswordUI> {
                     transitionDuration: Duration(milliseconds: 300),
                     transitionBuilder: (context, animation, __, child) {
                       return SlideTransition(
-                        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation),
+                        position: Tween(begin: Offset(0, 1), end: Offset(0, 0))
+                            .animate(animation),
                         child: child,
                       );
                     });
@@ -138,7 +147,8 @@ class _CreatePasswordUIState extends State<CreatePasswordUI> {
                               padding: const EdgeInsets.all(15.0),
                               child: Text(
                                 AppStrings.createPinone,
-                                style: AppTextStyles.h3style.copyWith(fontWeight: FontWeight.normal),
+                                style: AppTextStyles.h3style
+                                    .copyWith(fontWeight: FontWeight.normal),
                               ),
                             )),
                         Form(
@@ -152,10 +162,13 @@ class _CreatePasswordUIState extends State<CreatePasswordUI> {
                                 hint: AppStrings.createPintwo,
                                 textInputAction: TextInputAction.next,
                                 textInputType: TextInputType.number,
+                                focusNode: _passwordnode,
                                 passwordvisible: _passwordvisible,
                                 suffixicon: InkWell(
                                     child: Icon(
-                                      _passwordvisible ? Icons.visibility : Icons.visibility_off,
+                                      _passwordvisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
                                       color: Colors.grey[500],
                                     ),
                                     onTap: () {
@@ -166,7 +179,9 @@ class _CreatePasswordUIState extends State<CreatePasswordUI> {
                                 maxLength: 6,
                                 errorText: (state is SignupLoaded)
                                     ? state.password.isNotEmpty
-                                        ? state.isPasswordValid ? null : AppStrings.passworderrorText
+                                        ? state.isPasswordValid
+                                            ? null
+                                            : AppStrings.passworderrorText
                                         : null
                                     : null,
                                 onchanged: (password) => _bloc.add(
@@ -182,14 +197,16 @@ class _CreatePasswordUIState extends State<CreatePasswordUI> {
                           height: 50,
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 70, vertical: 10),
                           child: ButtonArrow(
                             buttontitleColor: ColorSets.colorPrimaryWhite,
                             arrow: true,
                             navigatorfunc: (state is SignupLoaded)
                                 ? state.isPasswordValid
                                     ? () async {
-                                        await _bloc.add(SubmitSignUpForm(screen: 3));
+                                        await _bloc
+                                            .add(SubmitSignUpForm(screen: 3));
                                       }
                                     : null
                                 : null,
