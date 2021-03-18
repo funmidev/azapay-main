@@ -9,6 +9,7 @@ part of 'settings_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SettingsStateTearOff {
   const _$SettingsStateTearOff();
 
@@ -27,18 +28,22 @@ class _$SettingsStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SettingsState = _$SettingsStateTearOff();
 
+/// @nodoc
 mixin _$SettingsState {
   bool get securityvalue;
   bool get tagvisibilityvalue;
   bool get alloweveryonevalue;
   bool get contactsonlyvalue;
 
+  @JsonKey(ignore: true)
   $SettingsStateCopyWith<SettingsState> get copyWith;
 }
 
+/// @nodoc
 abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(
           SettingsState value, $Res Function(SettingsState) then) =
@@ -50,6 +55,7 @@ abstract class $SettingsStateCopyWith<$Res> {
       bool contactsonlyvalue});
 }
 
+/// @nodoc
 class _$SettingsStateCopyWithImpl<$Res>
     implements $SettingsStateCopyWith<$Res> {
   _$SettingsStateCopyWithImpl(this._value, this._then);
@@ -82,6 +88,7 @@ class _$SettingsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$SettingsStateCopyWith<$Res>
     implements $SettingsStateCopyWith<$Res> {
   factory _$SettingsStateCopyWith(
@@ -95,6 +102,7 @@ abstract class _$SettingsStateCopyWith<$Res>
       bool contactsonlyvalue});
 }
 
+/// @nodoc
 class __$SettingsStateCopyWithImpl<$Res>
     extends _$SettingsStateCopyWithImpl<$Res>
     implements _$SettingsStateCopyWith<$Res> {
@@ -129,6 +137,7 @@ class __$SettingsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SettingsState with DiagnosticableTreeMixin implements _SettingsState {
   _$_SettingsState(
       {this.securityvalue = false,
@@ -195,6 +204,7 @@ class _$_SettingsState with DiagnosticableTreeMixin implements _SettingsState {
       const DeepCollectionEquality().hash(alloweveryonevalue) ^
       const DeepCollectionEquality().hash(contactsonlyvalue);
 
+  @JsonKey(ignore: true)
   @override
   _$SettingsStateCopyWith<_SettingsState> get copyWith =>
       __$SettingsStateCopyWithImpl<_SettingsState>(this, _$identity);
@@ -216,5 +226,6 @@ abstract class _SettingsState implements SettingsState {
   @override
   bool get contactsonlyvalue;
   @override
+  @JsonKey(ignore: true)
   _$SettingsStateCopyWith<_SettingsState> get copyWith;
 }

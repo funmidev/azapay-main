@@ -1,8 +1,22 @@
 import 'package:azapay/app/app_route_name.dart';
-import 'package:azapay/src/ui/dashboard/hub/transaction_info_item.dart';
+import 'package:azapay/app/app_strings.dart';
+import 'package:azapay/app/app_textstyles.dart';
+import 'package:azapay/app/app_vectors.dart';
+import 'package:azapay/service/get_aza_agent_info.dart';
+import 'package:azapay/service/location.dart';
+import 'package:azapay/src/models/agent_info.dart';
+import 'package:azapay/src/rest/ApiManager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../../Constants.dart';
+import 'azaAgent_profile.dart';
 
 class LocateAzaAgent extends StatefulWidget {
+  final AgentInfoDatum azaAgentData;
+
+  LocateAzaAgent({this.azaAgentData}) ;
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -10,10 +24,63 @@ class LocateAzaAgent extends StatefulWidget {
   }
 }
 
-final _formKey = GlobalKey<FormState>();
-
 class LocateAzaAgentState extends State<LocateAzaAgent> {
+  AgentInfoDatum azaAgentData;
+  Future<String> getAuthToken() async {
+    var prefs;
+    try {
+      prefs = await SharedPreferences.getInstance();
+    } catch (e) {} finally {
+      return prefs.getString(Constants.authToken);
+    }
+  }
+
+  Future<AgentModelData> getAgents() async {
+    var token = await getAuthToken();
+    var agentInfo = await ApiManager.getAllAgent('000', token);
+    if (agentInfo != null) {
+      print('Agent List' + agentInfo.data.toString());
+      return agentInfo;
+    }
+    return null;
+  }
+
+  Future<AgentModelData> agentList;
+
+  @override
+  void initState() {
+    agentList = getAgents();
+    print('init state is called');
+
+    getLocation();
+    super.initState();
+  }
+
+  //
+  // Future<CustomAgentInfo> getAgentList() async {
+  //   var token = await getAuthToken();
+  //   var agentData = await ApiManager.getAllAgent('000', token);
+  //   if (agentData != null) {
+  //     print('agent list' + agentData.toString());
+  //     return agentData;
+  //   }
+  //   return null;
+  // }
+
+  // Future<CustomAgentInfo> AgentList;
+
   bool isSwitched = true;
+
+  void getLocation() async {
+    var location = Location();
+    await location.getCurrentLocation();
+    print(location.latitude);
+    print(location.longitude);
+  }
+
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -40,7 +107,7 @@ class LocateAzaAgentState extends State<LocateAzaAgent> {
                     },
                   ),
                   Text(
-                    'Transaction Review',
+                    'List of AzaAgent',
                     style: TextStyle(
                         fontFamily: 'Lato-Black',
                         fontSize: 16,
@@ -71,128 +138,119 @@ class LocateAzaAgentState extends State<LocateAzaAgent> {
             color: Colors.white.withOpacity(0.95),
           ),
 
-          ///
-          ///
-          ///
-          ///
-          /// --------- adding the beneficiary/Aza Tag
-
           Container(
             padding: EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  child: Text(
+                    'Thank you for your patience, Here are the list of Aza Agent around you',
+                    textAlign: TextAlign.center,
+                  ),
+                  margin: EdgeInsets.symmetric(vertical: 30),
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * .9,
-                            padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
-                            margin: EdgeInsets.fromLTRB(10, 25, 10, 30),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey.shade200),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TransactionInfoItem(
-                                  rightDetail: '#AtoLab',
-                                  rightTitle: 'AzaTag',
-                                  leftTitle: 'Transaction Type',
-                                  leftDetail: 'AzaPay Withdraw',
-                                  showRightItem: true,
-                                ),
-                                Divider(
-                                  thickness: .5,
-                                  color: Colors.grey.shade400,
-                                ),
-                                TransactionInfoItem(
-                                  rightDetail: 'Akin Olaide',
-                                  rightTitle: 'Recipient Name',
-                                  leftTitle: 'Recipient',
-                                  leftDetail: 'Sub-agent',
-                                  showRightItem: true,
-                                ),
-                                Divider(
-                                  thickness: .5,
-                                  color: Colors.grey.shade400,
-                                ),
-                                TransactionInfoItem(
-                                  rightDetail: '# 10.00',
-                                  rightTitle: 'Service fee',
-                                  leftTitle: 'Amount',
-                                  leftDetail: '# 100',
-                                  showRightItem: true,
-                                ),
-                                Divider(
-                                  thickness: .5,
-                                  color: Colors.grey.shade400,
-                                ),
-                                Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: FutureBuilder<AgentModelData>(
+                    future: agentList,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState != ConnectionState.done) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          return ListView.separated(
+                              separatorBuilder: (context, index) => Divider(
+                                color: Colors.black,
+                              ),
+                              itemCount: snapshot.data.data.length,
+                              itemBuilder: (context, index) {
+                                var agentInfo = snapshot.data.data[index];
+                                return  ListTile(
+                                  title: Text(
+                                  agentInfo.tag,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    '${agentInfo.firstName} ${agentInfo.lastName}' ,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                  trailing: Text(
+                                    '2km away',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 13.0,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    //
+                                    //
+                                    // Navigator.pushNamed(
+                                    //     context, AppRouteName.azaAgentProfile);
+
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AzaAgentProfile(
+                                            AzaAgentName: agentInfo,
+                                            // AzaAgentInfo: widget.azaAgentData.tag,
+                                          )),
+                                    );
+                                  },
+                                );
+                              });
+                        } else {
+                          return Center(
+                            child: Container(
+                              height: MediaQuery.of(context).size.width / 2,
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(30.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
                                     children: [
+                                      Expanded(
+                                          child: SvgPicture.asset(
+                                            AppVectors.onBoardTwo,
+                                          )),
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 20, horizontal: 15),
+                                        padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          'Save Beneficiary',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w800),
+                                          AppStrings.merchantComingSoonTitle,
+                                          style:
+                                          AppTextStyles.h3style.copyWith(
+                                            fontSize: 18,
+                                            color: Color(0XFF818181),
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
                                       ),
-                                      Switch(
-                                        value: isSwitched,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            isSwitched = value;
-                                            print(isSwitched);
-                                          });
-                                        },
-                                        activeTrackColor: Colors.yellow,
-                                        activeColor: Colors.orangeAccent,
-                                      ),
-                                      Divider(
-                                        thickness: .5,
-                                        color: Colors.grey.shade400,
-                                      ),
+                                      // Text(
+                                      //   AppStrings.notificationEmptySubTitle,
+                                      //   style: AppTextStyles.h3style,
+                                      // ),
                                     ],
                                   ),
                                 ),
-                              ],
+                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30)),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: FlatButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, AppRouteName.azaAgentPin);
-                                },
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 60, vertical: 12),
-                                color: Color(0xffFFC300),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Text(
-                                  'Confirm',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
-                                )),
-                          )
-                        ],
-                      ),
-                    ),
+                          );
+                        }
+                      }
+                    },
                   ),
                 )
               ],

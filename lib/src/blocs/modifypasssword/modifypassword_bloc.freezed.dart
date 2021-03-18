@@ -9,6 +9,7 @@ part of 'modifypassword_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$InputDataModifypasswordStateTearOff {
   const _$InputDataModifypasswordStateTearOff();
 
@@ -29,9 +30,11 @@ class _$InputDataModifypasswordStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $InputDataModifypasswordState = _$InputDataModifypasswordStateTearOff();
 
+/// @nodoc
 mixin _$InputDataModifypasswordState {
   String get password;
   String get verificationToken;
@@ -39,10 +42,12 @@ mixin _$InputDataModifypasswordState {
   String get message;
   bool get isTokenValid;
 
+  @JsonKey(ignore: true)
   $InputDataModifypasswordStateCopyWith<InputDataModifypasswordState>
       get copyWith;
 }
 
+/// @nodoc
 abstract class $InputDataModifypasswordStateCopyWith<$Res> {
   factory $InputDataModifypasswordStateCopyWith(
           InputDataModifypasswordState value,
@@ -56,6 +61,7 @@ abstract class $InputDataModifypasswordStateCopyWith<$Res> {
       bool isTokenValid});
 }
 
+/// @nodoc
 class _$InputDataModifypasswordStateCopyWithImpl<$Res>
     implements $InputDataModifypasswordStateCopyWith<$Res> {
   _$InputDataModifypasswordStateCopyWithImpl(this._value, this._then);
@@ -87,6 +93,7 @@ class _$InputDataModifypasswordStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$InputDataModifypasswordStateCopyWith<$Res>
     implements $InputDataModifypasswordStateCopyWith<$Res> {
   factory _$InputDataModifypasswordStateCopyWith(
@@ -102,6 +109,7 @@ abstract class _$InputDataModifypasswordStateCopyWith<$Res>
       bool isTokenValid});
 }
 
+/// @nodoc
 class __$InputDataModifypasswordStateCopyWithImpl<$Res>
     extends _$InputDataModifypasswordStateCopyWithImpl<$Res>
     implements _$InputDataModifypasswordStateCopyWith<$Res> {
@@ -137,6 +145,7 @@ class __$InputDataModifypasswordStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_InputDataModifypasswordState
     with DiagnosticableTreeMixin
     implements _InputDataModifypasswordState {
@@ -215,6 +224,7 @@ class _$_InputDataModifypasswordState
       const DeepCollectionEquality().hash(message) ^
       const DeepCollectionEquality().hash(isTokenValid);
 
+  @JsonKey(ignore: true)
   @override
   _$InputDataModifypasswordStateCopyWith<_InputDataModifypasswordState>
       get copyWith => __$InputDataModifypasswordStateCopyWithImpl<
@@ -241,6 +251,7 @@ abstract class _InputDataModifypasswordState
   @override
   bool get isTokenValid;
   @override
+  @JsonKey(ignore: true)
   _$InputDataModifypasswordStateCopyWith<_InputDataModifypasswordState>
       get copyWith;
 }

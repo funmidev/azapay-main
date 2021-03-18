@@ -9,6 +9,7 @@ part of 'activity_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ActivityLoadedTearOff {
   const _$ActivityLoadedTearOff();
 
@@ -23,16 +24,20 @@ class _$ActivityLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ActivityLoaded = _$ActivityLoadedTearOff();
 
+/// @nodoc
 mixin _$ActivityLoaded {
   List<TransactionHistory> get basicResponse;
   String get searchtext;
 
+  @JsonKey(ignore: true)
   $ActivityLoadedCopyWith<ActivityLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $ActivityLoadedCopyWith<$Res> {
   factory $ActivityLoadedCopyWith(
           ActivityLoaded value, $Res Function(ActivityLoaded) then) =
@@ -40,6 +45,7 @@ abstract class $ActivityLoadedCopyWith<$Res> {
   $Res call({List<TransactionHistory> basicResponse, String searchtext});
 }
 
+/// @nodoc
 class _$ActivityLoadedCopyWithImpl<$Res>
     implements $ActivityLoadedCopyWith<$Res> {
   _$ActivityLoadedCopyWithImpl(this._value, this._then);
@@ -63,6 +69,7 @@ class _$ActivityLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ActivityLoadedCopyWith<$Res>
     implements $ActivityLoadedCopyWith<$Res> {
   factory _$ActivityLoadedCopyWith(
@@ -72,6 +79,7 @@ abstract class _$ActivityLoadedCopyWith<$Res>
   $Res call({List<TransactionHistory> basicResponse, String searchtext});
 }
 
+/// @nodoc
 class __$ActivityLoadedCopyWithImpl<$Res>
     extends _$ActivityLoadedCopyWithImpl<$Res>
     implements _$ActivityLoadedCopyWith<$Res> {
@@ -97,6 +105,7 @@ class __$ActivityLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ActivityLoaded
     with DiagnosticableTreeMixin
     implements _ActivityLoaded {
@@ -141,6 +150,7 @@ class _$_ActivityLoaded
       const DeepCollectionEquality().hash(basicResponse) ^
       const DeepCollectionEquality().hash(searchtext);
 
+  @JsonKey(ignore: true)
   @override
   _$ActivityLoadedCopyWith<_ActivityLoaded> get copyWith =>
       __$ActivityLoadedCopyWithImpl<_ActivityLoaded>(this, _$identity);
@@ -156,5 +166,6 @@ abstract class _ActivityLoaded implements ActivityLoaded {
   @override
   String get searchtext;
   @override
+  @JsonKey(ignore: true)
   _$ActivityLoadedCopyWith<_ActivityLoaded> get copyWith;
 }

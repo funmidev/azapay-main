@@ -25,6 +25,7 @@ class _MerchantPinUiState extends State<MerchantPinUi> {
   Data userDetails;
   bool isloading = false;
   var token;
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<String> getAuthToken() async {
     try {
@@ -51,7 +52,16 @@ class _MerchantPinUiState extends State<MerchantPinUi> {
     super.initState();
   }
 
-  Future<PayMerchantResp> payMerchant(
+  showSnack(String message){
+    scaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        content: Text("$message"),
+      ),
+    );
+
+  }
+
+  Future<dynamic> payMerchant(
       PayMerchantParams payMerchantParams) async {
     token = await getAuthToken();
     var payMerchantResp =
@@ -59,6 +69,8 @@ class _MerchantPinUiState extends State<MerchantPinUi> {
     if (payMerchantResp != null) {
       print('MerchantList' + payMerchantResp.toString());
       return payMerchantResp;
+    }else{
+      print('Merchant error');
     }
     return null;
   }
@@ -75,6 +87,7 @@ class _MerchantPinUiState extends State<MerchantPinUi> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      key: scaffoldKey,
       body: LoadingOverlay(
         isLoading: isloading,
         child: Container(
@@ -172,9 +185,8 @@ class _MerchantPinUiState extends State<MerchantPinUi> {
                                                         SuccessPayment()))
                                           }
                                         else
-                                          {
-                                            print(
-                                                'PayMerchant ' + value.message)
+                                      {
+                                      showSnack(value.message)
                                           }
                                       }
                                   })

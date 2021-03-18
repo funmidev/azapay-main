@@ -9,6 +9,7 @@ part of 'bank.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AllBankTearOff {
   const _$AllBankTearOff();
 
@@ -31,9 +32,11 @@ class _$AllBankTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AllBank = _$AllBankTearOff();
 
+/// @nodoc
 mixin _$AllBank {
   String get id;
   String get acctnumber;
@@ -42,9 +45,11 @@ mixin _$AllBank {
   String get note;
   List<BankList> get banklist;
 
+  @JsonKey(ignore: true)
   $AllBankCopyWith<AllBank> get copyWith;
 }
 
+/// @nodoc
 abstract class $AllBankCopyWith<$Res> {
   factory $AllBankCopyWith(AllBank value, $Res Function(AllBank) then) =
       _$AllBankCopyWithImpl<$Res>;
@@ -57,6 +62,7 @@ abstract class $AllBankCopyWith<$Res> {
       List<BankList> banklist});
 }
 
+/// @nodoc
 class _$AllBankCopyWithImpl<$Res> implements $AllBankCopyWith<$Res> {
   _$AllBankCopyWithImpl(this._value, this._then);
 
@@ -86,6 +92,7 @@ class _$AllBankCopyWithImpl<$Res> implements $AllBankCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AllBankCopyWith<$Res> implements $AllBankCopyWith<$Res> {
   factory _$AllBankCopyWith(_AllBank value, $Res Function(_AllBank) then) =
       __$AllBankCopyWithImpl<$Res>;
@@ -99,6 +106,7 @@ abstract class _$AllBankCopyWith<$Res> implements $AllBankCopyWith<$Res> {
       List<BankList> banklist});
 }
 
+/// @nodoc
 class __$AllBankCopyWithImpl<$Res> extends _$AllBankCopyWithImpl<$Res>
     implements _$AllBankCopyWith<$Res> {
   __$AllBankCopyWithImpl(_AllBank _value, $Res Function(_AllBank) _then)
@@ -129,6 +137,7 @@ class __$AllBankCopyWithImpl<$Res> extends _$AllBankCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AllBank with DiagnosticableTreeMixin implements _AllBank {
   _$_AllBank(
       {this.id,
@@ -200,6 +209,7 @@ class _$_AllBank with DiagnosticableTreeMixin implements _AllBank {
       const DeepCollectionEquality().hash(note) ^
       const DeepCollectionEquality().hash(banklist);
 
+  @JsonKey(ignore: true)
   @override
   _$AllBankCopyWith<_AllBank> get copyWith =>
       __$AllBankCopyWithImpl<_AllBank>(this, _$identity);
@@ -227,5 +237,6 @@ abstract class _AllBank implements AllBank {
   @override
   List<BankList> get banklist;
   @override
+  @JsonKey(ignore: true)
   _$AllBankCopyWith<_AllBank> get copyWith;
 }

@@ -162,8 +162,8 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                               textStyle: TextStyle(
                                                   fontWeight:
                                                       FontWeight.normal),
-                                              obsecureText: true,
-                                              textInputType:
+                                              obscureText: true,
+                                              keyboardType:
                                                   TextInputType.number,
                                               textInputAction:
                                                   TextInputAction.done,
@@ -195,7 +195,7 @@ class _OtpCodeUIState extends State<OtpCodeUI> {
                                                 OtpCodeSignUp(
                                                   otpcode: otpcodepin,
                                                 ),
-                                              ),
+                                              ), appContext: context,
                                             ),
                                           ),
                                         ],

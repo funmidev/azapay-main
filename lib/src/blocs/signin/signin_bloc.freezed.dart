@@ -9,6 +9,7 @@ part of 'signin_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$InputDataSigninStateTearOff {
   const _$InputDataSigninStateTearOff();
 
@@ -26,17 +27,21 @@ class _$InputDataSigninStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $InputDataSigninState = _$InputDataSigninStateTearOff();
 
+/// @nodoc
 mixin _$InputDataSigninState {
   String get azatag;
   String get password;
   BasicResponse<String> get basicResponse;
 
+  @JsonKey(ignore: true)
   $InputDataSigninStateCopyWith<InputDataSigninState> get copyWith;
 }
 
+/// @nodoc
 abstract class $InputDataSigninStateCopyWith<$Res> {
   factory $InputDataSigninStateCopyWith(InputDataSigninState value,
           $Res Function(InputDataSigninState) then) =
@@ -45,6 +50,7 @@ abstract class $InputDataSigninStateCopyWith<$Res> {
       {String azatag, String password, BasicResponse<String> basicResponse});
 }
 
+/// @nodoc
 class _$InputDataSigninStateCopyWithImpl<$Res>
     implements $InputDataSigninStateCopyWith<$Res> {
   _$InputDataSigninStateCopyWithImpl(this._value, this._then);
@@ -69,6 +75,7 @@ class _$InputDataSigninStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$InputDataSigninStateCopyWith<$Res>
     implements $InputDataSigninStateCopyWith<$Res> {
   factory _$InputDataSigninStateCopyWith(_InputDataSigninState value,
@@ -79,6 +86,7 @@ abstract class _$InputDataSigninStateCopyWith<$Res>
       {String azatag, String password, BasicResponse<String> basicResponse});
 }
 
+/// @nodoc
 class __$InputDataSigninStateCopyWithImpl<$Res>
     extends _$InputDataSigninStateCopyWithImpl<$Res>
     implements _$InputDataSigninStateCopyWith<$Res> {
@@ -105,6 +113,7 @@ class __$InputDataSigninStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_InputDataSigninState
     with DiagnosticableTreeMixin
     implements _InputDataSigninState {
@@ -163,6 +172,7 @@ class _$_InputDataSigninState
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(basicResponse);
 
+  @JsonKey(ignore: true)
   @override
   _$InputDataSigninStateCopyWith<_InputDataSigninState> get copyWith =>
       __$InputDataSigninStateCopyWithImpl<_InputDataSigninState>(
@@ -182,5 +192,6 @@ abstract class _InputDataSigninState implements InputDataSigninState {
   @override
   BasicResponse<String> get basicResponse;
   @override
+  @JsonKey(ignore: true)
   _$InputDataSigninStateCopyWith<_InputDataSigninState> get copyWith;
 }

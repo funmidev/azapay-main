@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
-import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/resources/resources.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';

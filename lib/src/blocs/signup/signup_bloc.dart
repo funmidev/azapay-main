@@ -158,6 +158,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
             try {
               final response = await repository.createAccountPassword(
                   createAccountPasword: CreateAccountPasword(
+                     signup.password,
                 password: signup.password,
                 phone: signup.phoneno,
               ));
@@ -184,18 +185,30 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
               // todo: store azatag , password, deviceid in hivedb sign in --- Done
               // _logger.i(response);
+              print('MerchantToken13 ' + response.status.toString());
               if (response.status == 200) {
+
+                print('MerchantToken13 ' + response.data);
+
                 await repository.addAzapayUser(
                     signIn: SignIn(
                         tag: '${signup.azatag}',
                         password: signup.password,
-                        // device: deviceid
-                        device: "190-system-08085303817"));
+                        device: deviceid
+                        //device: '190-system-08085303817'
+
+                    ));
+
+
+                print('MerchantToken13 ' + deviceid);
 
                 print('MerchantToken13 ' + response.token);
-                // await _dbprovider.addToken(basicResponse: response);
+              //  await _dbprovider.addToken(basicResponse: response);
                 var prefs = await SharedPreferences.getInstance();
                 await prefs.setString('userToken', response.token);
+
+                print('MerchantToken13 ' + response.message);
+
                 yield signup.copyWith(basicResponse: response);
                 // _logger.e(response.message);
               } else {

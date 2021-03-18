@@ -9,6 +9,7 @@ part of 'transactionpin_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$TransactionpinLoadedTearOff {
   const _$TransactionpinLoadedTearOff();
 
@@ -21,16 +22,20 @@ class _$TransactionpinLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransactionpinLoaded = _$TransactionpinLoadedTearOff();
 
+/// @nodoc
 mixin _$TransactionpinLoaded {
   String get pin;
   String get verificationToken;
 
+  @JsonKey(ignore: true)
   $TransactionpinLoadedCopyWith<TransactionpinLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransactionpinLoadedCopyWith<$Res> {
   factory $TransactionpinLoadedCopyWith(TransactionpinLoaded value,
           $Res Function(TransactionpinLoaded) then) =
@@ -38,6 +43,7 @@ abstract class $TransactionpinLoadedCopyWith<$Res> {
   $Res call({String pin, String verificationToken});
 }
 
+/// @nodoc
 class _$TransactionpinLoadedCopyWithImpl<$Res>
     implements $TransactionpinLoadedCopyWith<$Res> {
   _$TransactionpinLoadedCopyWithImpl(this._value, this._then);
@@ -60,6 +66,7 @@ class _$TransactionpinLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$TransactionpinLoadedCopyWith<$Res>
     implements $TransactionpinLoadedCopyWith<$Res> {
   factory _$TransactionpinLoadedCopyWith(_TransactionpinLoaded value,
@@ -69,6 +76,7 @@ abstract class _$TransactionpinLoadedCopyWith<$Res>
   $Res call({String pin, String verificationToken});
 }
 
+/// @nodoc
 class __$TransactionpinLoadedCopyWithImpl<$Res>
     extends _$TransactionpinLoadedCopyWithImpl<$Res>
     implements _$TransactionpinLoadedCopyWith<$Res> {
@@ -93,6 +101,7 @@ class __$TransactionpinLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TransactionpinLoaded
     with DiagnosticableTreeMixin
     implements _TransactionpinLoaded {
@@ -134,6 +143,7 @@ class _$_TransactionpinLoaded
       const DeepCollectionEquality().hash(pin) ^
       const DeepCollectionEquality().hash(verificationToken);
 
+  @JsonKey(ignore: true)
   @override
   _$TransactionpinLoadedCopyWith<_TransactionpinLoaded> get copyWith =>
       __$TransactionpinLoadedCopyWithImpl<_TransactionpinLoaded>(
@@ -149,5 +159,6 @@ abstract class _TransactionpinLoaded implements TransactionpinLoaded {
   @override
   String get verificationToken;
   @override
+  @JsonKey(ignore: true)
   _$TransactionpinLoadedCopyWith<_TransactionpinLoaded> get copyWith;
 }

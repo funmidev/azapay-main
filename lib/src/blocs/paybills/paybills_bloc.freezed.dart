@@ -9,6 +9,7 @@ part of 'paybills_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PaybillsInputDataTearOff {
   const _$PaybillsInputDataTearOff();
 
@@ -28,9 +29,9 @@ class _$PaybillsInputDataTearOff {
       int isRadioSelectedBillSubProductProvider,
       int isRadioSelectedPhoneNumber,
       VerifyCustomer verifyCustomer =
-          const VerifyCustomer(data: VerifyCustomerData(name: '')),
-      GetPayBills<T> getPayBillsCategory = const GetPayBills(data: []),
-      GetPayBills<S> getPayBillsProduct = const GetPayBills(data: []),
+          const VerifyCustomer(data: const VerifyCustomerData(name: '')),
+      GetPayBills<T> getPayBillsCategory = const GetPayBills(data: const []),
+      GetPayBills<S> getPayBillsProduct = const GetPayBills(data: const []),
       int success = 100,
       int error = 100,
       String responsemessage,
@@ -63,9 +64,11 @@ class _$PaybillsInputDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PaybillsInputData = _$PaybillsInputDataTearOff();
 
+/// @nodoc
 mixin _$PaybillsInputData<T, S> {
   int get service;
   String get product;
@@ -89,9 +92,11 @@ mixin _$PaybillsInputData<T, S> {
   double get amount;
   String get transactionPin;
 
+  @JsonKey(ignore: true)
   $PaybillsInputDataCopyWith<T, S, PaybillsInputData<T, S>> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaybillsInputDataCopyWith<T, S, $Res> {
   factory $PaybillsInputDataCopyWith(PaybillsInputData<T, S> value,
           $Res Function(PaybillsInputData<T, S>) then) =
@@ -120,6 +125,7 @@ abstract class $PaybillsInputDataCopyWith<T, S, $Res> {
       String transactionPin});
 }
 
+/// @nodoc
 class _$PaybillsInputDataCopyWithImpl<T, S, $Res>
     implements $PaybillsInputDataCopyWith<T, S, $Res> {
   _$PaybillsInputDataCopyWithImpl(this._value, this._then);
@@ -205,6 +211,7 @@ class _$PaybillsInputDataCopyWithImpl<T, S, $Res>
   }
 }
 
+/// @nodoc
 abstract class _$PaybillsInputDataCopyWith<T, S, $Res>
     implements $PaybillsInputDataCopyWith<T, S, $Res> {
   factory _$PaybillsInputDataCopyWith(_PaybillsInputData<T, S> value,
@@ -235,6 +242,7 @@ abstract class _$PaybillsInputDataCopyWith<T, S, $Res>
       String transactionPin});
 }
 
+/// @nodoc
 class __$PaybillsInputDataCopyWithImpl<T, S, $Res>
     extends _$PaybillsInputDataCopyWithImpl<T, S, $Res>
     implements _$PaybillsInputDataCopyWith<T, S, $Res> {
@@ -323,6 +331,7 @@ class __$PaybillsInputDataCopyWithImpl<T, S, $Res>
   }
 }
 
+/// @nodoc
 class _$_PaybillsInputData<T, S>
     with DiagnosticableTreeMixin
     implements _PaybillsInputData<T, S> {
@@ -341,9 +350,9 @@ class _$_PaybillsInputData<T, S>
       this.isRadioSelectedBillSubProductProvider,
       this.isRadioSelectedPhoneNumber,
       this.verifyCustomer =
-          const VerifyCustomer(data: VerifyCustomerData(name: '')),
-      this.getPayBillsCategory = const GetPayBills(data: []),
-      this.getPayBillsProduct = const GetPayBills(data: []),
+          const VerifyCustomer(data: const VerifyCustomerData(name: '')),
+      this.getPayBillsCategory = const GetPayBills(data: const []),
+      this.getPayBillsProduct = const GetPayBills(data: const []),
       this.success = 100,
       this.error = 100,
       this.responsemessage,
@@ -386,13 +395,14 @@ class _$_PaybillsInputData<T, S>
   @override
   final int isRadioSelectedPhoneNumber;
   @JsonKey(
-      defaultValue: const VerifyCustomer(data: VerifyCustomerData(name: '')))
+      defaultValue:
+          const VerifyCustomer(data: const VerifyCustomerData(name: '')))
   @override
   final VerifyCustomer verifyCustomer;
-  @JsonKey(defaultValue: const GetPayBills(data: []))
+  @JsonKey(defaultValue: const GetPayBills(data: const []))
   @override
   final GetPayBills<T> getPayBillsCategory;
-  @JsonKey(defaultValue: const GetPayBills(data: []))
+  @JsonKey(defaultValue: const GetPayBills(data: const []))
   @override
   final GetPayBills<S> getPayBillsProduct;
   @JsonKey(defaultValue: 100)
@@ -532,6 +542,7 @@ class _$_PaybillsInputData<T, S>
       const DeepCollectionEquality().hash(amount) ^
       const DeepCollectionEquality().hash(transactionPin);
 
+  @JsonKey(ignore: true)
   @override
   _$PaybillsInputDataCopyWith<T, S, _PaybillsInputData<T, S>> get copyWith =>
       __$PaybillsInputDataCopyWithImpl<T, S, _PaybillsInputData<T, S>>(
@@ -605,5 +616,6 @@ abstract class _PaybillsInputData<T, S> implements PaybillsInputData<T, S> {
   @override
   String get transactionPin;
   @override
+  @JsonKey(ignore: true)
   _$PaybillsInputDataCopyWith<T, S, _PaybillsInputData<T, S>> get copyWith;
 }

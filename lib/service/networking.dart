@@ -7,10 +7,10 @@ class NetworkHelper {
   NetworkHelper(this.url);
 
   Future getData() async {
-    http.Response response = await http.get(url);
+    var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      String data = response.body;
+      var data = response.body;
       // print(data);
       return jsonDecode(data);
     } else {

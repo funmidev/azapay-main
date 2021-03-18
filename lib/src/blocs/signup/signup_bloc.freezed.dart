@@ -9,6 +9,7 @@ part of 'signup_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SignupLoadedTearOff {
   const _$SignupLoadedTearOff();
 
@@ -52,9 +53,11 @@ class _$SignupLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SignupLoaded = _$SignupLoadedTearOff();
 
+/// @nodoc
 mixin _$SignupLoaded {
   String get email;
   String get password;
@@ -73,9 +76,11 @@ mixin _$SignupLoaded {
   bool get isLastnameValid;
   String get phoneno;
 
+  @JsonKey(ignore: true)
   $SignupLoadedCopyWith<SignupLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $SignupLoadedCopyWith<$Res> {
   factory $SignupLoadedCopyWith(
           SignupLoaded value, $Res Function(SignupLoaded) then) =
@@ -99,6 +104,7 @@ abstract class $SignupLoadedCopyWith<$Res> {
       String phoneno});
 }
 
+/// @nodoc
 class _$SignupLoadedCopyWithImpl<$Res> implements $SignupLoadedCopyWith<$Res> {
   _$SignupLoadedCopyWithImpl(this._value, this._then);
 
@@ -159,6 +165,7 @@ class _$SignupLoadedCopyWithImpl<$Res> implements $SignupLoadedCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$SignupLoadedCopyWith<$Res>
     implements $SignupLoadedCopyWith<$Res> {
   factory _$SignupLoadedCopyWith(
@@ -184,6 +191,7 @@ abstract class _$SignupLoadedCopyWith<$Res>
       String phoneno});
 }
 
+/// @nodoc
 class __$SignupLoadedCopyWithImpl<$Res> extends _$SignupLoadedCopyWithImpl<$Res>
     implements _$SignupLoadedCopyWith<$Res> {
   __$SignupLoadedCopyWithImpl(
@@ -246,6 +254,7 @@ class __$SignupLoadedCopyWithImpl<$Res> extends _$SignupLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SignupLoaded with DiagnosticableTreeMixin implements _SignupLoaded {
   _$_SignupLoaded(
       {this.email = '',
@@ -427,6 +436,7 @@ class _$_SignupLoaded with DiagnosticableTreeMixin implements _SignupLoaded {
       const DeepCollectionEquality().hash(isLastnameValid) ^
       const DeepCollectionEquality().hash(phoneno);
 
+  @JsonKey(ignore: true)
   @override
   _$SignupLoadedCopyWith<_SignupLoaded> get copyWith =>
       __$SignupLoadedCopyWithImpl<_SignupLoaded>(this, _$identity);
@@ -484,5 +494,6 @@ abstract class _SignupLoaded implements SignupLoaded {
   @override
   String get phoneno;
   @override
+  @JsonKey(ignore: true)
   _$SignupLoadedCopyWith<_SignupLoaded> get copyWith;
 }

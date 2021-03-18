@@ -9,6 +9,7 @@ part of 'activity_isolate_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ActivityLoadedIsolateTearOff {
   const _$ActivityLoadedIsolateTearOff();
 
@@ -23,16 +24,20 @@ class _$ActivityLoadedIsolateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ActivityLoadedIsolate = _$ActivityLoadedIsolateTearOff();
 
+/// @nodoc
 mixin _$ActivityLoadedIsolate {
   List<TransactionHistory> get basicResponse;
   String get searchtext;
 
+  @JsonKey(ignore: true)
   $ActivityLoadedIsolateCopyWith<ActivityLoadedIsolate> get copyWith;
 }
 
+/// @nodoc
 abstract class $ActivityLoadedIsolateCopyWith<$Res> {
   factory $ActivityLoadedIsolateCopyWith(ActivityLoadedIsolate value,
           $Res Function(ActivityLoadedIsolate) then) =
@@ -40,6 +45,7 @@ abstract class $ActivityLoadedIsolateCopyWith<$Res> {
   $Res call({List<TransactionHistory> basicResponse, String searchtext});
 }
 
+/// @nodoc
 class _$ActivityLoadedIsolateCopyWithImpl<$Res>
     implements $ActivityLoadedIsolateCopyWith<$Res> {
   _$ActivityLoadedIsolateCopyWithImpl(this._value, this._then);
@@ -63,6 +69,7 @@ class _$ActivityLoadedIsolateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ActivityLoadedIsolateCopyWith<$Res>
     implements $ActivityLoadedIsolateCopyWith<$Res> {
   factory _$ActivityLoadedIsolateCopyWith(_ActivityLoadedIsolate value,
@@ -72,6 +79,7 @@ abstract class _$ActivityLoadedIsolateCopyWith<$Res>
   $Res call({List<TransactionHistory> basicResponse, String searchtext});
 }
 
+/// @nodoc
 class __$ActivityLoadedIsolateCopyWithImpl<$Res>
     extends _$ActivityLoadedIsolateCopyWithImpl<$Res>
     implements _$ActivityLoadedIsolateCopyWith<$Res> {
@@ -97,6 +105,7 @@ class __$ActivityLoadedIsolateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ActivityLoadedIsolate
     with DiagnosticableTreeMixin
     implements _ActivityLoadedIsolate {
@@ -142,6 +151,7 @@ class _$_ActivityLoadedIsolate
       const DeepCollectionEquality().hash(basicResponse) ^
       const DeepCollectionEquality().hash(searchtext);
 
+  @JsonKey(ignore: true)
   @override
   _$ActivityLoadedIsolateCopyWith<_ActivityLoadedIsolate> get copyWith =>
       __$ActivityLoadedIsolateCopyWithImpl<_ActivityLoadedIsolate>(
@@ -158,5 +168,6 @@ abstract class _ActivityLoadedIsolate implements ActivityLoadedIsolate {
   @override
   String get searchtext;
   @override
+  @JsonKey(ignore: true)
   _$ActivityLoadedIsolateCopyWith<_ActivityLoadedIsolate> get copyWith;
 }

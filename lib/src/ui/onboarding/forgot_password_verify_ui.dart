@@ -60,8 +60,8 @@ class _ForgotPasswordVerifyUIState extends State<ForgotPasswordVerifyUI> {
                       child: PinCodeTextField(
                         controller: _tokenController,
                         textStyle: TextStyle(fontWeight: FontWeight.normal),
-                        obsecureText: true,
-                        textInputType: TextInputType.number,
+                        obscureText: true,
+                        keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
                         enableActiveFill: true,
                         pinTheme: PinTheme(

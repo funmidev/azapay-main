@@ -67,16 +67,16 @@ class _UserProfileUIState extends State<UserProfileUI> {
                             builder: (context, state) {
                               if (state is ProfileLoaded) {
                                 if (state.profilepic == null) {
-                                  return ClipRRect(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    child: FadeInImage(
-                                      placeholder: AssetImage(AppImages.avatar),
-                                      image: CustomImageProvider(image: state?.profilepic),
-                                      width: 60,
-                                      height: 60,
-                                    ),
-                                  );
-                                  // return Icon(Icons.account_circle, size: 60, color: Colors.grey[500]);
+                                  // return ClipRRect(
+                                  //   borderRadius: BorderRadius.circular(30.0),
+                                  //   child: FadeInImage(
+                                  //     placeholder: AssetImage(AppImages.avatar),
+                                  //     image: CustomImageProvider(image: state?.profilepic),
+                                  //     width: 60,
+                                  //     height: 60,
+                                  //   ),
+                                  // );
+                                  return Icon(Icons.account_circle, size: 60, color: Colors.grey[500]);
                                 } else {
                                   return ClipRRect(
                                     borderRadius: BorderRadius.circular(30.0),

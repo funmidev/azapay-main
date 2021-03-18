@@ -63,6 +63,9 @@ class AppRouteName {
 
   //-----------Locate an AzaAgent---------------
   static const String locateAzaAgent = '/locate-aza-agent';
+
+  static const String azaAgentProfile = '/aza-agent-profile';
+
   //-------------save beneficiary-----------------
   static const String saveBeneficiary = '/save-beneficiary';
 

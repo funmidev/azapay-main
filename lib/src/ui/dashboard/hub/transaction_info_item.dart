@@ -8,9 +8,11 @@ class TransactionInfoItem extends StatelessWidget {
     this.rightDetail,
     this.leftDetail,
     this.showRightItem,
+    this.isHeroTransiton,
+    this.heroTag,
   }) : super(key: key);
-  final String rightTitle, leftTitle, rightDetail, leftDetail;
-  final bool showRightItem;
+  final String rightTitle, leftTitle, rightDetail, leftDetail, heroTag;
+  final bool showRightItem, isHeroTransiton;
 
   @override
   Widget build(BuildContext context) {

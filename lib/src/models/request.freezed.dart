@@ -12,6 +12,7 @@ PayBill<T> _$PayBillFromJson<T>(Map<String, dynamic> json) {
   return _PayBill<T>.fromJson(json);
 }
 
+/// @nodoc
 class _$PayBillTearOff {
   const _$PayBillTearOff();
 
@@ -46,11 +47,18 @@ class _$PayBillTearOff {
       transactionPin: transactionPin,
     );
   }
+
+// ignore: unused_element
+  PayBill<T> fromJson<T>(Map<String, Object> json) {
+    return PayBill<T>.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PayBill = _$PayBillTearOff();
 
+/// @nodoc
 mixin _$PayBill<T> {
   String get product;
   String get phone;
@@ -68,9 +76,11 @@ mixin _$PayBill<T> {
   String get transactionPin;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $PayBillCopyWith<T, PayBill<T>> get copyWith;
 }
 
+/// @nodoc
 abstract class $PayBillCopyWith<T, $Res> {
   factory $PayBillCopyWith(PayBill<T> value, $Res Function(PayBill<T>) then) =
       _$PayBillCopyWithImpl<T, $Res>;
@@ -90,6 +100,7 @@ abstract class $PayBillCopyWith<T, $Res> {
       String transactionPin});
 }
 
+/// @nodoc
 class _$PayBillCopyWithImpl<T, $Res> implements $PayBillCopyWith<T, $Res> {
   _$PayBillCopyWithImpl(this._value, this._then);
 
@@ -138,6 +149,7 @@ class _$PayBillCopyWithImpl<T, $Res> implements $PayBillCopyWith<T, $Res> {
   }
 }
 
+/// @nodoc
 abstract class _$PayBillCopyWith<T, $Res> implements $PayBillCopyWith<T, $Res> {
   factory _$PayBillCopyWith(
           _PayBill<T> value, $Res Function(_PayBill<T>) then) =
@@ -159,6 +171,7 @@ abstract class _$PayBillCopyWith<T, $Res> implements $PayBillCopyWith<T, $Res> {
       String transactionPin});
 }
 
+/// @nodoc
 class __$PayBillCopyWithImpl<T, $Res> extends _$PayBillCopyWithImpl<T, $Res>
     implements _$PayBillCopyWith<T, $Res> {
   __$PayBillCopyWithImpl(_PayBill<T> _value, $Res Function(_PayBill<T>) _then)
@@ -209,6 +222,8 @@ class __$PayBillCopyWithImpl<T, $Res> extends _$PayBillCopyWithImpl<T, $Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_PayBill<T> with DiagnosticableTreeMixin implements _PayBill<T> {
   _$_PayBill(
       {this.product,
@@ -339,6 +354,7 @@ class _$_PayBill<T> with DiagnosticableTreeMixin implements _PayBill<T> {
       const DeepCollectionEquality().hash(amount) ^
       const DeepCollectionEquality().hash(transactionPin);
 
+  @JsonKey(ignore: true)
   @override
   _$PayBillCopyWith<T, _PayBill<T>> get copyWith =>
       __$PayBillCopyWithImpl<T, _PayBill<T>>(this, _$identity);
@@ -395,5 +411,6 @@ abstract class _PayBill<T> implements PayBill<T> {
   @override
   String get transactionPin;
   @override
+  @JsonKey(ignore: true)
   _$PayBillCopyWith<T, _PayBill<T>> get copyWith;
 }

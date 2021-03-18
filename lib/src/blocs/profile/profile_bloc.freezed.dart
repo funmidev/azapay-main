@@ -9,13 +9,14 @@ part of 'profile_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ProfileLoadedTearOff {
   const _$ProfileLoadedTearOff();
 
 // ignore: unused_element
   _ProfileLoaded call(
       {SignUp signUp = const SignUp(
-          data: Data(
+          data: const Data(
               lastName: AppStrings.empty,
               firstName: AppStrings.empty,
               tag: AppStrings.empty)),
@@ -61,9 +62,11 @@ class _$ProfileLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ProfileLoaded = _$ProfileLoadedTearOff();
 
+/// @nodoc
 mixin _$ProfileLoaded {
   SignUp get signUp;
   String get gender;
@@ -85,9 +88,11 @@ mixin _$ProfileLoaded {
   String get responsemessage;
   Uint8List get profilepic;
 
+  @JsonKey(ignore: true)
   $ProfileLoadedCopyWith<ProfileLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $ProfileLoadedCopyWith<$Res> {
   factory $ProfileLoadedCopyWith(
           ProfileLoaded value, $Res Function(ProfileLoaded) then) =
@@ -114,6 +119,7 @@ abstract class $ProfileLoadedCopyWith<$Res> {
       Uint8List profilepic});
 }
 
+/// @nodoc
 class _$ProfileLoadedCopyWithImpl<$Res>
     implements $ProfileLoadedCopyWith<$Res> {
   _$ProfileLoadedCopyWithImpl(this._value, this._then);
@@ -178,6 +184,7 @@ class _$ProfileLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ProfileLoadedCopyWith<$Res>
     implements $ProfileLoadedCopyWith<$Res> {
   factory _$ProfileLoadedCopyWith(
@@ -206,6 +213,7 @@ abstract class _$ProfileLoadedCopyWith<$Res>
       Uint8List profilepic});
 }
 
+/// @nodoc
 class __$ProfileLoadedCopyWithImpl<$Res>
     extends _$ProfileLoadedCopyWithImpl<$Res>
     implements _$ProfileLoadedCopyWith<$Res> {
@@ -272,10 +280,11 @@ class __$ProfileLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ProfileLoaded implements _ProfileLoaded {
   _$_ProfileLoaded(
       {this.signUp = const SignUp(
-          data: Data(
+          data: const Data(
               lastName: AppStrings.empty,
               firstName: AppStrings.empty,
               tag: AppStrings.empty)),
@@ -313,7 +322,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
 
   @JsonKey(
       defaultValue: const SignUp(
-          data: Data(
+          data: const Data(
               lastName: AppStrings.empty,
               firstName: AppStrings.empty,
               tag: AppStrings.empty)))
@@ -450,6 +459,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
       const DeepCollectionEquality().hash(responsemessage) ^
       const DeepCollectionEquality().hash(profilepic);
 
+  @JsonKey(ignore: true)
   @override
   _$ProfileLoadedCopyWith<_ProfileLoaded> get copyWith =>
       __$ProfileLoadedCopyWithImpl<_ProfileLoaded>(this, _$identity);
@@ -516,5 +526,6 @@ abstract class _ProfileLoaded implements ProfileLoaded {
   @override
   Uint8List get profilepic;
   @override
+  @JsonKey(ignore: true)
   _$ProfileLoadedCopyWith<_ProfileLoaded> get copyWith;
 }

@@ -8,7 +8,10 @@ import 'package:retrofit/retrofit.dart';
 part 'apiprovider.g.dart';
 
 @RestApi(
-  baseUrl: 'https://staging.azapay.com.ng',
+  // baseUrl: 'https://staging.azapay.com.ng',
+    baseUrl: 'https://azapayspring.oa.r.appspot.com',
+
+
 )
 // 'http://azapaybackenddev-env.eba-3j4mixtm.eu-central-1.elasticbeanstalk.com'
 abstract class ApiProvider {

@@ -9,7 +9,7 @@ part of 'apiprovider.dart';
 class _ApiProvider implements ApiProvider {
   _ApiProvider(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= 'https://staging.azapay.com.ng';
+    baseUrl ??= 'https://azapayspring.oa.r.appspot.com';
   }
 
   final Dio _dio;
@@ -23,7 +23,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(createSignUp?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/onboard/signup',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -62,7 +61,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(otpVerify?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/onboard/otp/verify',
         queryParameters: queryParameters,
@@ -84,7 +82,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(createAccountPasword?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/password/create',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -104,7 +101,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(createAccountFullName?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/onboard/names',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -124,7 +120,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(createTag?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/onboard/tag/create',
         queryParameters: queryParameters,
@@ -164,7 +159,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(signIn?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/auth/signin',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -184,7 +178,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(token?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/auth/validate/token',
         queryParameters: queryParameters,
@@ -224,7 +217,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(modifyPassword?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/password/reset',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -246,7 +238,6 @@ class _ApiProvider implements ApiProvider {
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(fundRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/fund/make/request',
         queryParameters: queryParameters,
@@ -305,7 +296,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(approverequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/fund/request/approve',
         queryParameters: queryParameters,
@@ -347,7 +337,6 @@ class _ApiProvider implements ApiProvider {
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(fundTransfer?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/fund/transfer/to/account',
         queryParameters: queryParameters,
@@ -371,7 +360,6 @@ class _ApiProvider implements ApiProvider {
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(fundTransfer?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/fund/transfer/through/id',
         queryParameters: queryParameters,
@@ -448,7 +436,6 @@ class _ApiProvider implements ApiProvider {
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(linkBankAccount?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/wallet/link/bank',
         queryParameters: queryParameters,
@@ -586,7 +573,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(transactionPin?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/user/transaction/pin/modify',
         queryParameters: queryParameters,
@@ -624,7 +610,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(data?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/user/profile/modify/basic',
         queryParameters: queryParameters,
@@ -645,7 +630,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(data?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/merchant/profile/modify/basic',
         queryParameters: queryParameters,
@@ -827,7 +811,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(payBill?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/airtime/purchase',
         queryParameters: queryParameters,
@@ -882,7 +865,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(payBill?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/data/purchase',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -964,7 +946,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(payBill?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/cable/purchase',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -1025,7 +1006,6 @@ class _ApiProvider implements ApiProvider {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(payBill?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/electricity/purchase',
         queryParameters: queryParameters,
@@ -1038,26 +1018,4 @@ class _ApiProvider implements ApiProvider {
     final value = BasicResponse<TransactionHistory>.fromJson(_result.data);
     return value;
   }
-
-  // @override
-  // Future<String> getMerchantList(String tag) async{
-  //   ArgumentError.checkNotNull(tag, 'tag');
-  //   const _extra = <String, dynamic>{};
-  //   final queryParameters = <String, dynamic>{
-  //     r'tag': tag
-  //   };
-  //   final _data = <String, dynamic>{};
-  //   final _result = await _dio.request<Map<String, dynamic>>(
-  //       '/merchant/view',
-  //       queryParameters: queryParameters,
-  //       options: RequestOptions(
-  //           method: 'GET',
-  //           headers: <String, dynamic>{},
-  //           extra: _extra,
-  //           baseUrl: baseUrl),
-  //       data: _data);
-  //   final value = GetMerchantResponse.fromJson(_result);
-  //   return value;
-  // }
-
 }

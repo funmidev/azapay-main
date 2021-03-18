@@ -1,19 +1,46 @@
+import 'package:azapay/Constants.dart';
 import 'package:azapay/app/app_route_name.dart';
+import 'package:azapay/src/models/pay_merchant.dart';
+import 'package:azapay/src/models/review_payment.dart';
+import 'package:azapay/src/rest/ApiManager.dart';
 import 'package:azapay/src/ui/dashboard/hub/transaction_info_item.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AzaAgentTransactionReview extends StatefulWidget {
+  const AzaAgentTransactionReview({Key key, this.reviewPayment}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return AzaAgentTransactionReviewState();
+
+
   }
+  final ReviewPayment reviewPayment;
 }
 
 final _formKey = GlobalKey<FormState>();
 
+Future<String> getAuthToken() async {
+  var prefs;
+  try {
+    prefs = await SharedPreferences.getInstance();
+  } catch (e) {} finally {
+    return prefs.getString(Constants.authToken);
+  }
+}
+
+
 class AzaAgentTransactionReviewState extends State<AzaAgentTransactionReview> {
   bool isSwitched = true;
+
+  void saveBeneficiary(
+      String AZaAgentTag) async {
+    final token = await getAuthToken();
+    await ApiManager.saveBeneficiary(AZaAgentTag, token);
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -102,7 +129,7 @@ class AzaAgentTransactionReviewState extends State<AzaAgentTransactionReview> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TransactionInfoItem(
-                                  rightDetail: '#AtoLab',
+                                  rightDetail: widget.reviewPayment.merchantTag,
                                   rightTitle: 'AzaTag',
                                   leftTitle: 'Transaction Type',
                                   leftDetail: 'AzaPay Withdraw',
@@ -113,7 +140,7 @@ class AzaAgentTransactionReviewState extends State<AzaAgentTransactionReview> {
                                   color: Colors.grey.shade400,
                                 ),
                                 TransactionInfoItem(
-                                  rightDetail: 'Akin Olaide',
+                                  rightDetail: widget.reviewPayment.merchantName,
                                   rightTitle: 'Recipient Name',
                                   leftTitle: 'Recipient',
                                   leftDetail: 'Sub-agent',
@@ -124,10 +151,10 @@ class AzaAgentTransactionReviewState extends State<AzaAgentTransactionReview> {
                                   color: Colors.grey.shade400,
                                 ),
                                 TransactionInfoItem(
-                                  rightDetail: '# 10.00',
+                                  rightDetail: '# 50',
                                   rightTitle: 'Service fee',
                                   leftTitle: 'Amount',
-                                  leftDetail: '# 100',
+                                  leftDetail: '# ${widget.reviewPayment.amount}',
                                   showRightItem: true,
                                 ),
                                 Divider(
@@ -174,21 +201,28 @@ class AzaAgentTransactionReviewState extends State<AzaAgentTransactionReview> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 20),
-                            child: FlatButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, AppRouteName.azaAgentPin);
-                                },
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 60, vertical: 12),
-                                color: Color(0xffFFC300),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Text(
-                                  'Confirm',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
-                                )),
+                            child: Hero(
+                              tag: 'confirmTransfer',
+                              transitionOnUserGestures: true,
+                              child: FlatButton(
+                                  onPressed: () {
+                                    if(isSwitched){
+                                  saveBeneficiary(widget.reviewPayment.merchantTag);
+                                    }
+                                    Navigator.pushNamed(
+                                        context, AppRouteName.azaAgentPin);
+                                  },
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 60, vertical: 12),
+                                  color: Color(0xffFFC300),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16)),
+                                  child: Text(
+                                    'Confirm',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 14),
+                                  )),
+                            ),
                           )
                         ],
                       ),

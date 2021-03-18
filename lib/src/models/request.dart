@@ -35,9 +35,10 @@ class OtpVerify {
 @JsonSerializable(nullable: false)
 class CreateAccountPasword {
   final String password;
+  final String confirmPassword;
   final String phone;
 
-  CreateAccountPasword({this.password, this.phone});
+  CreateAccountPasword(this.confirmPassword, {this.password, this.phone});
 
   factory CreateAccountPasword.fromJson(Map<String, dynamic> json) => _$CreateAccountPaswordFromJson(json);
 

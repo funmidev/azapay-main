@@ -10,56 +10,59 @@ class AzaAgentUI extends StatelessWidget {
       title: AppStrings.azaAgentOne,
       subtitle: AppStrings.azaAgentTwo,
       child: Padding(
-        padding: const EdgeInsets.all(60.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ///
-            ///
-            ///-----cardless withdrawal---------
-            AzaItem(
-              onTapped: () {
-                Navigator.pushNamed(context, AppRouteName.cardlessWithdrawal);
-              },
-              assetName: AppVectors.completewithdrawal,
-              title: AppStrings.azaAgentI,
-              textStyle:
-                  AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
-            ),
-
-            SizedBox(
-              height: 30.0,
-            ),
-
-            ///
-            ///
-            ///--------Locate an AzaAgent-----------
-            AzaItem(
-              onTapped: () {
-                Navigator.pushNamed(context, AppRouteName.linkbank);
-              },
-              assetName: AppVectors.linkbank,
-              textStyle:
-                  AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
-              title: AppStrings.azaAgentII,
-            ),
-
-            SizedBox(
-              height: 30.0,
-            ),
-
-            ///
-            ///
-            ///-------Saved Beneficiaries-----------
-            AzaItem(
+        padding: const EdgeInsets.all(50.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ///
+              ///
+              ///-----cardless withdrawal---------
+              AzaItem(
                 onTapped: () {
-                  // Navigator.pushNamed(context, AppRouteName.bankmaketransfer);
+                  Navigator.pushNamed(context, AppRouteName.cardlessWithdrawal);
                 },
-                assetName: AppVectors.maketransfer,
+                assetName: AppVectors.completewithdrawal,
+                title: AppStrings.azaAgentI,
                 textStyle:
                     AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
-                title: AppStrings.azaAgentIII),
-          ],
+              ),
+
+              SizedBox(
+                height: 30.0,
+              ),
+
+              ///
+              ///
+              ///--------Locate an AzaAgent-----------
+              AzaItem(
+                onTapped: () {
+                  //Location();
+                  Navigator.pushNamed(context, AppRouteName.locateAzaAgent);
+                },
+                assetName: AppVectors.linkbank,
+                textStyle:
+                    AppTextStyles.h3style.copyWith(fontWeight: FontWeight.bold),
+                title: AppStrings.azaAgentII,
+              ),
+
+              SizedBox(
+                height: 30.0,
+              ),
+
+              ///
+              ///
+              ///-------Saved Beneficiaries-----------
+              AzaItem(
+                  onTapped: () {
+                    Navigator.pushNamed(context, AppRouteName.saveBeneficiary);
+                  },
+                  assetName: AppVectors.maketransfer,
+                  textStyle: AppTextStyles.h3style
+                      .copyWith(fontWeight: FontWeight.bold),
+                  title: AppStrings.azaAgentIII),
+            ],
+          ),
         ),
       ),
     );

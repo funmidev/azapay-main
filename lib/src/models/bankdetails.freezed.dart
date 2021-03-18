@@ -9,6 +9,7 @@ part of 'bankdetails.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BankDetailsTearOff {
   const _$BankDetailsTearOff();
 
@@ -31,9 +32,11 @@ class _$BankDetailsTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BankDetails = _$BankDetailsTearOff();
 
+/// @nodoc
 mixin _$BankDetails {
   String get id;
   String get acctnumber;
@@ -42,9 +45,11 @@ mixin _$BankDetails {
   String get note;
   List<BankList> get banklist;
 
+  @JsonKey(ignore: true)
   $BankDetailsCopyWith<BankDetails> get copyWith;
 }
 
+/// @nodoc
 abstract class $BankDetailsCopyWith<$Res> {
   factory $BankDetailsCopyWith(
           BankDetails value, $Res Function(BankDetails) then) =
@@ -58,6 +63,7 @@ abstract class $BankDetailsCopyWith<$Res> {
       List<BankList> banklist});
 }
 
+/// @nodoc
 class _$BankDetailsCopyWithImpl<$Res> implements $BankDetailsCopyWith<$Res> {
   _$BankDetailsCopyWithImpl(this._value, this._then);
 
@@ -87,6 +93,7 @@ class _$BankDetailsCopyWithImpl<$Res> implements $BankDetailsCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$BankDetailsCopyWith<$Res>
     implements $BankDetailsCopyWith<$Res> {
   factory _$BankDetailsCopyWith(
@@ -102,6 +109,7 @@ abstract class _$BankDetailsCopyWith<$Res>
       List<BankList> banklist});
 }
 
+/// @nodoc
 class __$BankDetailsCopyWithImpl<$Res> extends _$BankDetailsCopyWithImpl<$Res>
     implements _$BankDetailsCopyWith<$Res> {
   __$BankDetailsCopyWithImpl(
@@ -133,6 +141,7 @@ class __$BankDetailsCopyWithImpl<$Res> extends _$BankDetailsCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BankDetails with DiagnosticableTreeMixin implements _BankDetails {
   _$_BankDetails(
       {this.id,
@@ -204,6 +213,7 @@ class _$_BankDetails with DiagnosticableTreeMixin implements _BankDetails {
       const DeepCollectionEquality().hash(note) ^
       const DeepCollectionEquality().hash(banklist);
 
+  @JsonKey(ignore: true)
   @override
   _$BankDetailsCopyWith<_BankDetails> get copyWith =>
       __$BankDetailsCopyWithImpl<_BankDetails>(this, _$identity);
@@ -231,5 +241,6 @@ abstract class _BankDetails implements BankDetails {
   @override
   List<BankList> get banklist;
   @override
+  @JsonKey(ignore: true)
   _$BankDetailsCopyWith<_BankDetails> get copyWith;
 }

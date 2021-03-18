@@ -9,6 +9,7 @@ part of 'forgotpassword_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$InputDataForgotpasswordStateTearOff {
   const _$InputDataForgotpasswordStateTearOff();
 
@@ -26,18 +27,22 @@ class _$InputDataForgotpasswordStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $InputDataForgotpasswordState = _$InputDataForgotpasswordStateTearOff();
 
+/// @nodoc
 mixin _$InputDataForgotpasswordState {
   String get azatag;
   AcquireResetToken get acquireResetToken;
   String get message;
 
+  @JsonKey(ignore: true)
   $InputDataForgotpasswordStateCopyWith<InputDataForgotpasswordState>
       get copyWith;
 }
 
+/// @nodoc
 abstract class $InputDataForgotpasswordStateCopyWith<$Res> {
   factory $InputDataForgotpasswordStateCopyWith(
           InputDataForgotpasswordState value,
@@ -47,6 +52,7 @@ abstract class $InputDataForgotpasswordStateCopyWith<$Res> {
       {String azatag, AcquireResetToken acquireResetToken, String message});
 }
 
+/// @nodoc
 class _$InputDataForgotpasswordStateCopyWithImpl<$Res>
     implements $InputDataForgotpasswordStateCopyWith<$Res> {
   _$InputDataForgotpasswordStateCopyWithImpl(this._value, this._then);
@@ -71,6 +77,7 @@ class _$InputDataForgotpasswordStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$InputDataForgotpasswordStateCopyWith<$Res>
     implements $InputDataForgotpasswordStateCopyWith<$Res> {
   factory _$InputDataForgotpasswordStateCopyWith(
@@ -82,6 +89,7 @@ abstract class _$InputDataForgotpasswordStateCopyWith<$Res>
       {String azatag, AcquireResetToken acquireResetToken, String message});
 }
 
+/// @nodoc
 class __$InputDataForgotpasswordStateCopyWithImpl<$Res>
     extends _$InputDataForgotpasswordStateCopyWithImpl<$Res>
     implements _$InputDataForgotpasswordStateCopyWith<$Res> {
@@ -110,6 +118,7 @@ class __$InputDataForgotpasswordStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_InputDataForgotpasswordState
     with DiagnosticableTreeMixin
     implements _InputDataForgotpasswordState {
@@ -166,6 +175,7 @@ class _$_InputDataForgotpasswordState
       const DeepCollectionEquality().hash(acquireResetToken) ^
       const DeepCollectionEquality().hash(message);
 
+  @JsonKey(ignore: true)
   @override
   _$InputDataForgotpasswordStateCopyWith<_InputDataForgotpasswordState>
       get copyWith => __$InputDataForgotpasswordStateCopyWithImpl<
@@ -186,6 +196,7 @@ abstract class _InputDataForgotpasswordState
   @override
   String get message;
   @override
+  @JsonKey(ignore: true)
   _$InputDataForgotpasswordStateCopyWith<_InputDataForgotpasswordState>
       get copyWith;
 }

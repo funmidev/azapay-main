@@ -343,8 +343,8 @@ class _TransactionUIState extends State<TransactionUI> {
                       padding: const EdgeInsets.symmetric(horizontal: 60.0),
                       child: PinCodeTextField(
                         textStyle: TextStyle(fontWeight: FontWeight.normal),
-                        obsecureText: true,
-                        textInputType: TextInputType.number,
+                        obscureText: true,
+                        keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
                         enableActiveFill: true,
                         pinTheme: PinTheme(
@@ -413,8 +413,8 @@ class _TransactionUIState extends State<TransactionUI> {
                             padding: const EdgeInsets.symmetric(horizontal: 30.0),
                             child: PinCodeTextField(
                               textStyle: TextStyle(fontWeight: FontWeight.normal),
-                              obsecureText: true,
-                              textInputType: TextInputType.number,
+                              obscureText: true,
+                              keyboardType: TextInputType.number,
                               textInputAction: TextInputAction.done,
                               enableActiveFill: true,
                               pinTheme: PinTheme(

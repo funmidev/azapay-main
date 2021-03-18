@@ -5,6 +5,9 @@ import 'package:azapay/src/ui/dashboard/azaAgent/cardless/aza_agent_transaction_
 import 'package:azapay/src/ui/dashboard/azaAgent/cardless/cardless_withdrawal.dart';
 import 'package:azapay/src/ui/dashboard/azaAgent/cardless/input_cardless_amount_ui.dart';
 import 'package:azapay/src/ui/dashboard/azaAgent/cardless/pay_to_aza_agent_ui.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/locateAgent/azaAgent_profile.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/locateAgent/locate_aza_agent_ui.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/saveBeneficiary/save_beneficiary.dart';
 import 'package:azapay/src/ui/dashboard/wallet/load_by_transfer_ui.dart';
 import 'package:azapay/src/ui/dashboard/wallet/load_by_ussd_ui.dart';
 import 'package:azapay/src/ui/ui.dart';
@@ -39,7 +42,7 @@ class RouteGenerator {
           return _pageRoute(
               settings: settings, widget: BuyOptionUI(payBillsName: args));
         }
-        return _errorRoute();
+        return _errorRoute(settings: null);
         break;
       case AppRouteName.paybills:
         return _pageRoute(settings: settings, widget: PayBillUI());
@@ -276,7 +279,11 @@ class RouteGenerator {
 
       /// -------- adding inputAmount to the route-------------
       case AppRouteName.inputmyAmount:
-        return _pageRoute(settings: settings, widget: InputCardlessAmountUi());
+        return _pageRoute(
+            settings: settings,
+            widget: InputCardlessAmountUi(
+              AzaAgentName: args,
+            ));
         break;
 
       ///
@@ -292,6 +299,29 @@ class RouteGenerator {
       ///
       case AppRouteName.azaAgentPin:
         return _pageRoute(settings: settings, widget: AzaAgentPinUi());
+        break;
+
+      ///
+      ///
+      ///
+      case AppRouteName.locateAzaAgent:
+        return _pageRoute(settings: settings, widget: LocateAzaAgent(
+          azaAgentData: args,
+        ));
+        break;
+
+      ///
+      ///
+      ///
+      case AppRouteName.saveBeneficiary:
+        return _pageRoute(settings: settings, widget: SaveBeneficiary());
+        break;
+
+      ///
+      ///
+      ///
+      case AppRouteName.azaAgentProfile:
+        return _pageRoute(settings: settings, widget: AzaAgentProfile());
         break;
 
       default:

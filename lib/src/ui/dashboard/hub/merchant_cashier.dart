@@ -30,7 +30,7 @@ class _MerchantCashierState extends State<MerchantCashier> {
     String _chosenValue;
     var size = MediaQuery.of(context).size;
 
-    print('Cashmerchant ' + widget.merchantData.tag);
+    print('Cash merchant ' + widget.merchantData.tag);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),

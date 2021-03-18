@@ -92,12 +92,13 @@ class _MerchantHubUIState extends State<MerchantHubUI> {
               child: FutureBuilder<MerchantResponse>(
                 future: merchantList,
                 builder: (context, snapshot) {
-                  return snapshot.connectionState != ConnectionState.done
-                      ? Center(
+                  if (snapshot.connectionState != ConnectionState.done) {
+                    return Center(
                           child: CircularProgressIndicator(),
-                        )
-                      : snapshot.hasData
-                          ? ListView.builder(
+                        );
+                  } else {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
                               itemCount: snapshot.data.data.length,
                               itemBuilder: (context, index) {
                                 var merchantData = snapshot.data.data[index];
@@ -106,7 +107,7 @@ class _MerchantHubUIState extends State<MerchantHubUI> {
                                   child: MerchantItem(
                                     onSelected: () {
                                       print(
-                                          'CashTell ' + merchantData.firstName);
+                                          'CashTill ' + merchantData.firstName);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -122,8 +123,9 @@ class _MerchantHubUIState extends State<MerchantHubUI> {
                                     merchantName: merchantData.businessName,
                                   ),
                                 );
-                              })
-                          : Center(
+                              });
+                    } else {
+                      return Center(
                               child: Container(
                                 height: MediaQuery.of(context).size.width / 2,
                                 child: Center(
@@ -162,6 +164,8 @@ class _MerchantHubUIState extends State<MerchantHubUI> {
                                     borderRadius: BorderRadius.circular(30)),
                               ),
                             );
+                    }
+                  }
                 },
               ),
             )

@@ -45,13 +45,16 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
         var deviceid = AppStrings.empty;
         if (UniversalPlatform.isAndroid) {
           deviceid = await repository.getDeviceId();
+
         }
+        print(deviceid);
         final response = await repository.signIn(
             signIn: SignIn(
                 tag: '${signin.azatag}',
                 password: signin.password,
-                // device: deviceid
-                device: "190-system-08085303817"));
+               // device: deviceid
+               device: '190-system-08085303817'
+            ));
         //_logger.e(response.message);
         //todo: store inside hivedb user
         if (response.status == 200) {

@@ -9,6 +9,7 @@ part of 'notification_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$NotificationLoadedTearOff {
   const _$NotificationLoadedTearOff();
 
@@ -31,9 +32,11 @@ class _$NotificationLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NotificationLoaded = _$NotificationLoadedTearOff();
 
+/// @nodoc
 mixin _$NotificationLoaded {
   int get success;
   int get error;
@@ -42,9 +45,11 @@ mixin _$NotificationLoaded {
   List<RefFund> get refFund;
   List<Fund> get fundrequestlist;
 
+  @JsonKey(ignore: true)
   $NotificationLoadedCopyWith<NotificationLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $NotificationLoadedCopyWith<$Res> {
   factory $NotificationLoadedCopyWith(
           NotificationLoaded value, $Res Function(NotificationLoaded) then) =
@@ -58,6 +63,7 @@ abstract class $NotificationLoadedCopyWith<$Res> {
       List<Fund> fundrequestlist});
 }
 
+/// @nodoc
 class _$NotificationLoadedCopyWithImpl<$Res>
     implements $NotificationLoadedCopyWith<$Res> {
   _$NotificationLoadedCopyWithImpl(this._value, this._then);
@@ -91,6 +97,7 @@ class _$NotificationLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$NotificationLoadedCopyWith<$Res>
     implements $NotificationLoadedCopyWith<$Res> {
   factory _$NotificationLoadedCopyWith(
@@ -106,6 +113,7 @@ abstract class _$NotificationLoadedCopyWith<$Res>
       List<Fund> fundrequestlist});
 }
 
+/// @nodoc
 class __$NotificationLoadedCopyWithImpl<$Res>
     extends _$NotificationLoadedCopyWithImpl<$Res>
     implements _$NotificationLoadedCopyWith<$Res> {
@@ -141,6 +149,7 @@ class __$NotificationLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_NotificationLoaded
     with DiagnosticableTreeMixin
     implements _NotificationLoaded {
@@ -224,6 +233,7 @@ class _$_NotificationLoaded
       const DeepCollectionEquality().hash(refFund) ^
       const DeepCollectionEquality().hash(fundrequestlist);
 
+  @JsonKey(ignore: true)
   @override
   _$NotificationLoadedCopyWith<_NotificationLoaded> get copyWith =>
       __$NotificationLoadedCopyWithImpl<_NotificationLoaded>(this, _$identity);
@@ -251,5 +261,6 @@ abstract class _NotificationLoaded implements NotificationLoaded {
   @override
   List<Fund> get fundrequestlist;
   @override
+  @JsonKey(ignore: true)
   _$NotificationLoadedCopyWith<_NotificationLoaded> get copyWith;
 }

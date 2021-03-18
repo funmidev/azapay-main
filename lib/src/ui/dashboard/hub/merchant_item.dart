@@ -16,7 +16,7 @@ class MerchantItem extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     var buttonPayName = 'Pay ' + merchantCashTag;
     return Container(
       width: size.width,

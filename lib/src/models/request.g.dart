@@ -116,6 +116,7 @@ Map<String, dynamic> _$OtpVerifyToJson(OtpVerify instance) => <String, dynamic>{
 
 CreateAccountPasword _$CreateAccountPaswordFromJson(Map<String, dynamic> json) {
   return CreateAccountPasword(
+    json['confirmPassword'] as String,
     password: json['password'] as String,
     phone: json['phone'] as String,
   );
@@ -125,6 +126,7 @@ Map<String, dynamic> _$CreateAccountPaswordToJson(
         CreateAccountPasword instance) =>
     <String, dynamic>{
       'password': instance.password,
+      'confirmPassword': instance.confirmPassword,
       'phone': instance.phone,
     };
 

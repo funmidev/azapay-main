@@ -9,6 +9,9 @@ class RoundedInputField extends StatelessWidget {
   final IconData icon;
   final TextInputType inputType;
   final ValueChanged<String> onChanged;
+  final bool isEnabled;
+  final Color textColor;
+  final Color borderColor;
 
   final FormFieldValidator<String> validateForm;
 
@@ -17,7 +20,10 @@ class RoundedInputField extends StatelessWidget {
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
-    this.validateForm, this.inputType = TextInputType.text,
+    this.validateForm,
+    this.inputType = TextInputType.text,
+    this.isEnabled,
+    this.textColor = Colors.black, this.borderColor = Colors.grey,
   }) : super(key: key);
 
   @override
@@ -27,24 +33,28 @@ class RoundedInputField extends StatelessWidget {
         validator: validateForm,
         onChanged: onChanged,
 
+        enabled: isEnabled,
         keyboardType: inputType,
-        style: GoogleFonts.lato(
-          fontSize: 20,
-        ),
+        style: GoogleFonts.lato(fontSize: 20, color: textColor),
         decoration: InputDecoration(
-          prefixIcon: Icon(
-            icon,
-            color: Colors.amber,
-          ),
+          // prefixIcon: Icon(
+          //   icon,
+          //   color: Colors.amber,
+          // ),
           fillColor: Colors.white,
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[500]), borderRadius: BorderRadius.circular(20)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorSets.colorPrimaryLightYellowDashBoard),
-                borderRadius: BorderRadius.circular(20)),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)))
-          // border: InputBorder.none,
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color:borderColor),
+              borderRadius: BorderRadius.circular(20)),
+          focusedBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: ColorSets.colorPrimaryLightYellowDashBoard),
+              borderRadius: BorderRadius.circular(20)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
         ),
+        // border: InputBorder.none,
+      ),
     );
   }
 }

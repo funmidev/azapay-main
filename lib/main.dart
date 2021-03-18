@@ -1,9 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/rendering.dart';
-// import 'package:flutter_freshchat/flutter_freshchat.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:isolate_bloc/isolate_bloc.dart';
-import 'package:universal_platform/universal_platform.dart';
 import 'package:azapay/app/app.dart';
 import 'package:azapay/route.dart';
 import 'package:azapay/src/blocs/blocs.dart';
@@ -11,13 +5,17 @@ import 'package:azapay/src/blocs/modifypasssword/modifypassword_bloc.dart';
 import 'package:azapay/src/resources/resources.dart';
 import 'package:azapay/src/ui/ui.dart';
 import 'package:azapay/src/widget/widget.dart';
-import 'package:device_preview/device_preview.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart' as device;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+// import 'package:flutter_freshchat/flutter_freshchat.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:isolate_bloc/isolate_bloc.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import 'isolate_initialization.dart';
 
@@ -28,9 +26,12 @@ void main() async {
 
   await initialize(isolateInitialization);
 
-  await device.SystemChrome.setPreferredOrientations([device.DeviceOrientation.portraitUp]);
-  await device.SystemChrome.setEnabledSystemUIOverlays([device.SystemUiOverlay.bottom]);
-  await device.SystemChrome.setSystemUIOverlayStyle(device.SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  await device.SystemChrome.setPreferredOrientations(
+      [device.DeviceOrientation.portraitUp]);
+  await device.SystemChrome.setEnabledSystemUIOverlays(
+      [device.SystemUiOverlay.bottom]);
+  await device.SystemChrome.setSystemUIOverlayStyle(
+      device.SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   // await FlutterFreshchat.init(
   //     appID: AppEnv.appID, appKey: AppEnv.appKEY, domain: 'https://msdk.freshchat.com', cameraEnabled: false);
   // print(result);
@@ -109,7 +110,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return StyledToast(
-      locale: const Locale('en', 'US'), //You have to set this parameters to your locale
+      locale: const Locale(
+          'en', 'US'), //You have to set this parameters to your locale
       textStyle: TextStyle(fontSize: 16.0, color: Colors.white),
       backgroundColor: Color(0x99000000),
       borderRadius: BorderRadius.circular(5.0),
@@ -173,14 +175,16 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                 ),
                 BlocProvider(
                   create: (context) => NotificationBloc(
-                    transactionpinBloc: BlocProvider.of<TransactionpinBloc>(context),
+                    transactionpinBloc:
+                        BlocProvider.of<TransactionpinBloc>(context),
                     repository: RepositoryProvider.of<Repository>(context),
                   ),
                 ),
                 BlocProvider(
                   create: (context) => ProfileBloc(
                     navigatorState: _navigatorKey,
-                    notificationBloc: BlocProvider.of<NotificationBloc>(context),
+                    notificationBloc:
+                        BlocProvider.of<NotificationBloc>(context),
                     walletBloc: BlocProvider.of<WalletBloc>(context),
                     repository: RepositoryProvider.of<Repository>(context),
                   ),
@@ -190,7 +194,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                     navigatorState: _navigatorKey,
                     profileBloc: BlocProvider.of<ProfileBloc>(context),
                     walletBloc: BlocProvider.of<WalletBloc>(context),
-                    notificationBloc: BlocProvider.of<NotificationBloc>(context),
+                    notificationBloc:
+                        BlocProvider.of<NotificationBloc>(context),
                     repository: RepositoryProvider.of<Repository>(context),
                   ),
                 ),
@@ -247,7 +252,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                   // closer together (more dense) than on mobile platforms.
                   visualDensity: VisualDensity.adaptivePlatformDensity,
                 ),
-                home: BlocListener<HomeauthnavigationBloc, HomeauthnavigationState>(
+                home: BlocListener<HomeauthnavigationBloc,
+                    HomeauthnavigationState>(
                   listener: (context, state) {
                     if (UniversalPlatform.isWeb) {
                     } else {
@@ -269,14 +275,20 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                                   acceptedtitleColor: null,
                                   acceptedColor: null,
                                   centerbutton: () {
-                                    BlocProvider.of<HomeauthnavigationBloc>(context).add(CheckNavigation());
-                                    Future.delayed(Duration(milliseconds: 900), () {
-                                      Navigator.of(context, rootNavigator: true).pop();
+                                    BlocProvider.of<HomeauthnavigationBloc>(
+                                            context)
+                                        .add(CheckNavigation());
+                                    Future.delayed(Duration(milliseconds: 900),
+                                        () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
                                     });
                                   },
-                                  centertitle: AppStrings.extractdeviceinfoRetry,
+                                  centertitle:
+                                      AppStrings.extractdeviceinfoRetry,
                                   centerColor: ColorSets.colorPrimaryRed,
-                                  centertitleColor: ColorSets.colorPrimaryWhite);
+                                  centertitleColor:
+                                      ColorSets.colorPrimaryWhite);
                             },
                             barrierDismissible: false,
                             barrierLabel: '',
@@ -284,14 +296,17 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                             transitionDuration: Duration(milliseconds: 300),
                             transitionBuilder: (context, animation, __, child) {
                               return SlideTransition(
-                                position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(animation),
+                                position: Tween(
+                                        begin: Offset(0, 1), end: Offset(0, 0))
+                                    .animate(animation),
                                 child: child,
                               );
                             });
                       }
                     }
                   },
-                  child: BlocBuilder<HomeauthnavigationBloc, HomeauthnavigationState>(builder: (context, state) {
+                  child: BlocBuilder<HomeauthnavigationBloc,
+                      HomeauthnavigationState>(builder: (context, state) {
                     if (UniversalPlatform.isWeb) {
                       // return HomeWebUI();
                       //return OtpCodeUIWeb();
@@ -303,11 +318,13 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                       if (state is HomeauthnavigationOnBoarding) {
                         return OnBoardingUI(); //todo: ADD OnBoardingUI() method not OnBoardMainUI()
                       } else if (state is HomeauthnavigationSwitchAccount) {
-                        return SwitchAccountUI(azatag: state.basicResponse.data);
+                        return SwitchAccountUI(
+                            azatag: state.basicResponse.data);
                       }
                       return LoadingUI(
                         function: (_) {
-                          BlocProvider.of<HomeauthnavigationBloc>(context).add(CheckNavigation());
+                          BlocProvider.of<HomeauthnavigationBloc>(context)
+                              .add(CheckNavigation());
                         },
                       );
                     }

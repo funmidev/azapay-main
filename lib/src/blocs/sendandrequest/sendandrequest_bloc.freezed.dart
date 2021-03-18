@@ -9,6 +9,7 @@ part of 'sendandrequest_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SendandrequestEventTearOff {
   const _$SendandrequestEventTearOff();
 
@@ -63,61 +64,65 @@ class _$SendandrequestEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SendandrequestEvent = _$SendandrequestEventTearOff();
 
+/// @nodoc
 mixin _$SendandrequestEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $SendandrequestEventCopyWith<$Res> {
   factory $SendandrequestEventCopyWith(
           SendandrequestEvent value, $Res Function(SendandrequestEvent) then) =
       _$SendandrequestEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SendandrequestEventCopyWithImpl<$Res>
     implements $SendandrequestEventCopyWith<$Res> {
   _$SendandrequestEventCopyWithImpl(this._value, this._then);
@@ -127,12 +132,14 @@ class _$SendandrequestEventCopyWithImpl<$Res>
   final $Res Function(SendandrequestEvent) _then;
 }
 
+/// @nodoc
 abstract class _$ContactsCopyWith<$Res> {
   factory _$ContactsCopyWith(_Contacts value, $Res Function(_Contacts) then) =
       __$ContactsCopyWithImpl<$Res>;
   $Res call({double amount, bool screen});
 }
 
+/// @nodoc
 class __$ContactsCopyWithImpl<$Res>
     extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$ContactsCopyWith<$Res> {
@@ -154,6 +161,7 @@ class __$ContactsCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Contacts with DiagnosticableTreeMixin implements _Contacts {
   _$_Contacts({this.amount, this.screen});
 
@@ -192,20 +200,21 @@ class _$_Contacts with DiagnosticableTreeMixin implements _Contacts {
       const DeepCollectionEquality().hash(amount) ^
       const DeepCollectionEquality().hash(screen);
 
+  @JsonKey(ignore: true)
   @override
   _$ContactsCopyWith<_Contacts> get copyWith =>
       __$ContactsCopyWithImpl<_Contacts>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -219,15 +228,15 @@ class _$_Contacts with DiagnosticableTreeMixin implements _Contacts {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (contacts != null) {
@@ -238,15 +247,15 @@ class _$_Contacts with DiagnosticableTreeMixin implements _Contacts {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -260,15 +269,15 @@ class _$_Contacts with DiagnosticableTreeMixin implements _Contacts {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (contacts != null) {
@@ -283,15 +292,18 @@ abstract class _Contacts implements SendandrequestEvent {
 
   double get amount;
   bool get screen;
+  @JsonKey(ignore: true)
   _$ContactsCopyWith<_Contacts> get copyWith;
 }
 
+/// @nodoc
 abstract class _$AddNoteCopyWith<$Res> {
   factory _$AddNoteCopyWith(_AddNote value, $Res Function(_AddNote) then) =
       __$AddNoteCopyWithImpl<$Res>;
   $Res call({String note});
 }
 
+/// @nodoc
 class __$AddNoteCopyWithImpl<$Res>
     extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$AddNoteCopyWith<$Res> {
@@ -311,6 +323,7 @@ class __$AddNoteCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AddNote with DiagnosticableTreeMixin implements _AddNote {
   _$_AddNote({this.note});
 
@@ -342,20 +355,21 @@ class _$_AddNote with DiagnosticableTreeMixin implements _AddNote {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(note);
 
+  @JsonKey(ignore: true)
   @override
   _$AddNoteCopyWith<_AddNote> get copyWith =>
       __$AddNoteCopyWithImpl<_AddNote>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -369,15 +383,15 @@ class _$_AddNote with DiagnosticableTreeMixin implements _AddNote {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (addnote != null) {
@@ -388,15 +402,15 @@ class _$_AddNote with DiagnosticableTreeMixin implements _AddNote {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -410,15 +424,15 @@ class _$_AddNote with DiagnosticableTreeMixin implements _AddNote {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (addnote != null) {
@@ -432,15 +446,18 @@ abstract class _AddNote implements SendandrequestEvent {
   factory _AddNote({String note}) = _$_AddNote;
 
   String get note;
+  @JsonKey(ignore: true)
   _$AddNoteCopyWith<_AddNote> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ClientCopyWith<$Res> {
   factory _$ClientCopyWith(_Client value, $Res Function(_Client) then) =
       __$ClientCopyWithImpl<$Res>;
   $Res call({String clientid});
 }
 
+/// @nodoc
 class __$ClientCopyWithImpl<$Res>
     extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$ClientCopyWith<$Res> {
@@ -460,6 +477,7 @@ class __$ClientCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Client with DiagnosticableTreeMixin implements _Client {
   _$_Client({this.clientid});
 
@@ -492,20 +510,21 @@ class _$_Client with DiagnosticableTreeMixin implements _Client {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(clientid);
 
+  @JsonKey(ignore: true)
   @override
   _$ClientCopyWith<_Client> get copyWith =>
       __$ClientCopyWithImpl<_Client>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -519,15 +538,15 @@ class _$_Client with DiagnosticableTreeMixin implements _Client {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (clientid != null) {
@@ -538,15 +557,15 @@ class _$_Client with DiagnosticableTreeMixin implements _Client {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -560,15 +579,15 @@ class _$_Client with DiagnosticableTreeMixin implements _Client {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (clientid != null) {
@@ -582,9 +601,11 @@ abstract class _Client implements SendandrequestEvent {
   factory _Client({String clientid}) = _$_Client;
 
   String get clientid;
+  @JsonKey(ignore: true)
   _$ClientCopyWith<_Client> get copyWith;
 }
 
+/// @nodoc
 abstract class _$IsRadioSelectedPhoneNumberCopyWith<$Res> {
   factory _$IsRadioSelectedPhoneNumberCopyWith(
           _IsRadioSelectedPhoneNumber value,
@@ -593,6 +614,7 @@ abstract class _$IsRadioSelectedPhoneNumberCopyWith<$Res> {
   $Res call({int selecteditem});
 }
 
+/// @nodoc
 class __$IsRadioSelectedPhoneNumberCopyWithImpl<$Res>
     extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$IsRadioSelectedPhoneNumberCopyWith<$Res> {
@@ -615,6 +637,7 @@ class __$IsRadioSelectedPhoneNumberCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_IsRadioSelectedPhoneNumber
     with DiagnosticableTreeMixin
     implements _IsRadioSelectedPhoneNumber {
@@ -650,6 +673,7 @@ class _$_IsRadioSelectedPhoneNumber
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(selecteditem);
 
+  @JsonKey(ignore: true)
   @override
   _$IsRadioSelectedPhoneNumberCopyWith<_IsRadioSelectedPhoneNumber>
       get copyWith => __$IsRadioSelectedPhoneNumberCopyWithImpl<
@@ -657,14 +681,14 @@ class _$_IsRadioSelectedPhoneNumber
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -678,15 +702,15 @@ class _$_IsRadioSelectedPhoneNumber
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isRadioSelectedPhoneNumber != null) {
@@ -697,15 +721,15 @@ class _$_IsRadioSelectedPhoneNumber
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -719,15 +743,15 @@ class _$_IsRadioSelectedPhoneNumber
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isRadioSelectedPhoneNumber != null) {
@@ -742,10 +766,12 @@ abstract class _IsRadioSelectedPhoneNumber implements SendandrequestEvent {
       _$_IsRadioSelectedPhoneNumber;
 
   int get selecteditem;
+  @JsonKey(ignore: true)
   _$IsRadioSelectedPhoneNumberCopyWith<_IsRadioSelectedPhoneNumber>
       get copyWith;
 }
 
+/// @nodoc
 abstract class _$IsContactFetchedCopyWith<$Res> {
   factory _$IsContactFetchedCopyWith(
           _IsContactFetched value, $Res Function(_IsContactFetched) then) =
@@ -753,6 +779,7 @@ abstract class _$IsContactFetchedCopyWith<$Res> {
   $Res call({bool fetched});
 }
 
+/// @nodoc
 class __$IsContactFetchedCopyWithImpl<$Res>
     extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$IsContactFetchedCopyWith<$Res> {
@@ -773,6 +800,7 @@ class __$IsContactFetchedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_IsContactFetched
     with DiagnosticableTreeMixin
     implements _IsContactFetched {
@@ -806,20 +834,21 @@ class _$_IsContactFetched
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(fetched);
 
+  @JsonKey(ignore: true)
   @override
   _$IsContactFetchedCopyWith<_IsContactFetched> get copyWith =>
       __$IsContactFetchedCopyWithImpl<_IsContactFetched>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -833,15 +862,15 @@ class _$_IsContactFetched
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isContactFetched != null) {
@@ -852,15 +881,15 @@ class _$_IsContactFetched
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -874,15 +903,15 @@ class _$_IsContactFetched
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isContactFetched != null) {
@@ -896,15 +925,18 @@ abstract class _IsContactFetched implements SendandrequestEvent {
   factory _IsContactFetched({bool fetched}) = _$_IsContactFetched;
 
   bool get fetched;
+  @JsonKey(ignore: true)
   _$IsContactFetchedCopyWith<_IsContactFetched> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SubmitCopyWith<$Res> {
   factory _$SubmitCopyWith(_Submit value, $Res Function(_Submit) then) =
       __$SubmitCopyWithImpl<$Res>;
   $Res call({String pin});
 }
 
+/// @nodoc
 class __$SubmitCopyWithImpl<$Res>
     extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$SubmitCopyWith<$Res> {
@@ -924,6 +956,7 @@ class __$SubmitCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Submit with DiagnosticableTreeMixin implements _Submit {
   _$_Submit({this.pin});
 
@@ -955,20 +988,21 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(pin);
 
+  @JsonKey(ignore: true)
   @override
   _$SubmitCopyWith<_Submit> get copyWith =>
       __$SubmitCopyWithImpl<_Submit>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -982,15 +1016,15 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {
@@ -1001,15 +1035,15 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -1023,15 +1057,15 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {
@@ -1045,15 +1079,18 @@ abstract class _Submit implements SendandrequestEvent {
   factory _Submit({String pin}) = _$_Submit;
 
   String get pin;
+  @JsonKey(ignore: true)
   _$SubmitCopyWith<_Submit> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ClearCopyWith<$Res> {
   factory _$ClearCopyWith(_Clear value, $Res Function(_Clear) then) =
       __$ClearCopyWithImpl<$Res>;
   $Res call({bool exit});
 }
 
+/// @nodoc
 class __$ClearCopyWithImpl<$Res> extends _$SendandrequestEventCopyWithImpl<$Res>
     implements _$ClearCopyWith<$Res> {
   __$ClearCopyWithImpl(_Clear _value, $Res Function(_Clear) _then)
@@ -1072,6 +1109,7 @@ class __$ClearCopyWithImpl<$Res> extends _$SendandrequestEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Clear with DiagnosticableTreeMixin implements _Clear {
   _$_Clear({this.exit = false}) : assert(exit != null);
 
@@ -1104,20 +1142,21 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(exit);
 
+  @JsonKey(ignore: true)
   @override
   _$ClearCopyWith<_Clear> get copyWith =>
       __$ClearCopyWithImpl<_Clear>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result contacts(double amount, bool screen),
-    @required Result addnote(String note),
-    @required Result clientid(String clientid),
-    @required Result isRadioSelectedPhoneNumber(int selecteditem),
-    @required Result isContactFetched(bool fetched),
-    @required Result submit(String pin),
-    @required Result clear(bool exit),
+  TResult when<TResult extends Object>({
+    @required TResult contacts(double amount, bool screen),
+    @required TResult addnote(String note),
+    @required TResult clientid(String clientid),
+    @required TResult isRadioSelectedPhoneNumber(int selecteditem),
+    @required TResult isContactFetched(bool fetched),
+    @required TResult submit(String pin),
+    @required TResult clear(bool exit),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -1131,15 +1170,15 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result contacts(double amount, bool screen),
-    Result addnote(String note),
-    Result clientid(String clientid),
-    Result isRadioSelectedPhoneNumber(int selecteditem),
-    Result isContactFetched(bool fetched),
-    Result submit(String pin),
-    Result clear(bool exit),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult contacts(double amount, bool screen),
+    TResult addnote(String note),
+    TResult clientid(String clientid),
+    TResult isRadioSelectedPhoneNumber(int selecteditem),
+    TResult isContactFetched(bool fetched),
+    TResult submit(String pin),
+    TResult clear(bool exit),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (clear != null) {
@@ -1150,15 +1189,15 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result contacts(_Contacts value),
-    @required Result addnote(_AddNote value),
-    @required Result clientid(_Client value),
+  TResult map<TResult extends Object>({
+    @required TResult contacts(_Contacts value),
+    @required TResult addnote(_AddNote value),
+    @required TResult clientid(_Client value),
     @required
-        Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    @required Result isContactFetched(_IsContactFetched value),
-    @required Result submit(_Submit value),
-    @required Result clear(_Clear value),
+        TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    @required TResult isContactFetched(_IsContactFetched value),
+    @required TResult submit(_Submit value),
+    @required TResult clear(_Clear value),
   }) {
     assert(contacts != null);
     assert(addnote != null);
@@ -1172,15 +1211,15 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result contacts(_Contacts value),
-    Result addnote(_AddNote value),
-    Result clientid(_Client value),
-    Result isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
-    Result isContactFetched(_IsContactFetched value),
-    Result submit(_Submit value),
-    Result clear(_Clear value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult contacts(_Contacts value),
+    TResult addnote(_AddNote value),
+    TResult clientid(_Client value),
+    TResult isRadioSelectedPhoneNumber(_IsRadioSelectedPhoneNumber value),
+    TResult isContactFetched(_IsContactFetched value),
+    TResult submit(_Submit value),
+    TResult clear(_Clear value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (clear != null) {
@@ -1194,9 +1233,11 @@ abstract class _Clear implements SendandrequestEvent {
   factory _Clear({bool exit}) = _$_Clear;
 
   bool get exit;
+  @JsonKey(ignore: true)
   _$ClearCopyWith<_Clear> get copyWith;
 }
 
+/// @nodoc
 class _$InputDataFundStateTearOff {
   const _$InputDataFundStateTearOff();
 
@@ -1229,9 +1270,11 @@ class _$InputDataFundStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $InputDataFundState = _$InputDataFundStateTearOff();
 
+/// @nodoc
 mixin _$InputDataFundState {
   bool get screen;
   double get amount;
@@ -1245,9 +1288,11 @@ mixin _$InputDataFundState {
   List<DeviceContacts> get devicecontact;
   List<Contacts> get contacts;
 
+  @JsonKey(ignore: true)
   $InputDataFundStateCopyWith<InputDataFundState> get copyWith;
 }
 
+/// @nodoc
 abstract class $InputDataFundStateCopyWith<$Res> {
   factory $InputDataFundStateCopyWith(
           InputDataFundState value, $Res Function(InputDataFundState) then) =
@@ -1266,6 +1311,7 @@ abstract class $InputDataFundStateCopyWith<$Res> {
       List<Contacts> contacts});
 }
 
+/// @nodoc
 class _$InputDataFundStateCopyWithImpl<$Res>
     implements $InputDataFundStateCopyWith<$Res> {
   _$InputDataFundStateCopyWithImpl(this._value, this._then);
@@ -1313,6 +1359,7 @@ class _$InputDataFundStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$InputDataFundStateCopyWith<$Res>
     implements $InputDataFundStateCopyWith<$Res> {
   factory _$InputDataFundStateCopyWith(
@@ -1333,6 +1380,7 @@ abstract class _$InputDataFundStateCopyWith<$Res>
       List<Contacts> contacts});
 }
 
+/// @nodoc
 class __$InputDataFundStateCopyWithImpl<$Res>
     extends _$InputDataFundStateCopyWithImpl<$Res>
     implements _$InputDataFundStateCopyWith<$Res> {
@@ -1382,6 +1430,7 @@ class __$InputDataFundStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_InputDataFundState
     with DiagnosticableTreeMixin
     implements _InputDataFundState {
@@ -1510,6 +1559,7 @@ class _$_InputDataFundState
       const DeepCollectionEquality().hash(devicecontact) ^
       const DeepCollectionEquality().hash(contacts);
 
+  @JsonKey(ignore: true)
   @override
   _$InputDataFundStateCopyWith<_InputDataFundState> get copyWith =>
       __$InputDataFundStateCopyWithImpl<_InputDataFundState>(this, _$identity);
@@ -1552,5 +1602,6 @@ abstract class _InputDataFundState implements InputDataFundState {
   @override
   List<Contacts> get contacts;
   @override
+  @JsonKey(ignore: true)
   _$InputDataFundStateCopyWith<_InputDataFundState> get copyWith;
 }

@@ -9,6 +9,7 @@ part of 'wallet_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$WalletStateLoadedTearOff {
   const _$WalletStateLoadedTearOff();
 
@@ -25,17 +26,21 @@ class _$WalletStateLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $WalletStateLoaded = _$WalletStateLoadedTearOff();
 
+/// @nodoc
 mixin _$WalletStateLoaded {
   Wallet get wallet;
   List<Contacts> get contacts;
   int get transferswitch;
 
+  @JsonKey(ignore: true)
   $WalletStateLoadedCopyWith<WalletStateLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $WalletStateLoadedCopyWith<$Res> {
   factory $WalletStateLoadedCopyWith(
           WalletStateLoaded value, $Res Function(WalletStateLoaded) then) =
@@ -43,6 +48,7 @@ abstract class $WalletStateLoadedCopyWith<$Res> {
   $Res call({Wallet wallet, List<Contacts> contacts, int transferswitch});
 }
 
+/// @nodoc
 class _$WalletStateLoadedCopyWithImpl<$Res>
     implements $WalletStateLoadedCopyWith<$Res> {
   _$WalletStateLoadedCopyWithImpl(this._value, this._then);
@@ -68,6 +74,7 @@ class _$WalletStateLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$WalletStateLoadedCopyWith<$Res>
     implements $WalletStateLoadedCopyWith<$Res> {
   factory _$WalletStateLoadedCopyWith(
@@ -77,6 +84,7 @@ abstract class _$WalletStateLoadedCopyWith<$Res>
   $Res call({Wallet wallet, List<Contacts> contacts, int transferswitch});
 }
 
+/// @nodoc
 class __$WalletStateLoadedCopyWithImpl<$Res>
     extends _$WalletStateLoadedCopyWithImpl<$Res>
     implements _$WalletStateLoadedCopyWith<$Res> {
@@ -104,6 +112,7 @@ class __$WalletStateLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WalletStateLoaded
     with DiagnosticableTreeMixin
     implements _WalletStateLoaded {
@@ -161,6 +170,7 @@ class _$_WalletStateLoaded
       const DeepCollectionEquality().hash(contacts) ^
       const DeepCollectionEquality().hash(transferswitch);
 
+  @JsonKey(ignore: true)
   @override
   _$WalletStateLoadedCopyWith<_WalletStateLoaded> get copyWith =>
       __$WalletStateLoadedCopyWithImpl<_WalletStateLoaded>(this, _$identity);
@@ -179,5 +189,6 @@ abstract class _WalletStateLoaded implements WalletStateLoaded {
   @override
   int get transferswitch;
   @override
+  @JsonKey(ignore: true)
   _$WalletStateLoadedCopyWith<_WalletStateLoaded> get copyWith;
 }

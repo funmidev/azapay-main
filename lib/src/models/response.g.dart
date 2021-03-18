@@ -5,52 +5,6 @@ part of 'response.dart';
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
-class BasicResponseAdapter<T> extends TypeAdapter<BasicResponse<T>> {
-  BasicResponseAdapter({@required this.typeId}) : assert(typeId != null);
-  @override
-  final int typeId;
-
-  @override
-  BasicResponse<T> read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return BasicResponse(
-      code: fields[0] as String,
-      data: fields[1] as T,
-      message: fields[2] as String,
-      status: fields[3] as int,
-      token: fields[4] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, BasicResponse obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.code)
-      ..writeByte(1)
-      ..write(obj.data)
-      ..writeByte(2)
-      ..write(obj.message)
-      ..writeByte(3)
-      ..write(obj.status)
-      ..writeByte(4)
-      ..write(obj.token);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BasicResponseAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
 
 class DataAdapter extends TypeAdapter<Data> {
   @override
@@ -518,24 +472,6 @@ Map<String, dynamic> _$BasicResponseToJson<T>(BasicResponse<T> instance) =>
       'accountType': instance.accountType,
       'token': instance.token,
     };
-
-//Get Merchant response json to object
-
-// // GetMerchantResponse _$GetMerchantFromJson(Map<String, dynamic> json) {
-// //   return GetMerchantResponse(
-// //     code: json['code'] as String,
-// //     status: json['status'] as int,
-// //     data: json['data'] == null
-// //         ? null
-// //         : String
-// //   );
-// }
-//
-// Map<String, dynamic> _$MerchantResponseToJson(GetMerchantResponse instance) => <String, dynamic>{
-//   'code': instance.code,
-//   'data': instance.data,
-//   'status': instance.status,
-// };
 
 FundTransferUser _$FundTransferUserFromJson(Map<String, dynamic> json) {
   return FundTransferUser(

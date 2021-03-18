@@ -9,6 +9,7 @@ part of 'qrscan_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$QrScanLoadedTearOff {
   const _$QrScanLoadedTearOff();
 
@@ -31,9 +32,11 @@ class _$QrScanLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $QrScanLoaded = _$QrScanLoadedTearOff();
 
+/// @nodoc
 mixin _$QrScanLoaded {
   String get result;
   double get amount;
@@ -42,9 +45,11 @@ mixin _$QrScanLoaded {
   int get error;
   String get responsemessage;
 
+  @JsonKey(ignore: true)
   $QrScanLoadedCopyWith<QrScanLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $QrScanLoadedCopyWith<$Res> {
   factory $QrScanLoadedCopyWith(
           QrScanLoaded value, $Res Function(QrScanLoaded) then) =
@@ -58,6 +63,7 @@ abstract class $QrScanLoadedCopyWith<$Res> {
       String responsemessage});
 }
 
+/// @nodoc
 class _$QrScanLoadedCopyWithImpl<$Res> implements $QrScanLoadedCopyWith<$Res> {
   _$QrScanLoadedCopyWithImpl(this._value, this._then);
 
@@ -87,6 +93,7 @@ class _$QrScanLoadedCopyWithImpl<$Res> implements $QrScanLoadedCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$QrScanLoadedCopyWith<$Res>
     implements $QrScanLoadedCopyWith<$Res> {
   factory _$QrScanLoadedCopyWith(
@@ -102,6 +109,7 @@ abstract class _$QrScanLoadedCopyWith<$Res>
       String responsemessage});
 }
 
+/// @nodoc
 class __$QrScanLoadedCopyWithImpl<$Res> extends _$QrScanLoadedCopyWithImpl<$Res>
     implements _$QrScanLoadedCopyWith<$Res> {
   __$QrScanLoadedCopyWithImpl(
@@ -133,6 +141,7 @@ class __$QrScanLoadedCopyWithImpl<$Res> extends _$QrScanLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_QrScanLoaded with DiagnosticableTreeMixin implements _QrScanLoaded {
   _$_QrScanLoaded(
       {this.result,
@@ -207,6 +216,7 @@ class _$_QrScanLoaded with DiagnosticableTreeMixin implements _QrScanLoaded {
       const DeepCollectionEquality().hash(error) ^
       const DeepCollectionEquality().hash(responsemessage);
 
+  @JsonKey(ignore: true)
   @override
   _$QrScanLoadedCopyWith<_QrScanLoaded> get copyWith =>
       __$QrScanLoadedCopyWithImpl<_QrScanLoaded>(this, _$identity);
@@ -234,5 +244,6 @@ abstract class _QrScanLoaded implements QrScanLoaded {
   @override
   String get responsemessage;
   @override
+  @JsonKey(ignore: true)
   _$QrScanLoadedCopyWith<_QrScanLoaded> get copyWith;
 }

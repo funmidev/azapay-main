@@ -9,6 +9,7 @@ part of 'bank_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BankLoadedTearOff {
   const _$BankLoadedTearOff();
 
@@ -28,7 +29,7 @@ class _$BankLoadedTearOff {
       int error = 100,
       String responsemessage,
       List<BankList> banklist = const [],
-      LinkBank linkbank = const LinkBank(data: [])}) {
+      LinkBank linkbank = const LinkBank(data: const [])}) {
     return _BankLoaded(
       bankcode: bankcode,
       bankname: bankname,
@@ -49,9 +50,11 @@ class _$BankLoadedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BankLoaded = _$BankLoadedTearOff();
 
+/// @nodoc
 mixin _$BankLoaded {
   String get bankcode;
   String get bankname;
@@ -69,9 +72,11 @@ mixin _$BankLoaded {
   List<BankList> get banklist;
   LinkBank get linkbank;
 
+  @JsonKey(ignore: true)
   $BankLoadedCopyWith<BankLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class $BankLoadedCopyWith<$Res> {
   factory $BankLoadedCopyWith(
           BankLoaded value, $Res Function(BankLoaded) then) =
@@ -94,6 +99,7 @@ abstract class $BankLoadedCopyWith<$Res> {
       LinkBank linkbank});
 }
 
+/// @nodoc
 class _$BankLoadedCopyWithImpl<$Res> implements $BankLoadedCopyWith<$Res> {
   _$BankLoadedCopyWithImpl(this._value, this._then);
 
@@ -150,6 +156,7 @@ class _$BankLoadedCopyWithImpl<$Res> implements $BankLoadedCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$BankLoadedCopyWith<$Res> implements $BankLoadedCopyWith<$Res> {
   factory _$BankLoadedCopyWith(
           _BankLoaded value, $Res Function(_BankLoaded) then) =
@@ -173,6 +180,7 @@ abstract class _$BankLoadedCopyWith<$Res> implements $BankLoadedCopyWith<$Res> {
       LinkBank linkbank});
 }
 
+/// @nodoc
 class __$BankLoadedCopyWithImpl<$Res> extends _$BankLoadedCopyWithImpl<$Res>
     implements _$BankLoadedCopyWith<$Res> {
   __$BankLoadedCopyWithImpl(
@@ -231,6 +239,7 @@ class __$BankLoadedCopyWithImpl<$Res> extends _$BankLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BankLoaded with DiagnosticableTreeMixin implements _BankLoaded {
   _$_BankLoaded(
       {this.bankcode = AppStrings.empty,
@@ -247,7 +256,7 @@ class _$_BankLoaded with DiagnosticableTreeMixin implements _BankLoaded {
       this.error = 100,
       this.responsemessage,
       this.banklist = const [],
-      this.linkbank = const LinkBank(data: [])})
+      this.linkbank = const LinkBank(data: const [])})
       : assert(bankcode != null),
         assert(searchtext != null),
         assert(success != null),
@@ -288,7 +297,7 @@ class _$_BankLoaded with DiagnosticableTreeMixin implements _BankLoaded {
   @JsonKey(defaultValue: const [])
   @override
   final List<BankList> banklist;
-  @JsonKey(defaultValue: const LinkBank(data: []))
+  @JsonKey(defaultValue: const LinkBank(data: const []))
   @override
   final LinkBank linkbank;
 
@@ -389,6 +398,7 @@ class _$_BankLoaded with DiagnosticableTreeMixin implements _BankLoaded {
       const DeepCollectionEquality().hash(banklist) ^
       const DeepCollectionEquality().hash(linkbank);
 
+  @JsonKey(ignore: true)
   @override
   _$BankLoadedCopyWith<_BankLoaded> get copyWith =>
       __$BankLoadedCopyWithImpl<_BankLoaded>(this, _$identity);
@@ -443,5 +453,6 @@ abstract class _BankLoaded implements BankLoaded {
   @override
   LinkBank get linkbank;
   @override
+  @JsonKey(ignore: true)
   _$BankLoadedCopyWith<_BankLoaded> get copyWith;
 }

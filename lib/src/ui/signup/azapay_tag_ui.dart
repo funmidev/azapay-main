@@ -1,12 +1,14 @@
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
 import 'package:azapay/src/models/models.dart';
+import 'package:azapay/src/resources/respository.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AzaPayTagUI extends StatefulWidget {
   const AzaPayTagUI({Key key}) : super(key: key);
@@ -17,11 +19,75 @@ class AzaPayTagUI extends StatefulWidget {
 
 class _AzaPayTagUIState extends State<AzaPayTagUI> {
   SignupBloc _bloc;
+  Repository repository;
+
   final GlobalKey<FormState> _formKey = GlobalKey();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+
+  void createAzaTag(Repository repository,  SignupLoaded state) async{
+    final response =
+        await repository.createTag(
+        createTag: CreateTag(tag: '${state.azatag}', phone: state.phoneno));
+    final deviceid = await repository.getDeviceId();
+
+    // todo: store azatag , password, deviceid in hivedb sign in --- Done
+    // _logger.i(response);
+    if (response.status == 200) {
+      await repository.addAzapayUser(
+          signIn: SignIn(tag: '${state.azatag}', password: state.password,
+              device: deviceid
+            // device: "190-system-08085303817"
+          ));
+
+      print('MerchantToken13 ' + response.token);
+      // await _dbprovider.addToken(basicResponse: response);
+      var prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userToken', response.token);
+      await Navigator.of(context, rootNavigator: true).pop();
+      await Navigator.pushNamed(
+        context,
+        AppRouteName.signup_success,
+        arguments: VerifiedSuccessResponse(
+            vector: AppVectors.registerSuccessfully,
+            title: AppStrings.signUpsuccessone,
+            subtitle: '',
+            titletextsyle: AppTextStyles.h1style.copyWith(
+              fontWeight: FontWeight.normal,
+            ),
+            subtitlevisibility: false,
+            onPressedbutton: () async {
+              await Navigator.pushReplacementNamed(context, AppRouteName.home).then((value) async {
+                await _bloc.add(ClearSignUp());
+                _formKey.currentState.reset();
+              });
+            },
+            buttonvisibility: true,
+            buttontitle: AppStrings.signUpsuccesstwo,
+            widgetbinding: (_) {}),
+      ).then((value) => _bloc.add(ReturnToInitial()));
+    } else  {
+      await Navigator.of(context, rootNavigator: true).pop();
+      _bloc.add(ReturnToInitial());
+      showToast(response.message,
+          backgroundColor: ColorSets.colorPrimaryRed,
+          context: context,
+          animation: StyledToastAnimation.slideFromTop,
+          reverseAnimation: StyledToastAnimation.slideToTop,
+          position: StyledToastPosition.top,
+          startOffset: Offset(0.0, -3.0),
+          reverseEndOffset: Offset(0.0, -3.0),
+          duration: Duration(seconds: 4),
+          //Animation duration   animDuration * 2 <= duration
+          animDuration: Duration(seconds: 1),
+          curve: Curves.elasticOut,
+          reverseCurve: Curves.fastOutSlowIn);
+    }
+  }
+
   @override
   void initState() {
+    repository: RepositoryProvider.of<Repository>(context);
     super.initState();
     _bloc = context.bloc<SignupBloc>();
   }
@@ -213,7 +279,8 @@ class _AzaPayTagUIState extends State<AzaPayTagUI> {
                                       navigatorfunc: (state is SignupLoaded)
                                           ? state.azatag.length >= 4
                                               ? () async {
-                                                  await _bloc.add(SubmitSignUpForm(screen: 4));
+                                                 // await _bloc.add(SubmitSignUpForm(screen: 4));
+                                        createAzaTag(repository, state);
                                                 }
                                               : null
                                           : null,
