@@ -86,7 +86,7 @@ packages:
     source: hosted
     version: "2.1.10"
   build_resolvers:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: build_resolvers
       url: "https://pub.dartlang.org"
@@ -196,7 +196,14 @@ packages:
       name: connectivity
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
+  connectivity_for_web:
+    dependency: transitive
+    description:
+      name: connectivity_for_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   connectivity_macos:
     dependency: transitive
     description:
@@ -486,9 +493,9 @@ packages:
       name: flutter_styled_toast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.2+3"
+    version: "2.0.0"
   flutter_svg:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
@@ -706,7 +713,7 @@ packages:
       name: logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.4"
+    version: "1.0.0"
   logging:
     dependency: transitive
     description:

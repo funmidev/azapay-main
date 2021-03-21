@@ -16,7 +16,7 @@ class _$ProfileLoadedTearOff {
 // ignore: unused_element
   _ProfileLoaded call(
       {SignUp signUp = const SignUp(
-          data: const Data(
+          data: Data(
               lastName: AppStrings.empty,
               firstName: AppStrings.empty,
               tag: AppStrings.empty)),
@@ -284,7 +284,7 @@ class __$ProfileLoadedCopyWithImpl<$Res>
 class _$_ProfileLoaded implements _ProfileLoaded {
   _$_ProfileLoaded(
       {this.signUp = const SignUp(
-          data: const Data(
+          data: Data(
               lastName: AppStrings.empty,
               firstName: AppStrings.empty,
               tag: AppStrings.empty)),
@@ -322,7 +322,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
 
   @JsonKey(
       defaultValue: const SignUp(
-          data: const Data(
+          data: Data(
               lastName: AppStrings.empty,
               firstName: AppStrings.empty,
               tag: AppStrings.empty)))

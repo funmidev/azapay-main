@@ -124,7 +124,7 @@ class Data {
 // }
 
 @JsonSerializable(nullable: true)
-@HiveType(typeId: 9)
+@HiveType(typeId: 1)
 class BasicResponse<T> {
   //otpresend
   //otpverify

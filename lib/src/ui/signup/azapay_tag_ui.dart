@@ -25,65 +25,6 @@ class _AzaPayTagUIState extends State<AzaPayTagUI> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 
-  void createAzaTag(Repository repository,  SignupLoaded state) async{
-    final response =
-        await repository.createTag(
-        createTag: CreateTag(tag: '${state.azatag}', phone: state.phoneno));
-    final deviceid = await repository.getDeviceId();
-
-    // todo: store azatag , password, deviceid in hivedb sign in --- Done
-    // _logger.i(response);
-    if (response.status == 200) {
-      await repository.addAzapayUser(
-          signIn: SignIn(tag: '${state.azatag}', password: state.password,
-              device: deviceid
-            // device: "190-system-08085303817"
-          ));
-
-      print('MerchantToken13 ' + response.token);
-      // await _dbprovider.addToken(basicResponse: response);
-      var prefs = await SharedPreferences.getInstance();
-      await prefs.setString('userToken', response.token);
-      await Navigator.of(context, rootNavigator: true).pop();
-      await Navigator.pushNamed(
-        context,
-        AppRouteName.signup_success,
-        arguments: VerifiedSuccessResponse(
-            vector: AppVectors.registerSuccessfully,
-            title: AppStrings.signUpsuccessone,
-            subtitle: '',
-            titletextsyle: AppTextStyles.h1style.copyWith(
-              fontWeight: FontWeight.normal,
-            ),
-            subtitlevisibility: false,
-            onPressedbutton: () async {
-              await Navigator.pushReplacementNamed(context, AppRouteName.home).then((value) async {
-                await _bloc.add(ClearSignUp());
-                _formKey.currentState.reset();
-              });
-            },
-            buttonvisibility: true,
-            buttontitle: AppStrings.signUpsuccesstwo,
-            widgetbinding: (_) {}),
-      ).then((value) => _bloc.add(ReturnToInitial()));
-    } else  {
-      await Navigator.of(context, rootNavigator: true).pop();
-      _bloc.add(ReturnToInitial());
-      showToast(response.message,
-          backgroundColor: ColorSets.colorPrimaryRed,
-          context: context,
-          animation: StyledToastAnimation.slideFromTop,
-          reverseAnimation: StyledToastAnimation.slideToTop,
-          position: StyledToastPosition.top,
-          startOffset: Offset(0.0, -3.0),
-          reverseEndOffset: Offset(0.0, -3.0),
-          duration: Duration(seconds: 4),
-          //Animation duration   animDuration * 2 <= duration
-          animDuration: Duration(seconds: 1),
-          curve: Curves.elasticOut,
-          reverseCurve: Curves.fastOutSlowIn);
-    }
-  }
 
   @override
   void initState() {
@@ -279,8 +220,8 @@ class _AzaPayTagUIState extends State<AzaPayTagUI> {
                                       navigatorfunc: (state is SignupLoaded)
                                           ? state.azatag.length >= 4
                                               ? () async {
-                                                 // await _bloc.add(SubmitSignUpForm(screen: 4));
-                                        createAzaTag(repository, state);
+                                                 await _bloc.add(SubmitSignUpForm(screen: 4));
+                                        // createAzaTag(repository, state);
                                                 }
                                               : null
                                           : null,

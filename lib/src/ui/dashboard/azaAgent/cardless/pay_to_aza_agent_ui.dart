@@ -77,7 +77,11 @@ class PayToAzaAgentState extends State<PayToAzaAgent> {
                       )),
             );
           });
-        } else {}
+        } else {
+        setState(() {
+        isTagLoading = false;
+        });
+        }
       });
 
       //  setState(() {
@@ -91,10 +95,6 @@ class PayToAzaAgentState extends State<PayToAzaAgent> {
     }).whenComplete(() {
       setState(() {
         isEnabled = true;
-      });
-    }).onError((error, stackTrace) {
-      setState(() {
-        isTagLoading = false;
       });
     });
   }

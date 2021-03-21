@@ -29,7 +29,7 @@ class _$BankLoadedTearOff {
       int error = 100,
       String responsemessage,
       List<BankList> banklist = const [],
-      LinkBank linkbank = const LinkBank(data: const [])}) {
+      LinkBank linkbank = const LinkBank(data: [])}) {
     return _BankLoaded(
       bankcode: bankcode,
       bankname: bankname,
@@ -256,7 +256,7 @@ class _$_BankLoaded with DiagnosticableTreeMixin implements _BankLoaded {
       this.error = 100,
       this.responsemessage,
       this.banklist = const [],
-      this.linkbank = const LinkBank(data: const [])})
+      this.linkbank = const LinkBank(data: [])})
       : assert(bankcode != null),
         assert(searchtext != null),
         assert(success != null),
@@ -297,7 +297,7 @@ class _$_BankLoaded with DiagnosticableTreeMixin implements _BankLoaded {
   @JsonKey(defaultValue: const [])
   @override
   final List<BankList> banklist;
-  @JsonKey(defaultValue: const LinkBank(data: const []))
+  @JsonKey(defaultValue: const LinkBank(data: []))
   @override
   final LinkBank linkbank;
 

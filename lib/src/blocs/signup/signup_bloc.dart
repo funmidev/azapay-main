@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:azapay/app/app.dart';
+import 'package:azapay/src/models/create_tag_resp.dart';
 import 'package:azapay/src/models/models.dart';
 import 'package:azapay/src/resources/resources.dart';
 import 'package:bloc/bloc.dart';
@@ -184,11 +185,11 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
               final deviceid = await repository.getDeviceId();
 
               // todo: store azatag , password, deviceid in hivedb sign in --- Done
-              // _logger.i(response);
+              _logger.i(response);
               print('MerchantToken13 ' + response.status.toString());
               if (response.status == 200) {
 
-                print('MerchantToken13 ' + response.data);
+                print('MerchantToken13 ' + response.message);
 
                 await repository.addAzapayUser(
                     signIn: SignIn(
@@ -202,14 +203,13 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
                 print('MerchantToken13 ' + deviceid);
 
-                print('MerchantToken13 ' + response.token);
-              //  await _dbprovider.addToken(basicResponse: response);
-                var prefs = await SharedPreferences.getInstance();
-                await prefs.setString('userToken', response.token);
+              // //  await _dbprovider.addToken(basicResponse: response);
+              //   var prefs = await SharedPreferences.getInstance();
+              //   await prefs.setString('userToken', response.token);
 
                 print('MerchantToken13 ' + response.message);
 
-                yield signup.copyWith(basicResponse: response);
+                yield signup.copyWith(basicResponse: BasicResponse(status: 200, message: response.message));
                 // _logger.e(response.message);
               } else {
                 // _logger.e(response.message);

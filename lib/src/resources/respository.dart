@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:azapay/src/models/create_tag_resp.dart';
 import 'package:azapay/src/models/models.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:dio/dio.dart';
@@ -176,7 +177,7 @@ class Repository {
     return _apiProvider().createFullName(createAccountFullName);
   }
 
-  Future<BasicResponse<String>> createTag({CreateTag createTag}) {
+  Future<CreateTagResp> createTag({CreateTag createTag}) {
     return _apiProvider().createTag(createTag);
   }
 

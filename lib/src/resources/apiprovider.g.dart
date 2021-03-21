@@ -114,7 +114,7 @@ class _ApiProvider implements ApiProvider {
   }
 
   @override
-  Future<BasicResponse<String>> createTag(createTag) async {
+  Future<CreateTagResp> createTag(createTag) async {
     ArgumentError.checkNotNull(createTag, 'createTag');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -129,7 +129,7 @@ class _ApiProvider implements ApiProvider {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = BasicResponse<String>.fromJson(_result.data);
+    final value = CreateTagResp.fromJson(_result.data);
     return value;
   }
 

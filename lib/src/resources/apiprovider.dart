@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:azapay/src/models/create_tag_resp.dart';
 import 'package:azapay/src/models/models.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
@@ -38,7 +39,7 @@ abstract class ApiProvider {
       @Body() CreateAccountFullName createAccountFullName);
 
   @PUT('/onboard/tag/create')
-  Future<BasicResponse<String>> createTag(@Body() CreateTag createTag);
+  Future<CreateTagResp> createTag(@Body() CreateTag createTag);
 
   ///--------------Sign In----------------------
 

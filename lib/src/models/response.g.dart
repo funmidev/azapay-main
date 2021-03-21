@@ -88,6 +88,53 @@ class DataAdapter extends TypeAdapter<Data> {
           typeId == other.typeId;
 }
 
+class BasicResponseAdapter<T> extends TypeAdapter<BasicResponse<T>> {
+  BasicResponseAdapter({@required this.typeId}) : assert(typeId != null);
+  @override
+  final int typeId;
+
+  @override
+  BasicResponse<T> read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return BasicResponse(
+      code: fields[0] as String,
+      data: fields[1] as T,
+      message: fields[2] as String,
+      status: fields[3] as int,
+      token: fields[4] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, BasicResponse obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.code)
+      ..writeByte(1)
+      ..write(obj.data)
+      ..writeByte(2)
+      ..write(obj.message)
+      ..writeByte(3)
+      ..write(obj.status)
+      ..writeByte(4)
+      ..write(obj.token);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is BasicResponseAdapter &&
+              runtimeType == other.runtimeType &&
+              typeId == other.typeId;
+}
+
 class TransactionHistoryAdapter extends TypeAdapter<TransactionHistory> {
   @override
   final int typeId = 7;

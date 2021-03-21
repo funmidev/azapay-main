@@ -127,7 +127,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       curve: Curves.fastOutSlowIn,
       reverseCurve: Curves.fastOutSlowIn,
       dismissOtherOnShow: true,
-      movingOnWindowChange: true,
       fullWidth: false,
       child: MultiIsolateBlocProvider(
         providers: [
