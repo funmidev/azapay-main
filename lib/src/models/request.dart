@@ -79,8 +79,10 @@ class SignIn {
   final String password;
   @HiveField(2)
   final String device;
+  @HiveField(3)
+  final bool isDeviceNew;
 
-  SignIn({this.tag, this.password, this.device});
+  SignIn({this.tag, this.password, this.device, this.isDeviceNew});
 
   factory SignIn.fromJson(Map<String, dynamic> json) => _$SignInFromJson(json);
 
