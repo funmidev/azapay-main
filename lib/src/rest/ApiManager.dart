@@ -171,6 +171,53 @@ class ApiManager {
     return null;
   }
 
+  ///--------SignIn-------------------\\
+  static Future<BasicResponse> SignIn(
+      String azatag,String password,String deviceId) async {
+    var url = Constants.baseUrl(true) + '/auth/signin';
+    // print('PayMerchant $token');
+    // final signin = SignIn(azatag, password, deviceId);
+    final response = await http.post(
+      url,
+      body: {
+        'tag':azatag,
+        'password' :password,
+        'device' : deviceId,
+        'isNewDevice' : true
+      },
+      headers: {
+        // HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'application/json'
+      },
+    );
+
+    try {
+      if (response.statusCode == 200) {
+        print("success66" + response.headers.toString());
+        print("success65" + response.request.toString());
+        print("success67" + response.body.toString());
+        final statusCode = json.decode(response.body)['status'];
+        if (statusCode == 200) {
+          var data = BasicResponse.fromJson(json.decode(response.body));
+          print("success68" + data.toString());
+          return data;
+        } else {
+          var data = BasicResponse.fromJson(json.decode(response.body));
+          print("success68" + data.toString());
+          return data;
+        }
+      } else {
+        print("success66" + response.headers.toString());
+        print("success65" + response.request.toString());
+        print("success64" + response.statusCode.toString());
+      }
+    } catch (e) {
+      print('Merror' + e.toString());
+      return null;
+    }
+    return null;
+  }
+
   ///--------payment--- to Merchant---------
 
   static Future<dynamic> payMerchant(

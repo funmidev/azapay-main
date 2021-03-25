@@ -21,6 +21,15 @@ class SignInPasswordChanged extends SigninEvent {
   List<Object> get props => [password];
 }
 
+class IsDeviceNew extends SigninEvent {
+  final bool isDeviceNew;
+
+  IsDeviceNew({this.isDeviceNew});
+
+  @override
+  List<Object> get props => [isDeviceNew];
+}
+
 class ClearSigninForm extends SigninEvent {
   @override
   List<Object> get props => [];

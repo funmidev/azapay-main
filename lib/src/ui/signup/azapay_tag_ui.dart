@@ -1,7 +1,9 @@
 import 'package:azapay/app/app.dart';
 import 'package:azapay/src/blocs/blocs.dart';
 import 'package:azapay/src/models/models.dart';
+import 'package:azapay/src/resources/apinterceptor.dart';
 import 'package:azapay/src/resources/respository.dart';
+import 'package:azapay/src/rest/ApiManager.dart';
 import 'package:azapay/src/widget/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class AzaPayTagUI extends StatefulWidget {
   const AzaPayTagUI({Key key}) : super(key: key);
@@ -20,9 +23,56 @@ class AzaPayTagUI extends StatefulWidget {
 class _AzaPayTagUIState extends State<AzaPayTagUI> {
   SignupBloc _bloc;
   Repository repository;
+  String password,azatag;
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void signIn(String azatag,String password) async {
+    var deviceid = AppStrings.empty;
+    if (UniversalPlatform.isAndroid) {
+
+      deviceid = await repository.getDeviceId();
+    }
+    print(deviceid);
+    final response = await ApiManager.SignIn(azatag, password, deviceid);
+    // final response = await repository.signIn(
+    //     signIn: SignIn(
+    //         tag: '${azatag}',
+    //         password: password,
+    //         isDeviceNew: true,
+    //         device: deviceid
+    //       // device: '190-system-08085303817'
+    //     ));
+    // //_logger.e(response.message);
+    //todo: store inside hivedb user
+    if (response.status == 200) {
+      // _logger.e(response.token);
+      await repository.addAzapayUser(
+          signIn: SignIn(
+              tag: '${azatag}',
+              password: password,
+              device: deviceid));
+      await InMemoryTokenHiveStorage().write(response.token);
+
+      print('MerchantToken12 ' + response.token);
+      // await _dbprovider.addToken(basicResponse: response);
+      var prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userToken', response.token);
+      await Navigator.pushReplacementNamed(context, AppRouteName.home).then((value) async {
+        await _bloc.add(ClearSignUp());
+        _formKey.currentState.reset();
+      });
+    }else{
+      _scaffoldKey.currentState.showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text(response.message),
+        ),
+      );
+    }
+
+  }
 
 
 
@@ -62,10 +112,7 @@ class _AzaPayTagUIState extends State<AzaPayTagUI> {
                       ),
                       subtitlevisibility: false,
                       onPressedbutton: () async {
-                        await Navigator.pushReplacementNamed(context, AppRouteName.home).then((value) async {
-                          await _bloc.add(ClearSignUp());
-                          _formKey.currentState.reset();
-                        });
+                        signIn(azatag, password);
                       },
                       buttonvisibility: true,
                       buttontitle: AppStrings.signUpsuccesstwo,
@@ -220,6 +267,8 @@ class _AzaPayTagUIState extends State<AzaPayTagUI> {
                                       navigatorfunc: (state is SignupLoaded)
                                           ? state.azatag.length >= 4
                                               ? () async {
+                                        azatag = state.azatag;
+                                        password = state.password;
                                                  await _bloc.add(SubmitSignUpForm(screen: 4));
                                         // createAzaTag(repository, state);
                                                 }

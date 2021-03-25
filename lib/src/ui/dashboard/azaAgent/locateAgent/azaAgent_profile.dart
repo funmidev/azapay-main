@@ -1,13 +1,15 @@
 import 'package:azapay/Constants.dart';
 import 'package:azapay/app/app_route_name.dart';
+import 'package:azapay/service/get_aza_agent_info.dart';
 import 'package:azapay/src/models/agent_info.dart';
 import 'package:azapay/src/rest/ApiManager.dart';
+import 'package:azapay/src/ui/dashboard/azaAgent/cardless/input_cardless_amount_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AzaAgentProfile extends StatefulWidget {
-  final AgentInfoDatum AzaAgentName;
+  final AgentData AzaAgentName;
 
   const AzaAgentProfile({this.AzaAgentName});
 
@@ -19,24 +21,6 @@ class AzaAgentProfile extends StatefulWidget {
 }
 
 class AzaAgentProfileState extends State<AzaAgentProfile> {
-  Future<AgentModelData> getAgents() async {
-    var token = await getAuthToken();
-    var agentInfo = await ApiManager.getAllAgent('000', token);
-    if (agentInfo != null) {
-      print('Agent List' + agentInfo.data.toString());
-      return agentInfo;
-    }
-    return null;
-  }
-
-  Future<String> getAuthToken() async {
-    var prefs;
-    try {
-      prefs = await SharedPreferences.getInstance();
-    } catch (e) {} finally {
-      return prefs.getString(Constants.authToken);
-    }
-  }
 
 
   @override
@@ -197,8 +181,13 @@ class AzaAgentProfileState extends State<AzaAgentProfile> {
                         padding: EdgeInsets.symmetric(horizontal: 30),
                         child: FlatButton(
                             onPressed: () {
-                              Navigator.pushNamed(
-                                  context, AppRouteName.inputmyAmount);
+                              Navigator.push(
+                                  context,  MaterialPageRoute(
+                                  builder: (context) =>
+                                      InputCardlessAmountUi(
+                                        AzaAgentName: widget.AzaAgentName,
+                                        // AzaAgentInfo: widget.azaAgentData.tag,
+                                      )));
                             },
                             padding: EdgeInsets.symmetric(vertical: 24),
                             color: Color(0xffFFC300),

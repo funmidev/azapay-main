@@ -177,7 +177,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
             }
             break;
 
-          case 4:
+          case 5:
             try {
               final response = await repository.createTag(
                   createTag: CreateTag(
@@ -217,6 +217,45 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
                     basicResponse:
                         BasicResponse(status: 400, message: response.message));
               }
+              try {
+                final response = await repository.createTag(
+                    createTag: CreateTag(
+                        tag: '${signup.azatag}', phone: signup.phoneno));
+                final deviceid = await repository.getDeviceId();
+
+                // todo: store azatag , password, deviceid in hivedb sign in --- Done
+                _logger.i(response);
+                print('MerchantToken13 ' + response.status.toString());
+                if (response.status == 200) {
+
+                  print('MerchantToken13 ' + response.message);
+
+                  await repository.addAzapayUser(
+                      signIn: SignIn(
+                          tag: '${signup.azatag}',
+                          password: signup.password,
+                          device: deviceid
+                        //device: '190-system-08085303817'
+
+                      ));
+
+
+                  print('MerchantToken13 ' + deviceid);
+
+                  // //  await _dbprovider.addToken(basicResponse: response);
+                  //   var prefs = await SharedPreferences.getInstance();
+                  //   await prefs.setString('userToken', response.token);
+
+                  print('MerchantToken13 ' + response.message);
+
+                  yield signup.copyWith(basicResponse: BasicResponse(status: 200, message: response.message));
+                  // _logger.e(response.message);
+                } else {
+                  // _logger.e(response.message);
+                  yield signup.copyWith(
+                      basicResponse:
+                      BasicResponse(status: 400, message: response.message));
+                }
             } catch (e) {
               _logger.e(e);
               yield signup.copyWith(

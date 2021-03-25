@@ -17,11 +17,13 @@ class _$InputDataSigninStateTearOff {
   _InputDataSigninState call(
       {String azatag = '',
       String password = '',
+        bool isDeviceNew = false,
       BasicResponse<String> basicResponse =
           const BasicResponse<String>(status: 100, message: '')}) {
     return _InputDataSigninState(
       azatag: azatag,
       password: password,
+      isDeviceNew:isDeviceNew,
       basicResponse: basicResponse,
     );
   }
@@ -35,6 +37,7 @@ const $InputDataSigninState = _$InputDataSigninStateTearOff();
 mixin _$InputDataSigninState {
   String get azatag;
   String get password;
+  bool get isDeviceNew;
   BasicResponse<String> get basicResponse;
 
   @JsonKey(ignore: true)
@@ -47,7 +50,7 @@ abstract class $InputDataSigninStateCopyWith<$Res> {
           $Res Function(InputDataSigninState) then) =
       _$InputDataSigninStateCopyWithImpl<$Res>;
   $Res call(
-      {String azatag, String password, BasicResponse<String> basicResponse});
+      {String azatag, String password,bool isDeviceNew, BasicResponse<String> basicResponse});
 }
 
 /// @nodoc
@@ -63,11 +66,13 @@ class _$InputDataSigninStateCopyWithImpl<$Res>
   $Res call({
     Object azatag = freezed,
     Object password = freezed,
+    Object isDeviceNew = freezed,
     Object basicResponse = freezed,
   }) {
     return _then(_value.copyWith(
       azatag: azatag == freezed ? _value.azatag : azatag as String,
       password: password == freezed ? _value.password : password as String,
+      isDeviceNew: isDeviceNew == freezed ? _value.isDeviceNew : isDeviceNew as bool,
       basicResponse: basicResponse == freezed
           ? _value.basicResponse
           : basicResponse as BasicResponse<String>,
@@ -83,7 +88,7 @@ abstract class _$InputDataSigninStateCopyWith<$Res>
       __$InputDataSigninStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String azatag, String password, BasicResponse<String> basicResponse});
+      {String azatag, String password,bool isDeviceNew, BasicResponse<String> basicResponse});
 }
 
 /// @nodoc
@@ -101,11 +106,13 @@ class __$InputDataSigninStateCopyWithImpl<$Res>
   $Res call({
     Object azatag = freezed,
     Object password = freezed,
+    Object isDeviceNew = freezed,
     Object basicResponse = freezed,
   }) {
     return _then(_InputDataSigninState(
       azatag: azatag == freezed ? _value.azatag : azatag as String,
       password: password == freezed ? _value.password : password as String,
+      isDeviceNew: isDeviceNew == freezed ? _value.isDeviceNew : isDeviceNew as bool,
       basicResponse: basicResponse == freezed
           ? _value.basicResponse
           : basicResponse as BasicResponse<String>,
@@ -120,10 +127,12 @@ class _$_InputDataSigninState
   _$_InputDataSigninState(
       {this.azatag = '',
       this.password = '',
+        this.isDeviceNew = false,
       this.basicResponse =
           const BasicResponse<String>(status: 100, message: '')})
       : assert(azatag != null),
         assert(password != null),
+        assert(isDeviceNew != null),
         assert(basicResponse != null);
 
   @JsonKey(defaultValue: '')
@@ -132,13 +141,16 @@ class _$_InputDataSigninState
   @JsonKey(defaultValue: '')
   @override
   final String password;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isDeviceNew;
   @JsonKey(defaultValue: const BasicResponse<String>(status: 100, message: ''))
   @override
   final BasicResponse<String> basicResponse;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InputDataSigninState(azatag: $azatag, password: $password, basicResponse: $basicResponse)';
+    return 'InputDataSigninState(azatag: $azatag, password: $password, isDeviceNew: $isDeviceNew,basicResponse: $basicResponse)';
   }
 
   @override
@@ -148,6 +160,7 @@ class _$_InputDataSigninState
       ..add(DiagnosticsProperty('type', 'InputDataSigninState'))
       ..add(DiagnosticsProperty('azatag', azatag))
       ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('isDeviceNew', isDeviceNew))
       ..add(DiagnosticsProperty('basicResponse', basicResponse));
   }
 
@@ -160,6 +173,9 @@ class _$_InputDataSigninState
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
+            (identical(other.isDeviceNew, isDeviceNew) ||
+                const DeepCollectionEquality()
+                    .equals(other.isDeviceNew, isDeviceNew)) &&
             (identical(other.basicResponse, basicResponse) ||
                 const DeepCollectionEquality()
                     .equals(other.basicResponse, basicResponse)));
@@ -170,6 +186,7 @@ class _$_InputDataSigninState
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(azatag) ^
       const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(isDeviceNew) ^
       const DeepCollectionEquality().hash(basicResponse);
 
   @JsonKey(ignore: true)
@@ -183,12 +200,15 @@ abstract class _InputDataSigninState implements InputDataSigninState {
   factory _InputDataSigninState(
       {String azatag,
       String password,
+        bool isDeviceNew,
       BasicResponse<String> basicResponse}) = _$_InputDataSigninState;
 
   @override
   String get azatag;
   @override
   String get password;
+  @override
+  bool get isDeviceNew;
   @override
   BasicResponse<String> get basicResponse;
   @override

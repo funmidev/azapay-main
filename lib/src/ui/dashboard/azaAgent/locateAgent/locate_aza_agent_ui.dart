@@ -14,7 +14,7 @@ import '../../../../../Constants.dart';
 import 'azaAgent_profile.dart';
 
 class LocateAzaAgent extends StatefulWidget {
-  final AgentInfoDatum azaAgentData;
+  final AgentData azaAgentData;
 
   LocateAzaAgent({this.azaAgentData}) ;
   @override
@@ -25,7 +25,7 @@ class LocateAzaAgent extends StatefulWidget {
 }
 
 class LocateAzaAgentState extends State<LocateAzaAgent> {
-  AgentInfoDatum azaAgentData;
+  AgentData azaAgentData;
   Future<String> getAuthToken() async {
     var prefs;
     try {
