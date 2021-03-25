@@ -15,10 +15,16 @@ class WalletUI extends StatefulWidget {
 
 class _WalletUIState extends State<WalletUI> {
   WalletBloc _bloc;
-
+  ScrollController _controllerOne;
+  TextEditingController _searchController;
+  ActivityBloc _activityBloc;
   @override
   void initState() {
     super.initState();
+    _activityBloc = context.bloc<ActivityBloc>();
+    _activityBloc.add(FetchTransactionHistory());
+    _searchController = TextEditingController();
+    _controllerOne = ScrollController();
     _bloc = context.bloc<WalletBloc>();
     _bloc.add(WalletPage());
   }
@@ -193,6 +199,16 @@ class _WalletUIState extends State<WalletUI> {
                   )
                 ],
               ),
+
+              ///--------recent transaction ------
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, top: 30),
+                  child: Text(AppStrings.walletFour, style: AppTextStyles.h2style),
+                ),
+              ),
+
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(

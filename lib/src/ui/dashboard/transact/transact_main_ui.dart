@@ -37,6 +37,7 @@ class _BuyAndPayUIState extends State<BuyAndPayUI> with SingleTickerProviderStat
                 );
               },
             ),
+
             BuyAndPayItem(
               assetName: AppVectors.buydata,
               title: AppStrings.businessCenterTwo,
